@@ -1496,6 +1496,65 @@
       }
     }
 
+    /* =============================================
+       LANGUAGE SWITCHER
+    ============================================= */
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .lang-btn {
+      background: none;
+      border: none;
+      color: rgba(255, 255, 255, 0.45);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      padding: 4px 5px;
+      letter-spacing: 0.06em;
+      transition: color 0.2s;
+      line-height: 1;
+    }
+
+    .lang-btn.active {
+      color: var(--cyan);
+    }
+
+    .lang-btn:hover:not(.active) {
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .lang-sep {
+      color: rgba(255, 255, 255, 0.18);
+      font-size: 0.7rem;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    /* Mobile lang switcher inside mobile menu */
+    .mobile-lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .mobile-lang-switcher .lang-btn {
+      font-size: 0.85rem;
+      padding: 6px 8px;
+      border: 1px solid transparent;
+      border-radius: 6px;
+    }
+
+    .mobile-lang-switcher .lang-btn.active {
+      border-color: rgba(0, 200, 232, 0.3);
+      background: rgba(0, 200, 232, 0.08);
+    }
+
     @media (max-width: 640px) {
       :root {
         --section-pad: 56px;
@@ -1557,6 +1616,12 @@
         <i class="fa-regular fa-calendar"></i> Prendre RDV
       </a>
 
+      <div class="lang-switcher" id="langSwitcher" aria-label="Sélecteur de langue">
+        <button class="lang-btn active" data-lang="fr" aria-label="Français">FR</button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" data-lang="en" aria-label="English">EN</button>
+      </div>
+
       <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
         <span></span>
         <span></span>
@@ -1572,9 +1637,14 @@
     <a href="#process" onclick="closeMobile()">Notre approche</a>
     <a href="#contact" onclick="closeMobile()">Contact</a>
     <a class="btn-primary" href="https://calendly.com/bamoussoudjangban-predylics/30min" target="_blank" rel="noopener"
-      style="margin-top:8px; justify-content: center;">
+      style="margin-top:8px; justify-content: center;" id="mobileCta">
       <i class="fa-regular fa-calendar"></i> Prendre RDV
     </a>
+    <div class="mobile-lang-switcher">
+      <button class="lang-btn active" data-lang="fr" aria-label="Français">FR</button>
+      <span class="lang-sep">|</span>
+      <button class="lang-btn" data-lang="en" aria-label="English">EN</button>
+    </div>
   </div>
 
   <!-- =============================================
@@ -2266,6 +2336,312 @@
       contactForm.style.display = 'none';
       formSuccess.classList.add('show');
     });
+
+    // ---- Language Switcher ----
+    const translations = {
+      fr: {
+        navApproach: 'Notre approche',
+        navCta: '<i class="fa-regular fa-calendar"></i> Prendre RDV',
+        mobileCta: '<i class="fa-regular fa-calendar"></i> Prendre RDV',
+        heroTitle: 'Transformez vos données<br />en <span class="gradient-text">décisions stratégiques</span>',
+        heroDesc: "Predylics accompagne les entreprises ambitieuses dans leur transformation data et IA — de la stratégie à l'implémentation.",
+        heroCtaPrimary: 'Prendre RDV &nbsp;→',
+        heroCtaOutline: 'Découvrir nos services',
+        servicesLabel: 'Ce que nous faisons',
+        servicesTitle: 'Nos <span class="gradient-text">services</span>',
+        servicesSubtitle: 'Des solutions data et IA complètes, conçues pour générer un impact mesurable sur votre activité.',
+        serviceMlDesc: 'Modèles prédictifs qui transforment vos données en avantage compétitif.',
+        serviceAgenticDesc: 'Agents IA autonomes pour automatiser vos workflows complexes.',
+        serviceGenAIDesc: "Intégration de l'IA générative dans vos produits et processus.",
+        serviceDataEngDesc: 'Pipelines robustes et architectures scalables pour vos données.',
+        serviceConsultingDesc: 'Stratégie data sur-mesure pour aligner vos données avec vos objectifs métier.',
+        serviceDashboardDesc: 'Tableaux de bord interactifs pour piloter votre activité en temps réel.',
+        serviceAIAuditDesc: 'Évaluation de votre maturité IA et feuille de route personnalisée.',
+        whyLabel: 'Pourquoi nous choisir',
+        whyTitle: 'Ce qui nous <span class="gradient-text">distingue</span>',
+        whySubtitle: "Une équipe d'experts qui conjugue rigueur technique et vision business pour livrer des résultats concrets.",
+        whyCard1Title: 'Expertise pointue',
+        whyCard1Desc: "Des spécialistes certifiés en data science, machine learning et IA générative, avec des années d'expérience sur des projets exigeants.",
+        whyCard2Title: 'Approche sur-mesure',
+        whyCard2Desc: 'Chaque mission est unique. Nous construisons des solutions adaptées à votre contexte, vos contraintes et vos ambitions.',
+        whyCard3Title: 'ROI mesurable',
+        whyCard3Desc: "Nous définissons des KPIs dès le départ et mesurons l'impact de chaque action. Votre investissement se traduit en résultats tangibles.",
+        stat1Label: 'Projets livrés dans les délais',
+        stat2Label: "Domaines d'expertise",
+        stat3Label: 'Technologies maîtrisées',
+        stat4Label: 'Ambition partagée',
+        techLabel: 'Stack technique',
+        techTitle: 'Nos outils de <span class="gradient-text">prédilection</span>',
+        techSubtitle: 'Les meilleures technologies du marché, maîtrisées par nos experts pour construire des solutions performantes et durables.',
+        processLabel: 'Notre méthode',
+        processTitle: 'Comment ça <span class="gradient-text">fonctionne</span>',
+        processSubtitle: 'Un processus structuré en 3 étapes pour transformer votre vision en réalité data et IA.',
+        step1Title: 'Discovery call',
+        step1Desc: 'On prend le temps de comprendre vos enjeux métier, votre stack actuel, vos objectifs et vos contraintes.',
+        step2Title: 'Proposition &amp; roadmap',
+        step2Desc: 'On vous présente une proposition claire avec une feuille de route priorisée, des jalons et des KPIs définis.',
+        step3Title: 'Implémentation &amp; suivi',
+        step3Desc: 'On délivre en mode agile avec des points réguliers, une documentation soignée et un accompagnement au changement.',
+        bookingTitle: 'Prêt à transformer vos données ?',
+        bookingDesc: "Échangeons sur vos enjeux data et IA. Un premier appel de 30 minutes, sans engagement, pour explorer ensemble ce qui est possible.",
+        bookingCta: '<i class="fa-regular fa-calendar-check"></i> Réserver un créneau gratuit',
+        contactLabel: 'Nous contacter',
+        contactTitle: 'Parlons de votre <span class="gradient-text">projet</span>',
+        contactDesc: "Que vous souhaitiez démarrer un projet, auditer votre stack data, ou simplement explorer les possibilités de l'IA — notre équipe est disponible pour vous répondre.",
+        contactLocationLabel: 'Localisation',
+        contactAvailabilityLabel: 'Disponibilité',
+        contactAvailability: 'Réponse sous 24h ouvrées',
+        formNameLabel: 'Nom complet *',
+        formNamePlaceholder: 'Jean Dupont',
+        formEmailLabel: 'Email professionnel *',
+        formEmailPlaceholder: 'jean@entreprise.com',
+        formCompanyLabel: 'Entreprise',
+        formCompanyPlaceholder: 'Nom de votre société',
+        formServiceLabel: 'Service souhaité',
+        formServicePlaceholder: 'Sélectionnez un service',
+        formServiceOther: 'Autre / Non défini',
+        formMessageLabel: 'Message *',
+        formMessagePlaceholder: 'Décrivez votre projet, vos enjeux, vos objectifs...',
+        formSubmit: '<i class="fa-solid fa-paper-plane"></i> Envoyer le message',
+        formSuccessTitle: 'Message envoyé !',
+        formSuccessDesc: 'Merci pour votre message. Notre équipe vous répondra dans les prochaines 24 heures ouvrées.',
+        footerBrandDesc: 'Transformez vos données en décisions stratégiques.<br />Data &amp; AI consulting pour entreprises ambitieuses.',
+        footerCompanyTitle: 'Entreprise',
+        footerApproachLink: 'Notre approche',
+        footerRdvLink: 'Prendre RDV',
+        footerCopyright: '&copy; 2020 Predylics. Tous droits réservés.',
+      },
+      en: {
+        navApproach: 'Our approach',
+        navCta: '<i class="fa-regular fa-calendar"></i> Book a call',
+        mobileCta: '<i class="fa-regular fa-calendar"></i> Book a call',
+        heroTitle: 'Transform your data<br />into <span class="gradient-text">strategic decisions</span>',
+        heroDesc: 'Predylics supports ambitious companies in their data and AI transformation — from strategy to implementation.',
+        heroCtaPrimary: 'Book a call &nbsp;→',
+        heroCtaOutline: 'Discover our services',
+        servicesLabel: 'What we do',
+        servicesTitle: 'Our <span class="gradient-text">services</span>',
+        servicesSubtitle: 'Complete data and AI solutions, designed to generate measurable impact on your business.',
+        serviceMlDesc: 'Predictive models that turn your data into competitive advantage.',
+        serviceAgenticDesc: 'Autonomous AI agents to automate your complex workflows.',
+        serviceGenAIDesc: 'Integration of generative AI into your products and processes.',
+        serviceDataEngDesc: 'Robust pipelines and scalable architectures for your data.',
+        serviceConsultingDesc: 'Custom data strategy to align your data with your business objectives.',
+        serviceDashboardDesc: 'Interactive dashboards to manage your business in real time.',
+        serviceAIAuditDesc: 'Assessment of your AI maturity and personalized roadmap.',
+        whyLabel: 'Why choose us',
+        whyTitle: 'What sets us <span class="gradient-text">apart</span>',
+        whySubtitle: 'A team of experts combining technical rigor and business vision to deliver concrete results.',
+        whyCard1Title: 'Deep expertise',
+        whyCard1Desc: 'Certified specialists in data science, machine learning and generative AI, with years of experience on demanding projects.',
+        whyCard2Title: 'Tailored approach',
+        whyCard2Desc: 'Every engagement is unique. We build solutions adapted to your context, constraints, and ambitions.',
+        whyCard3Title: 'Measurable ROI',
+        whyCard3Desc: 'We define KPIs from the start and measure the impact of every action. Your investment translates into tangible results.',
+        stat1Label: 'Projects delivered on time',
+        stat2Label: 'Areas of expertise',
+        stat3Label: 'Mastered technologies',
+        stat4Label: 'Shared ambition',
+        techLabel: 'Tech stack',
+        techTitle: 'Our tools of <span class="gradient-text">choice</span>',
+        techSubtitle: 'The best market technologies, mastered by our experts to build high-performance and durable solutions.',
+        processLabel: 'Our method',
+        processTitle: 'How it <span class="gradient-text">works</span>',
+        processSubtitle: 'A structured 3-step process to turn your vision into data and AI reality.',
+        step1Title: 'Discovery call',
+        step1Desc: 'We take the time to understand your business challenges, your current stack, your objectives and constraints.',
+        step2Title: 'Proposal &amp; roadmap',
+        step2Desc: 'We present you with a clear proposal with a prioritized roadmap, defined milestones and KPIs.',
+        step3Title: 'Implementation &amp; follow-up',
+        step3Desc: 'We deliver in agile mode with regular check-ins, thorough documentation and change management support.',
+        bookingTitle: 'Ready to transform your data?',
+        bookingDesc: "Let's discuss your data and AI challenges. A 30-minute first call, no commitment, to explore together what's possible.",
+        bookingCta: '<i class="fa-regular fa-calendar-check"></i> Book a free slot',
+        contactLabel: 'Contact us',
+        contactTitle: "Let's talk about your <span class=\"gradient-text\">project</span>",
+        contactDesc: 'Whether you want to start a project, audit your data stack, or simply explore the possibilities of AI — our team is available to respond.',
+        contactLocationLabel: 'Location',
+        contactAvailabilityLabel: 'Availability',
+        contactAvailability: 'Response within 24 business hours',
+        formNameLabel: 'Full name *',
+        formNamePlaceholder: 'John Doe',
+        formEmailLabel: 'Professional email *',
+        formEmailPlaceholder: 'john@company.com',
+        formCompanyLabel: 'Company',
+        formCompanyPlaceholder: 'Your company name',
+        formServiceLabel: 'Desired service',
+        formServicePlaceholder: 'Select a service',
+        formServiceOther: 'Other / Undefined',
+        formMessageLabel: 'Message *',
+        formMessagePlaceholder: 'Describe your project, challenges, objectives...',
+        formSubmit: '<i class="fa-solid fa-paper-plane"></i> Send message',
+        formSuccessTitle: 'Message sent!',
+        formSuccessDesc: 'Thank you for your message. Our team will respond within the next 24 business hours.',
+        footerBrandDesc: 'Transform your data into strategic decisions.<br />Data &amp; AI consulting for ambitious companies.',
+        footerCompanyTitle: 'Company',
+        footerApproachLink: 'Our approach',
+        footerRdvLink: 'Book a call',
+        footerCopyright: '&copy; 2020 Predylics. All rights reserved.',
+      }
+    };
+
+    let currentLang = 'fr';
+
+    function applyTranslations(lang) {
+      const t = translations[lang];
+      document.documentElement.lang = lang;
+
+      const setText = (sel, text) => {
+        const el = document.querySelector(sel);
+        if (el) el.textContent = text;
+      };
+      const setHTML = (sel, html) => {
+        const el = document.querySelector(sel);
+        if (el) el.innerHTML = html;
+      };
+
+      // Nav
+      setText('.nav-links li:nth-child(3) a', t.navApproach);
+      setHTML('.nav-cta', t.navCta);
+
+      // Mobile menu
+      setText('#mobileMenu a:nth-child(3)', t.navApproach);
+      setHTML('#mobileCta', t.mobileCta);
+
+      // Hero
+      setHTML('.hero-title', t.heroTitle);
+      setText('.hero-desc', t.heroDesc);
+      setHTML('.hero-ctas .btn-primary', t.heroCtaPrimary);
+      setText('.hero-ctas .btn-outline', t.heroCtaOutline);
+
+      // Services
+      setText('#services .section-label', t.servicesLabel);
+      setHTML('#services .section-title', t.servicesTitle);
+      setText('#services .section-subtitle', t.servicesSubtitle);
+      const serviceDescs = [
+        t.serviceMlDesc, t.serviceAgenticDesc, t.serviceGenAIDesc,
+        t.serviceDataEngDesc, t.serviceConsultingDesc, t.serviceDashboardDesc, t.serviceAIAuditDesc
+      ];
+      document.querySelectorAll('.services-grid .service-card').forEach((card, i) => {
+        const desc = card.querySelector('.service-desc');
+        if (desc && serviceDescs[i]) desc.textContent = serviceDescs[i];
+      });
+
+      // Why
+      setText('#why .section-label', t.whyLabel);
+      setHTML('#why .section-title', t.whyTitle);
+      setText('#why .section-subtitle', t.whySubtitle);
+      const whyCards = document.querySelectorAll('.why-grid .why-card');
+      const whyData = [
+        { title: t.whyCard1Title, desc: t.whyCard1Desc },
+        { title: t.whyCard2Title, desc: t.whyCard2Desc },
+        { title: t.whyCard3Title, desc: t.whyCard3Desc },
+      ];
+      whyCards.forEach((card, i) => {
+        if (whyData[i]) {
+          card.querySelector('h3').textContent = whyData[i].title;
+          card.querySelector('p').textContent = whyData[i].desc;
+        }
+      });
+      const statLabels = document.querySelectorAll('.stat-label');
+      const statTexts = [t.stat1Label, t.stat2Label, t.stat3Label, t.stat4Label];
+      statLabels.forEach((el, i) => { if (statTexts[i]) el.textContent = statTexts[i]; });
+
+      // Tech
+      setText('#tech .section-label', t.techLabel);
+      setHTML('#tech .section-title', t.techTitle);
+      setText('#tech .section-subtitle', t.techSubtitle);
+
+      // Process
+      setText('#process .section-label', t.processLabel);
+      setHTML('#process .section-title', t.processTitle);
+      setText('#process .section-subtitle', t.processSubtitle);
+      const steps = document.querySelectorAll('.process-step');
+      const stepData = [
+        { title: t.step1Title, desc: t.step1Desc },
+        { title: t.step2Title, desc: t.step2Desc },
+        { title: t.step3Title, desc: t.step3Desc },
+      ];
+      steps.forEach((step, i) => {
+        if (stepData[i]) {
+          step.querySelector('h3').innerHTML = stepData[i].title;
+          step.querySelector('p').textContent = stepData[i].desc;
+        }
+      });
+
+      // Booking
+      setText('#booking .booking-inner h2', t.bookingTitle);
+      setText('#booking .booking-inner > p', t.bookingDesc);
+      setHTML('#booking .btn-white', t.bookingCta);
+
+      // Contact
+      setText('#contact .section-label', t.contactLabel);
+      setHTML('#contact .section-title', t.contactTitle);
+      const contactDesc = document.querySelector('#contact .contact-grid > div:first-child > p');
+      if (contactDesc) contactDesc.textContent = t.contactDesc;
+      const contactDetails = document.querySelectorAll('#contact .contact-detail');
+      if (contactDetails[1]) {
+        const lbl = contactDetails[1].querySelector('div > div:first-child');
+        if (lbl) lbl.textContent = t.contactLocationLabel;
+      }
+      if (contactDetails[2]) {
+        const lbl = contactDetails[2].querySelector('div > div:first-child');
+        if (lbl) lbl.textContent = t.contactAvailabilityLabel;
+        const sp = contactDetails[2].querySelector('div > span');
+        if (sp) sp.textContent = t.contactAvailability;
+      }
+
+      // Form
+      const formFields = [
+        { labelFor: 'name', label: t.formNameLabel, input: document.getElementById('name'), placeholder: t.formNamePlaceholder },
+        { labelFor: 'email', label: t.formEmailLabel, input: document.getElementById('email'), placeholder: t.formEmailPlaceholder },
+        { labelFor: 'company', label: t.formCompanyLabel, input: document.getElementById('company'), placeholder: t.formCompanyPlaceholder },
+        { labelFor: 'service', label: t.formServiceLabel },
+        { labelFor: 'message', label: t.formMessageLabel, input: document.getElementById('message'), placeholder: t.formMessagePlaceholder },
+      ];
+      formFields.forEach(f => {
+        const lbl = document.querySelector('label[for="' + f.labelFor + '"]');
+        if (lbl) lbl.textContent = f.label;
+        if (f.input && f.placeholder) f.input.placeholder = f.placeholder;
+      });
+      const serviceSelect = document.getElementById('service');
+      if (serviceSelect) {
+        serviceSelect.options[0].textContent = t.formServicePlaceholder;
+        serviceSelect.options[serviceSelect.options.length - 1].textContent = t.formServiceOther;
+      }
+      setHTML('.form-submit', t.formSubmit);
+      setText('#formSuccess h3', t.formSuccessTitle);
+      setText('#formSuccess p', t.formSuccessDesc);
+
+      // Footer
+      const footerBrandP = document.querySelector('.footer-brand p[style]');
+      if (footerBrandP) footerBrandP.innerHTML = t.footerBrandDesc;
+      setText('.footer-top > div:nth-child(3) > h4', t.footerCompanyTitle);
+      setText('.footer-top > div:nth-child(3) ul li:nth-child(1) a', t.footerApproachLink);
+      setText('.footer-top > div:nth-child(3) ul li:nth-child(5) a', t.footerRdvLink);
+      setHTML('.footer-bottom > p:first-child', t.footerCopyright);
+
+      // Update all lang buttons
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+
+      currentLang = lang;
+      localStorage.setItem('predylics-lang', lang);
+    }
+
+    // Lang button click handlers
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (btn.dataset.lang !== currentLang) {
+          applyTranslations(btn.dataset.lang);
+        }
+      });
+    });
+
+    // Restore saved preference (default: fr)
+    const savedLang = localStorage.getItem('predylics-lang') || 'fr';
+    if (savedLang !== 'fr') applyTranslations(savedLang);
 
     // ---- Smooth scroll for all anchor links ----
     document.querySelectorAll('a[href^="#"]').forEach(a => {
