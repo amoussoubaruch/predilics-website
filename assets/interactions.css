@@ -1,0 +1,253 @@
+/* =============================================
+   Predylics — micro-interactions
+   Les classes .card, .motion, [data-reveal], [data-arrow]… sont posées par interactions.js.
+============================================= */
+:root {
+  --ease-out: cubic-bezier(.22, 1, .36, 1);
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #45deed;
+  outline-offset: 3px;
+}
+
+/* ---------- Header : barre de progression, ombre, masquage au scroll ---------- */
+header.site-header {
+  transition: transform .45s var(--ease-out), background-color .3s, box-shadow .3s;
+}
+header.site-header.is-scrolled {
+  background-color: rgb(15 19 28 / .97);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, .6);
+}
+header.site-header.is-hidden:not(:focus-within) {
+  transform: translateY(-100%);
+}
+.scroll-progress {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  transform-origin: 0 50%;
+  transform: scaleX(var(--progress, 0));
+  background: linear-gradient(90deg, #45deed, #bac3ff);
+  pointer-events: none;
+}
+
+/* Soulignement animé de la navigation */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform .35s var(--ease-out);
+}
+.nav-link:hover::after,
+.nav-link[aria-current]::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* ---------- Apparition au scroll ---------- */
+.motion [data-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .7s var(--ease-out), transform .7s var(--ease-out),
+    translate .4s var(--ease-out), box-shadow .4s var(--ease-out), background-color .3s;
+  transition-delay: var(--delay, 0ms);
+}
+.motion [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Cartes : élévation + halo qui suit le curseur ---------- */
+main .card {
+  position: relative;
+  transition: translate .4s var(--ease-out), box-shadow .4s var(--ease-out), background-color .3s;
+}
+main .card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .4s;
+  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgb(69 222 237 / .08), transparent 60%);
+}
+.card .bg-surface-container-highest > .material-symbols-outlined {
+  display: inline-block;
+  transition: transform .5s var(--ease-out);
+}
+@media (hover: hover) {
+  main .card:hover {
+    translate: 0 -4px;
+    box-shadow: 0 20px 40px -16px rgba(0, 0, 0, .7), 0 0 0 1px rgb(69 222 237 / .22);
+  }
+  main .card:hover::after {
+    opacity: 1;
+  }
+  .card:hover .bg-surface-container-highest > .material-symbols-outlined {
+    transform: scale(1.12) rotate(-8deg);
+  }
+}
+
+/* Lignes des listes d'expertises */
+main li.bg-surface-container-high {
+  transition: translate .3s var(--ease-out), box-shadow .3s, background-color .3s;
+}
+main li.bg-surface-container-high .material-symbols-outlined {
+  transition: transform .3s var(--ease-out);
+}
+@media (hover: hover) {
+  main li.bg-surface-container-high:hover {
+    translate: 4px 0;
+    background-color: #31353e;
+    box-shadow: inset 2px 0 0 #45deed;
+  }
+  #expertises .grid > :nth-child(2) li.bg-surface-container-high:hover {
+    box-shadow: inset 2px 0 0 #bac3ff;
+  }
+  main li.bg-surface-container-high:hover .material-symbols-outlined {
+    transform: scale(1.15);
+  }
+}
+
+/* ---------- Boutons & liens fléchés ---------- */
+a[class*="px-space"] {
+  transition: transform .15s var(--ease-out), background-color .25s, color .25s, box-shadow .25s;
+}
+a[class*="px-space"]:active {
+  transform: scale(.97);
+}
+a.bg-primary {
+  position: relative;
+  overflow: hidden;
+}
+a.bg-primary::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, .4) 50%, transparent 70%);
+  transform: translateX(-120%);
+  pointer-events: none;
+}
+a.bg-primary:hover::before {
+  transform: translateX(120%);
+  transition: transform .8s var(--ease-out);
+}
+[data-arrow] {
+  display: inline-block;
+  transition: transform .35s var(--ease-out);
+}
+a:hover > [data-arrow="x"],
+a:focus-visible > [data-arrow="x"] {
+  transform: translateX(4px);
+}
+a:hover > [data-arrow="y"],
+a:focus-visible > [data-arrow="y"] {
+  transform: translateY(3px);
+}
+a:hover > [data-arrow="xy"],
+a:focus-visible > [data-arrow="xy"] {
+  transform: translate(2px, -2px);
+}
+
+/* Bouton retour en haut */
+.to-top {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 40;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #262a33;
+  color: #45deed;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, .45);
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: opacity .3s, transform .35s var(--ease-out), background-color .2s;
+}
+.to-top.is-visible {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+.to-top:hover {
+  background: #31353e;
+}
+.to-top .material-symbols-outlined {
+  transition: transform .35s var(--ease-out);
+}
+.to-top:hover .material-symbols-outlined {
+  transform: translateY(-3px);
+}
+
+/* ---------- Détails « techniques » vivants ---------- */
+.caret {
+  display: inline-block;
+  width: .5em;
+  height: 1em;
+  margin-left: 2px;
+  vertical-align: -2px;
+  background: currentColor;
+  animation: caret-blink 1.1s steps(1) infinite;
+}
+@keyframes caret-blink {
+  50% { opacity: 0; }
+}
+
+[data-tick] {
+  font-variant-numeric: tabular-nums;
+}
+.tick-flash {
+  animation: tick-flash .7s ease-out;
+}
+@keyframes tick-flash {
+  from { color: #88f3ff; text-shadow: 0 0 8px rgb(69 222 237 / .7); }
+}
+
+/* Flux de données dans les schémas SVG */
+svg .flow {
+  animation: dash-flow 1s linear infinite;
+}
+@keyframes dash-flow {
+  to { stroke-dashoffset: -12; }
+}
+svg .packet {
+  stroke: #fff;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  opacity: .9;
+  filter: drop-shadow(0 0 3px currentColor);
+}
+
+/* Halos du bloc contact qui suivent la souris */
+#contact .blur-3xl {
+  transition: translate 1.2s var(--ease-out);
+}
+
+/* ---------- Accessibilité : mouvements réduits ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
