@@ -1,2660 +1,972 @@
 <!DOCTYPE html>
-<html lang="fr">
-
+<html class="dark scroll-smooth" lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Predylics — Data & AI Consulting</title>
-  <meta name="description"
-    content="Predylics accompagne les entreprises ambitieuses dans leur transformation data et IA — de la stratégie à l'implémentation." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-
-  <style>
-    /* =============================================
-       CSS RESET & VARIABLES
-    ============================================= */
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    :root {
-      --gray-text: #5B6470;
-      --cyan: #00C8E8;
-      --dark-blue: #1B3FA0;
-      --gradient: linear-gradient(135deg, #00C8E8, #1B3FA0);
-      --gradient-hover: linear-gradient(135deg, #00deff, #2451c4);
-      --bg-hero: #0A0F1E;
-      --bg-dark: #0D1525;
-      --bg-dark-alt: #111827;
-      --bg-light: #F8FAFC;
-      --bg-white: #ffffff;
-      --card-dark: rgba(255, 255, 255, 0.04);
-      --card-border: rgba(255, 255, 255, 0.08);
-      --text-white: #ffffff;
-      --text-light: rgba(255, 255, 255, 0.7);
-      --text-muted: rgba(255, 255, 255, 0.45);
-      --nav-height: 72px;
-      --section-pad: 100px;
-      --radius: 16px;
-      --radius-sm: 10px;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      font-size: 16px;
-    }
-
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--bg-hero);
-      color: var(--text-white);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    /* =============================================
-       UTILITY CLASSES
-    ============================================= */
-    .gradient-text {
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    .section-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--cyan);
-      margin-bottom: 16px;
-    }
-
-    .section-label::before {
-      content: '';
-      width: 24px;
-      height: 2px;
-      background: var(--gradient);
-      border-radius: 2px;
-    }
-
-    .section-title {
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 800;
-      line-height: 1.15;
-      letter-spacing: -0.02em;
-      margin-bottom: 16px;
-    }
-
-    .section-subtitle {
-      font-size: 1.1rem;
-      line-height: 1.7;
-      max-width: 580px;
-    }
-
-    /* Fade-in animation */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(32px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .fade-in-delay-1 {
-      transition-delay: 0.1s;
-    }
-
-    .fade-in-delay-2 {
-      transition-delay: 0.2s;
-    }
-
-    .fade-in-delay-3 {
-      transition-delay: 0.3s;
-    }
-
-    .fade-in-delay-4 {
-      transition-delay: 0.4s;
-    }
-
-    .fade-in-delay-5 {
-      transition-delay: 0.5s;
-    }
-
-    .fade-in-delay-6 {
-      transition-delay: 0.6s;
-    }
-
-    .fade-in-delay-7 {
-      transition-delay: 0.7s;
-    }
-
-    /* =============================================
-       NAVIGATION
-    ============================================= */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      height: var(--nav-height);
-      display: flex;
-      align-items: center;
-      transition: background 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    nav.scrolled {
-      background: rgba(10, 15, 30, 0.92);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06);
-    }
-
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    /* Logo */
-    .logo {
-      display: flex;
-      align-items: baseline;
-      gap: 1px;
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    .logo-text {
-      font-size: 1.35rem;
-      font-weight: 800;
-      color: #ffffff;
-      letter-spacing: -0.03em;
-    }
-
-    .logo-chevron {
-      font-size: 1.6rem;
-      font-weight: 900;
-      line-height: 1;
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-left: 1px;
-    }
-
-    /* Nav links */
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 36px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: rgba(255, 255, 255, 0.75);
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-      transition: color 0.2s;
-      position: relative;
-    }
-
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--gradient);
-      border-radius: 2px;
-      transition: width 0.25s ease;
-    }
-
-    .nav-links a:hover {
-      color: #ffffff;
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-
-    /* CTA button */
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--gradient);
-      color: #ffffff;
-      font-weight: 600;
-      font-size: 0.875rem;
-      padding: 10px 22px;
-      border-radius: 50px;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s;
-      box-shadow: 0 0 24px rgba(0, 200, 232, 0.25);
-      white-space: nowrap;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 36px rgba(0, 200, 232, 0.45);
-    }
-
-    .btn-outline {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: transparent;
-      color: #ffffff;
-      font-weight: 600;
-      font-size: 0.875rem;
-      padding: 10px 22px;
-      border-radius: 50px;
-      text-decoration: none;
-      border: 1.5px solid rgba(255, 255, 255, 0.25);
-      cursor: pointer;
-      transition: border-color 0.2s, background 0.2s, transform 0.2s;
-      white-space: nowrap;
-    }
-
-    .btn-outline:hover {
-      border-color: var(--cyan);
-      background: rgba(0, 200, 232, 0.08);
-      transform: translateY(-2px);
-    }
-
-    /* Hamburger */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 4px;
-      background: none;
-      border: none;
-    }
-
-    .hamburger span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: #ffffff;
-      border-radius: 2px;
-      transition: transform 0.3s ease, opacity 0.3s ease;
-    }
-
-    .hamburger.active span:nth-child(1) {
-      transform: translateY(7px) rotate(45deg);
-    }
-
-    .hamburger.active span:nth-child(2) {
-      opacity: 0;
-    }
-
-    .hamburger.active span:nth-child(3) {
-      transform: translateY(-7px) rotate(-45deg);
-    }
-
-    /* Mobile menu */
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      top: var(--nav-height);
-      left: 0;
-      right: 0;
-      background: rgba(10, 15, 30, 0.97);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      padding: 24px;
-      z-index: 999;
-      flex-direction: column;
-      gap: 16px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .mobile-menu.open {
-      display: flex;
-    }
-
-    .mobile-menu a {
-      color: rgba(255, 255, 255, 0.85);
-      text-decoration: none;
-      font-size: 1rem;
-      font-weight: 500;
-      padding: 10px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-      transition: color 0.2s;
-    }
-
-    .mobile-menu a:hover {
-      color: var(--cyan);
-    }
-
-    /* =============================================
-       HERO SECTION
-    ============================================= */
-    #hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      background: var(--bg-hero);
-      overflow: hidden;
-      padding-top: var(--nav-height);
-    }
-
-    /* Grid background pattern */
-    #hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(0, 200, 232, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 200, 232, 0.04) 1px, transparent 1px);
-      background-size: 60px 60px;
-      mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 40%, transparent 100%);
-      -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 40%, transparent 100%);
-    }
-
-    /* Animated orbs */
-    .orb {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(80px);
-      animation: orbFloat 8s ease-in-out infinite;
-      pointer-events: none;
-    }
-
-    .orb-1 {
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(0, 200, 232, 0.18) 0%, transparent 70%);
-      top: -100px;
-      right: -80px;
-      animation-delay: 0s;
-    }
-
-    .orb-2 {
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(27, 63, 160, 0.22) 0%, transparent 70%);
-      bottom: -50px;
-      left: -60px;
-      animation-delay: -3s;
-    }
-
-    .orb-3 {
-      width: 300px;
-      height: 300px;
-      background: radial-gradient(circle, rgba(0, 200, 232, 0.12) 0%, transparent 70%);
-      top: 40%;
-      left: 30%;
-      animation-delay: -6s;
-    }
-
-    @keyframes orbFloat {
-
-      0%,
-      100% {
-        transform: translateY(0) scale(1);
-      }
-
-      33% {
-        transform: translateY(-30px) scale(1.04);
-      }
-
-      66% {
-        transform: translateY(20px) scale(0.97);
-      }
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 80px 24px;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(0, 200, 232, 0.1);
-      border: 1px solid rgba(0, 200, 232, 0.25);
-      color: var(--cyan);
-      font-size: 0.8rem;
-      font-weight: 600;
-      padding: 6px 16px;
-      border-radius: 50px;
-      margin-bottom: 28px;
-      letter-spacing: 0.05em;
-    }
-
-    .hero-badge .dot {
-      width: 7px;
-      height: 7px;
-      background: var(--cyan);
-      border-radius: 50%;
-      animation: pulse 2s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-
-      0%,
-      100% {
-        opacity: 1;
-        transform: scale(1);
-      }
-
-      50% {
-        opacity: 0.5;
-        transform: scale(0.7);
-      }
-    }
-
-    .hero-title {
-      font-size: clamp(2.4rem, 6vw, 4.2rem);
-      font-weight: 900;
-      line-height: 1.1;
-      letter-spacing: -0.03em;
-      margin-bottom: 20px;
-    }
-
-    .hero-subtitle-en {
-      font-size: 1rem;
-      font-weight: 500;
-      color: rgba(255, 255, 255, 0.5);
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-
-    .hero-desc {
-      font-size: clamp(1rem, 2vw, 1.2rem);
-      color: var(--text-light);
-      max-width: 600px;
-      margin: 0 auto 40px;
-      line-height: 1.75;
-    }
-
-    .hero-ctas {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .hero-ctas .btn-primary {
-      font-size: 1rem;
-      padding: 14px 32px;
-    }
-
-    .hero-ctas .btn-outline {
-      font-size: 1rem;
-      padding: 14px 32px;
-    }
-
-    /* Floating tech badges */
-    .floating-badges {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 56px;
-    }
-
-    .float-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      color: rgba(255, 255, 255, 0.75);
-      font-size: 0.8rem;
-      font-weight: 500;
-      padding: 7px 14px;
-      border-radius: 50px;
-      animation: badgeFloat 5s ease-in-out infinite;
-    }
-
-    .float-badge:nth-child(1) {
-      animation-delay: 0s;
-    }
-
-    .float-badge:nth-child(2) {
-      animation-delay: 0.6s;
-    }
-
-    .float-badge:nth-child(3) {
-      animation-delay: 1.2s;
-    }
-
-    .float-badge:nth-child(4) {
-      animation-delay: 1.8s;
-    }
-
-    .float-badge:nth-child(5) {
-      animation-delay: 2.4s;
-    }
-
-    .float-badge:nth-child(6) {
-      animation-delay: 3s;
-    }
-
-    @keyframes badgeFloat {
-
-      0%,
-      100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(-6px);
-      }
-    }
-
-    .float-badge .badge-icon {
-      font-size: 0.85rem;
-      color: var(--cyan);
-    }
-
-    /* Scroll indicator */
-    .scroll-indicator {
-      position: absolute;
-      bottom: 32px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      color: rgba(255, 255, 255, 0.35);
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      animation: scrollBounce 2.5s ease-in-out infinite;
-    }
-
-    .scroll-indicator i {
-      font-size: 1rem;
-    }
-
-    @keyframes scrollBounce {
-
-      0%,
-      100% {
-        transform: translateX(-50%) translateY(0);
-        opacity: 0.35;
-      }
-
-      50% {
-        transform: translateX(-50%) translateY(8px);
-        opacity: 0.65;
-      }
-    }
-
-    /* =============================================
-       SERVICES SECTION
-    ============================================= */
-    #services {
-      background: var(--bg-dark);
-      padding: var(--section-pad) 0;
-      position: relative;
-      overflow: hidden;
-    }
-
-    #services::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(27, 63, 160, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(27, 63, 160, 0.04) 1px, transparent 1px);
-      background-size: 40px 40px;
-    }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: 64px;
-      position: relative;
-    }
-
-    .section-header .section-subtitle {
-      margin: 0 auto;
-      color: var(--text-light);
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 20px;
-      position: relative;
-    }
-
-    .service-card {
-      background: var(--card-dark);
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius);
-      padding: 32px;
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-      cursor: default;
-    }
-
-    .service-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: var(--gradient);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .service-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(0, 200, 232, 0.3);
-      box-shadow: 0 16px 48px rgba(0, 200, 232, 0.12), 0 0 0 1px rgba(0, 200, 232, 0.15);
-    }
-
-    .service-card:hover::before {
-      opacity: 0.04;
-    }
-
-    /* Glow corner */
-    .service-card::after {
-      content: '';
-      position: absolute;
-      top: -40px;
-      right: -40px;
-      width: 120px;
-      height: 120px;
-      background: radial-gradient(circle, rgba(0, 200, 232, 0.15), transparent 70%);
-      border-radius: 50%;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .service-card:hover::after {
-      opacity: 1;
-    }
-
-    .service-icon-wrap {
-      width: 52px;
-      height: 52px;
-      border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--gradient);
-      margin-bottom: 20px;
-      position: relative;
-      box-shadow: 0 4px 20px rgba(0, 200, 232, 0.25);
-    }
-
-    .service-icon-wrap i {
-      font-size: 1.25rem;
-      color: #ffffff;
-    }
-
-    .service-name {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--text-white);
-      margin-bottom: 10px;
-      position: relative;
-    }
-
-    .service-desc {
-      font-size: 0.9rem;
-      color: var(--text-light);
-      line-height: 1.7;
-      position: relative;
-    }
-
-    .service-arrow {
-      position: absolute;
-      bottom: 24px;
-      right: 24px;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: rgba(0, 200, 232, 0.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--cyan);
-      font-size: 0.75rem;
-      opacity: 0;
-      transform: translateX(-8px);
-      transition: opacity 0.3s, transform 0.3s;
-    }
-
-    .service-card:hover .service-arrow {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    /* =============================================
-       WHY PREDYLICS SECTION
-    ============================================= */
-    #why {
-      background: var(--bg-light);
-      padding: var(--section-pad) 0;
-    }
-
-    #why .section-label {
-      color: var(--dark-blue);
-    }
-
-    #why .section-label::before {
-      background: var(--gradient);
-    }
-
-    #why .section-title {
-      color: #0D1525;
-    }
-
-    #why .section-subtitle {
-      color: var(--gray-text);
-    }
-
-    .why-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 28px;
-      margin-top: 56px;
-    }
-
-    .why-card {
-      background: #ffffff;
-      border: 1px solid rgba(0, 0, 0, 0.06);
-      border-radius: var(--radius);
-      padding: 36px 32px;
-      text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .why-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 60px rgba(0, 200, 232, 0.12);
-    }
-
-    .why-icon-wrap {
-      width: 68px;
-      height: 68px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, rgba(0, 200, 232, 0.12), rgba(27, 63, 160, 0.12));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 24px;
-      position: relative;
-    }
-
-    .why-icon-wrap i {
-      font-size: 1.5rem;
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .why-card h3 {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: #0D1525;
-      margin-bottom: 12px;
-    }
-
-    .why-card p {
-      font-size: 0.92rem;
-      color: var(--gray-text);
-      line-height: 1.7;
-    }
-
-    /* Stats row */
-    .stats-row {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 0;
-      background: var(--gradient);
-      border-radius: var(--radius);
-      margin-top: 60px;
-      overflow: hidden;
-    }
-
-    .stat-item {
-      padding: 32px 24px;
-      text-align: center;
-      position: relative;
-    }
-
-    .stat-item:not(:last-child)::after {
-      content: '';
-      position: absolute;
-      right: 0;
-      top: 20%;
-      height: 60%;
-      width: 1px;
-      background: rgba(255, 255, 255, 0.2);
-    }
-
-    .stat-number {
-      font-size: 2.2rem;
-      font-weight: 900;
-      color: #ffffff;
-      letter-spacing: -0.03em;
-      display: block;
-    }
-
-    .stat-label {
-      font-size: 0.82rem;
-      color: rgba(255, 255, 255, 0.8);
-      font-weight: 500;
-      margin-top: 4px;
-    }
-
-    /* =============================================
-       TECH STACK SECTION
-    ============================================= */
-    #tech {
-      background: var(--bg-dark-alt);
-      padding: var(--section-pad) 0;
-      position: relative;
-      overflow: hidden;
-    }
-
-    #tech::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 600px;
-      height: 200px;
-      background: radial-gradient(ellipse, rgba(0, 200, 232, 0.06), transparent 70%);
-      pointer-events: none;
-    }
-
-    .tech-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 16px;
-      margin-top: 48px;
-    }
-
-    .tech-badge {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 50px;
-      padding: 12px 24px;
-      transition: all 0.3s ease;
-      cursor: default;
-    }
-
-    .tech-badge:hover {
-      background: rgba(0, 200, 232, 0.08);
-      border-color: rgba(0, 200, 232, 0.3);
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(0, 200, 232, 0.12);
-    }
-
-    .tech-badge svg {
-      width: 24px;
-      height: 24px;
-      flex-shrink: 0;
-    }
-
-    .tech-badge span {
-      font-weight: 600;
-      font-size: 0.92rem;
-      color: rgba(255, 255, 255, 0.85);
-    }
-
-    /* =============================================
-       HOW IT WORKS SECTION
-    ============================================= */
-    #process {
-      background: var(--bg-light);
-      padding: var(--section-pad) 0;
-    }
-
-    #process .section-title {
-      color: #0D1525;
-    }
-
-    #process .section-label {
-      color: var(--dark-blue);
-    }
-
-    #process .section-subtitle {
-      color: var(--gray-text);
-    }
-
-    .process-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 32px;
-      margin-top: 60px;
-      position: relative;
-    }
-
-    /* Connector line between steps */
-    .process-grid::before {
-      content: '';
-      position: absolute;
-      top: 40px;
-      left: calc(16.67% + 20px);
-      right: calc(16.67% + 20px);
-      height: 2px;
-      background: linear-gradient(90deg, var(--cyan), var(--dark-blue));
-      opacity: 0.3;
-    }
-
-    .process-step {
-      text-align: center;
-      position: relative;
-    }
-
-    .step-number-wrap {
-      position: relative;
-      width: 80px;
-      height: 80px;
-      margin: 0 auto 28px;
-    }
-
-    .step-circle {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      background: var(--gradient);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 32px rgba(0, 200, 232, 0.3);
-      position: relative;
-      z-index: 1;
-    }
-
-    .step-num {
-      font-size: 1.5rem;
-      font-weight: 900;
-      color: #ffffff;
-    }
-
-    .step-icon {
-      position: absolute;
-      bottom: -6px;
-      right: -6px;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      background: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-    }
-
-    .step-icon i {
-      font-size: 0.75rem;
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .process-step h3 {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: #0D1525;
-      margin-bottom: 10px;
-    }
-
-    .process-step p {
-      font-size: 0.9rem;
-      color: var(--gray-text);
-      line-height: 1.7;
-      max-width: 260px;
-      margin: 0 auto;
-    }
-
-    /* =============================================
-       BOOKING CTA SECTION
-    ============================================= */
-    #booking {
-      padding: var(--section-pad) 0;
-      background: var(--bg-dark);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .booking-inner {
-      background: var(--gradient);
-      border-radius: 24px;
-      padding: 72px 48px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .booking-inner::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-      background-size: 32px 32px;
-    }
-
-    .booking-orb {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(60px);
-    }
-
-    .booking-orb-1 {
-      width: 300px;
-      height: 300px;
-      background: rgba(255, 255, 255, 0.12);
-      top: -100px;
-      right: -60px;
-    }
-
-    .booking-orb-2 {
-      width: 200px;
-      height: 200px;
-      background: rgba(0, 0, 0, 0.12);
-      bottom: -60px;
-      left: -40px;
-    }
-
-    .booking-inner h2 {
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      font-weight: 900;
-      color: #ffffff;
-      letter-spacing: -0.02em;
-      margin-bottom: 16px;
-      position: relative;
-    }
-
-    .booking-inner p {
-      font-size: 1.1rem;
-      color: rgba(255, 255, 255, 0.85);
-      max-width: 520px;
-      margin: 0 auto 40px;
-      position: relative;
-      line-height: 1.7;
-    }
-
-    .btn-white {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: #ffffff;
-      color: var(--dark-blue);
-      font-weight: 700;
-      font-size: 1rem;
-      padding: 16px 36px;
-      border-radius: 50px;
-      text-decoration: none;
-      position: relative;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
-    }
-
-    .btn-white:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
-    }
-
-    /* =============================================
-       CONTACT SECTION
-    ============================================= */
-    #contact {
-      background: var(--bg-hero);
-      padding: var(--section-pad) 0;
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.6fr;
-      gap: 60px;
-      align-items: start;
-    }
-
-    .contact-info h2 {
-      font-size: clamp(1.8rem, 3vw, 2.4rem);
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      margin-bottom: 16px;
-    }
-
-    .contact-info p {
-      color: var(--text-light);
-      line-height: 1.75;
-      margin-bottom: 36px;
-      font-size: 0.95rem;
-    }
-
-    .contact-detail {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 20px;
-      color: rgba(255, 255, 255, 0.75);
-      font-size: 0.9rem;
-    }
-
-    .contact-detail-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      background: rgba(0, 200, 232, 0.1);
-      border: 1px solid rgba(0, 200, 232, 0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .contact-detail-icon i {
-      color: var(--cyan);
-      font-size: 0.9rem;
-    }
-
-    .contact-detail a {
-      color: rgba(255, 255, 255, 0.75);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .contact-detail a:hover {
-      color: var(--cyan);
-    }
-
-    /* Contact Form */
-    .contact-form-wrap {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-radius: var(--radius);
-      padding: 40px;
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    .form-group {
-      margin-bottom: 20px;
-    }
-
-    .form-group label {
-      display: block;
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: rgba(255, 255, 255, 0.6);
-      margin-bottom: 8px;
-      letter-spacing: 0.03em;
-    }
-
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      width: 100%;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: var(--radius-sm);
-      color: #ffffff;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.92rem;
-      padding: 12px 16px;
-      outline: none;
-      transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
-      appearance: none;
-      -webkit-appearance: none;
-    }
-
-    .form-group input::placeholder,
-    .form-group textarea::placeholder {
-      color: rgba(255, 255, 255, 0.3);
-    }
-
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      border-color: var(--cyan);
-      background: rgba(0, 200, 232, 0.05);
-      box-shadow: 0 0 0 3px rgba(0, 200, 232, 0.1);
-    }
-
-    .form-group select {
-      cursor: pointer;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2300C8E8' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 14px center;
-      padding-right: 40px;
-    }
-
-    .form-group select option {
-      background: #1a2440;
-      color: #ffffff;
-    }
-
-    .form-group textarea {
-      min-height: 120px;
-      resize: vertical;
-    }
-
-    .form-submit {
-      width: 100%;
-      background: var(--gradient);
-      color: #ffffff;
-      font-family: 'Inter', sans-serif;
-      font-weight: 700;
-      font-size: 1rem;
-      padding: 14px 32px;
-      border-radius: 50px;
-      border: none;
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      box-shadow: 0 0 24px rgba(0, 200, 232, 0.25);
-    }
-
-    .form-submit:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 36px rgba(0, 200, 232, 0.45);
-    }
-
-    /* Success state */
-    .form-success {
-      display: none;
-      text-align: center;
-      padding: 40px 20px;
-    }
-
-    .form-success.show {
-      display: block;
-    }
-
-    .success-icon {
-      width: 68px;
-      height: 68px;
-      border-radius: 50%;
-      background: var(--gradient);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 20px;
-    }
-
-    .success-icon i {
-      font-size: 1.8rem;
-      color: #ffffff;
-    }
-
-    .form-success h3 {
-      font-size: 1.4rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-
-    .form-success p {
-      color: var(--text-light);
-      font-size: 0.95rem;
-    }
-
-    /* =============================================
-       FOOTER
-    ============================================= */
-    footer {
-      background: #060B17;
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
-      padding: 60px 0 32px;
-    }
-
-    .footer-top {
-      display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr;
-      gap: 48px;
-      margin-bottom: 48px;
-    }
-
-    .footer-brand .logo {
-      margin-bottom: 16px;
-      display: inline-flex;
-    }
-
-    .footer-brand p {
-      font-size: 0.88rem;
-      color: rgba(255, 255, 255, 0.45);
-      line-height: 1.7;
-      max-width: 280px;
-    }
-
-    .footer-col h4 {
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: rgba(255, 255, 255, 0.35);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-    }
-
-    .footer-col ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .footer-col ul li a {
-      color: rgba(255, 255, 255, 0.55);
-      text-decoration: none;
-      font-size: 0.88rem;
-      transition: color 0.2s;
-    }
-
-    .footer-col ul li a:hover {
-      color: var(--cyan);
-    }
-
-    .footer-bottom {
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
-      padding-top: 28px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .footer-bottom p {
-      font-size: 0.82rem;
-      color: rgba(255, 255, 255, 0.3);
-    }
-
-    .footer-bottom a {
-      color: rgba(255, 255, 255, 0.3);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .footer-bottom a:hover {
-      color: var(--cyan);
-    }
-
-    .footer-socials {
-      display: flex;
-      gap: 12px;
-    }
-
-    .social-link {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: rgba(255, 255, 255, 0.5);
-      font-size: 0.8rem;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-
-    .social-link:hover {
-      background: rgba(0, 200, 232, 0.12);
-      border-color: rgba(0, 200, 232, 0.3);
-      color: var(--cyan);
-      transform: translateY(-2px);
-    }
-
-    /* =============================================
-       RESPONSIVE
-    ============================================= */
-    @media (max-width: 900px) {
-      :root {
-        --section-pad: 72px;
-      }
-
-      .nav-links,
-      .nav-cta {
-        display: none;
-      }
-
-      .hamburger {
-        display: flex;
-      }
-
-      .contact-grid {
-        grid-template-columns: 1fr;
-        gap: 48px;
-      }
-
-      .footer-top {
-        grid-template-columns: 1fr;
-        gap: 36px;
-      }
-
-      .process-grid::before {
-        display: none;
-      }
-
-      .booking-inner {
-        padding: 48px 28px;
-      }
-    }
-
-    /* =============================================
-       LANGUAGE SWITCHER
-    ============================================= */
-    .lang-switcher {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .lang-btn {
-      background: none;
-      border: none;
-      color: rgba(255, 255, 255, 0.45);
-      font-family: 'Inter', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 700;
-      cursor: pointer;
-      padding: 4px 5px;
-      letter-spacing: 0.06em;
-      transition: color 0.2s;
-      line-height: 1;
-    }
-
-    .lang-btn.active {
-      color: var(--cyan);
-    }
-
-    .lang-btn:hover:not(.active) {
-      color: rgba(255, 255, 255, 0.85);
-    }
-
-    .lang-sep {
-      color: rgba(255, 255, 255, 0.18);
-      font-size: 0.7rem;
-      line-height: 1;
-      pointer-events: none;
-    }
-
-    /* Mobile lang switcher inside mobile menu */
-    .mobile-lang-switcher {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      padding: 10px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    }
-
-    .mobile-lang-switcher .lang-btn {
-      font-size: 0.85rem;
-      padding: 6px 8px;
-      border: 1px solid transparent;
-      border-radius: 6px;
-    }
-
-    .mobile-lang-switcher .lang-btn.active {
-      border-color: rgba(0, 200, 232, 0.3);
-      background: rgba(0, 200, 232, 0.08);
-    }
-
-    @media (max-width: 640px) {
-      :root {
-        --section-pad: 56px;
-      }
-
-      .services-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .why-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .form-row {
-        grid-template-columns: 1fr;
-      }
-
-      .stats-row {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .stat-item:nth-child(2)::after {
-        display: none;
-      }
-
-      .hero-ctas {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .hero-ctas .btn-primary,
-      .hero-ctas .btn-outline {
-        justify-content: center;
-      }
-    }
-  </style>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Predylics — Conseil & ingénierie IA et Data</title>
+<meta name="description" content="Predylics conçoit et industrialise des systèmes d'intelligence artificielle et des plateformes data robustes, évolutifs et adaptés aux enjeux critiques de votre organisation."/>
+<meta name="theme-color" content="#0f131c"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Predylics — L'IA et la data, pensées pour la production"/>
+<meta property="og:description" content="Conseil stratégique et ingénierie appliquée en intelligence artificielle et data engineering."/>
+<meta property="og:image" content="assets/logo-predylics.png"/>
+<link rel="icon" type="image/png" href="assets/favicon.png"/>
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Hanken+Grotesk:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+html,body{margin:0;padding:0;}
+body{overscroll-behavior:none;}
+section[id]{scroll-margin-top:5rem;}
+.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;}
+</style>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"primary-fixed":"#88f3ff","surface-container-low":"#181c24","inverse-surface":"#dfe2ee","surface-variant":"#31353e","surface-dim":"#0f131c","on-secondary-container":"#ccd2ff","outline":"#859395","surface-container-high":"#262a33","surface":"#0f131c","on-background":"#dfe2ee","secondary-container":"#0340fc","on-tertiary":"#213145","secondary-fixed-dim":"#bac3ff","secondary-fixed":"#dee0ff","surface-container-highest":"#31353e","on-primary":"#00363b","on-primary-container":"#004a51","on-tertiary-fixed":"#0b1c30","on-primary-fixed":"#001f23","surface-container":"#1c2028","on-error-container":"#ffdad6","primary-container":"#00c2d1","tertiary":"#bccce6","tertiary-container":"#a1b1ca","secondary":"#bac3ff","tertiary-fixed":"#d3e4fe","inverse-primary":"#006971","on-surface":"#dfe2ee","primary":"#45deed","error-container":"#93000a","surface-bright":"#353942","on-secondary-fixed-variant":"#0030c8","on-surface-variant":"#bbc9cb","tertiary-fixed-dim":"#b7c8e1","outline-variant":"#3c494b","on-secondary-fixed":"#00105a","on-error":"#690005","error":"#ffb4ab","on-tertiary-fixed-variant":"#38485d","background":"#0f131c","surface-tint":"#3ed9e9","inverse-on-surface":"#2c3039","on-secondary":"#00208f","on-primary-fixed-variant":"#004f56","primary-fixed-dim":"#3ed9e9","on-tertiary-container":"#344459","surface-container-lowest":"#0a0e16"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{"space-md":"1rem","gutter-mobile":"1rem","margin-mobile":"1.25rem",gutter:"1.5rem","space-xl":"2.5rem","space-xs":"0.25rem","space-lg":"1.5rem","space-sm":"0.5rem",margin:"3rem"},fontFamily:{"body-sm":["Hanken Grotesk"],"display-xl":["Geist"],"label-sm":["Geist"],"headline-lg-mobile":["Geist"],"headline-lg":["Geist"],"label-md":["Geist"],"headline-md":["Geist"],"display-xl-mobile":["Geist"],"headline-sm":["Geist"],"body-md":["Hanken Grotesk"],"body-lg":["Hanken Grotesk"]},fontSize:{"body-sm":["13px",{lineHeight:"20px",fontWeight:"400"}],"display-xl":["64px",{lineHeight:"72px",fontWeight:"600"}],"label-sm":["10px",{lineHeight:"14px",fontWeight:"600"}],"headline-lg-mobile":["32px",{lineHeight:"40px",fontWeight:"500"}],"headline-lg":["44px",{lineHeight:"52px",fontWeight:"500"}],"label-md":["12px",{lineHeight:"16px",fontWeight:"500"}],"headline-md":["28px",{lineHeight:"36px",fontWeight:"500"}],"display-xl-mobile":["40px",{lineHeight:"48px",fontWeight:"600"}],"headline-sm":["20px",{lineHeight:"28px",fontWeight:"500"}],"body-md":["15px",{lineHeight:"24px",fontWeight:"400"}],"body-lg":["18px",{lineHeight:"28px",fontWeight:"400"}]}}}};</script>
 </head>
-
-<body>
-
-  <!-- =============================================
-       NAVIGATION
-  ============================================= -->
-  <nav id="navbar">
-    <div class="nav-inner">
-      <a class="logo" href="#hero">
-        <span class="logo-text">predylics</span><span class="logo-chevron">›</span>
-      </a>
-
-      <ul class="nav-links">
-        <li><a href="#services">Services</a></li>
-        <li><a href="#tech">Expertise</a></li>
-        <li><a href="#process">Notre approche</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-
-      <a class="btn-primary nav-cta" href="https://calendly.com/bamoussoudjangban-predylics/30min" target="_blank"
-        rel="noopener">
-        <i class="fa-regular fa-calendar"></i> Prendre RDV
-      </a>
-
-      <div class="lang-switcher" id="langSwitcher" aria-label="Sélecteur de langue">
-        <button class="lang-btn active" data-lang="fr" aria-label="Français">FR</button>
-        <span class="lang-sep">|</span>
-        <button class="lang-btn" data-lang="en" aria-label="English">EN</button>
-      </div>
-
-      <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </div>
-  </nav>
-
-  <!-- Mobile Menu -->
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="#services" onclick="closeMobile()">Services</a>
-    <a href="#tech" onclick="closeMobile()">Expertise</a>
-    <a href="#process" onclick="closeMobile()">Notre approche</a>
-    <a href="#contact" onclick="closeMobile()">Contact</a>
-    <a class="btn-primary" href="https://calendly.com/bamoussoudjangban-predylics/30min" target="_blank" rel="noopener"
-      style="margin-top:8px; justify-content: center;" id="mobileCta">
-      <i class="fa-regular fa-calendar"></i> Prendre RDV
-    </a>
-    <div class="mobile-lang-switcher">
-      <button class="lang-btn active" data-lang="fr" aria-label="Français">FR</button>
-      <span class="lang-sep">|</span>
-      <button class="lang-btn" data-lang="en" aria-label="English">EN</button>
-    </div>
-  </div>
-
-  <!-- =============================================
-       HERO SECTION
-  ============================================= -->
-  <section id="hero">
-    <!-- Animated orbs -->
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
-
-    <div class="container">
-      <div class="hero-content">
-        <div class="hero-badge">
-          <span class="dot"></span>
-          Data &amp; AI Consulting
-        </div>
-
-        <p class="hero-subtitle-en fade-in">Data &amp; AI consulting for ambitious companies</p>
-
-        <h1 class="hero-title fade-in fade-in-delay-1">
-          Transformez vos données<br />
-          en <span class="gradient-text">décisions stratégiques</span>
-        </h1>
-
-        <p class="hero-desc fade-in fade-in-delay-2">
-          Predylics accompagne les entreprises ambitieuses dans leur transformation data et IA — de la stratégie à
-          l'implémentation.
-        </p>
-
-        <div class="hero-ctas fade-in fade-in-delay-3">
-          <a class="btn-primary" href="https://calendly.com/bamoussoudjangban-predylics/30min" target="_blank"
-            rel="noopener">
-            Prendre RDV &nbsp;→
-          </a>
-          <a class="btn-outline" href="#services">
-            Découvrir nos services
-          </a>
-        </div>
-
-        <div class="floating-badges fade-in fade-in-delay-4">
-          <span class="float-badge">
-            <i class="fa-brands fa-python badge-icon"></i> Python
-          </span>
-          <span class="float-badge">
-            <!-- GCP icon -->
-            <svg class="badge-icon" viewBox="0 0 24 24" width="16" height="16" fill="none">
-              <path
-                d="M12.19 2.38a9.344 9.344 0 0 0-9.234 6.893C.9 9.703-.06 11.495 0 13.53a6.16 6.16 0 0 0 6.303 5.67h13.168a5.377 5.377 0 0 0 5.378-5.667 5.153 5.153 0 0 0-3.726-4.796 9.319 9.319 0 0 0-8.933-6.36z"
-                fill="#4285F4" />
-            </svg>
-            GCP
-          </span>
-          <span class="float-badge">
-            <!-- Azure icon -->
-            <svg class="badge-icon" viewBox="0 0 24 24" width="16" height="16" fill="none">
-              <path d="M13.05 4.24L6.56 18.05H2l5.09-9.19L13.05 4.24zm-1.43 1.9l6.68 11.9H22L13.62 6.14z"
-                fill="#0089D6" />
-            </svg>
-            Azure
-          </span>
-          <span class="float-badge">
-            <!-- AWS icon -->
-            <svg class="badge-icon" viewBox="0 0 24 24" width="16" height="16" fill="none">
-              <path
-                d="M6.76 10.45c0 .29.03.52.08.68.06.16.14.34.25.53a.36.36 0 0 1 .06.19c0 .08-.05.16-.15.24l-.49.33a.38.38 0 0 1-.21.07c-.08 0-.16-.04-.24-.11a2.5 2.5 0 0 1-.29-.38 6.2 6.2 0 0 1-.25-.48c-.63.74-1.42 1.11-2.37 1.11-.68 0-1.22-.19-1.61-.58-.39-.39-.59-.91-.59-1.56 0-.69.24-1.25.73-1.67.49-.42 1.14-.63 1.96-.63.27 0 .55.02.84.07.29.04.59.11.9.19v-.57c0-.6-.12-1.01-.37-1.25-.25-.24-.68-.36-1.29-.36-.28 0-.57.03-.86.1-.29.07-.57.16-.85.27a2.25 2.25 0 0 1-.27.1.47.47 0 0 1-.12.02c-.1 0-.16-.08-.16-.23V6.5c0-.12.02-.21.05-.27.03-.06.1-.12.2-.17.28-.14.62-.26 1.01-.36.39-.1.81-.15 1.25-.15.95 0 1.65.22 2.1.65.45.43.67 1.09.67 1.97v2.28zm-3.27 1.22c.26 0 .53-.05.81-.15.28-.1.53-.28.74-.53.12-.15.21-.31.26-.5.05-.18.08-.4.08-.66v-.32a6.6 6.6 0 0 0-.73-.14 5.98 5.98 0 0 0-.74-.05c-.53 0-.91.1-1.17.32-.26.21-.39.51-.39.9 0 .36.09.64.28.83.19.19.46.3.86.3zm6.3.84c-.13 0-.22-.02-.28-.07-.06-.04-.11-.13-.15-.26l-1.7-5.59c-.04-.14-.06-.23-.06-.28 0-.11.06-.17.17-.17h.7c.14 0 .23.02.28.07.06.04.1.13.14.26l1.21 4.78 1.13-4.78c.03-.14.08-.22.14-.26.06-.05.16-.07.29-.07h.57c.14 0 .23.02.29.07.06.04.11.13.14.26l1.14 4.84 1.25-4.84c.04-.14.09-.22.14-.26.06-.05.15-.07.28-.07h.66c.11 0 .17.05.17.17 0 .03-.01.07-.02.11a1.3 1.3 0 0 1-.04.18l-1.74 5.59c-.04.13-.09.22-.15.26-.06.05-.15.07-.28.07h-.61c-.14 0-.23-.02-.29-.07-.06-.05-.11-.14-.14-.27l-1.12-4.66-1.12 4.65c-.03.14-.08.22-.14.27-.06.05-.16.07-.29.07h-.61zm9.27.18c-.38 0-.75-.04-1.11-.13-.36-.09-.64-.19-.83-.31-.12-.07-.2-.14-.23-.21a.52.52 0 0 1-.05-.21v-.38c0-.15.06-.22.16-.22.04 0 .08.01.12.02a.96.96 0 0 1 .11.05c.3.13.63.24.98.31.35.07.7.1 1.05.1.56 0 .99-.1 1.28-.29.29-.2.44-.48.44-.83 0-.25-.08-.45-.23-.62-.15-.17-.44-.32-.87-.46l-1.24-.39c-.63-.2-1.1-.49-1.39-.87a2.1 2.1 0 0 1-.43-1.28c0-.37.08-.7.24-.98.16-.28.37-.53.64-.72.27-.2.57-.35.92-.45.35-.1.72-.15 1.11-.15.19 0 .39.01.58.04.19.03.37.07.54.11.17.04.33.09.48.15.15.06.27.12.35.18.12.08.2.15.25.23.05.08.07.18.07.3v.35c0 .15-.06.23-.16.23a.71.71 0 0 1-.26-.09 3.2 3.2 0 0 0-1.35-.26c-.5 0-.89.08-1.16.25-.27.17-.41.43-.41.79 0 .25.09.46.26.63.17.17.49.34.95.49l1.22.38c.62.2 1.07.47 1.34.84.27.36.4.78.4 1.24 0 .38-.08.72-.23 1.02-.15.3-.37.56-.65.77-.28.22-.61.38-1 .49-.41.12-.85.18-1.33.18z"
-                fill="#FF9900" />
-            </svg>
-            AWS
-          </span>
-          <span class="float-badge">
-            <i class="fa-solid fa-robot badge-icon"></i> OpenAI
-          </span>
-          <span class="float-badge">
-            <i class="fa-solid fa-brain badge-icon"></i> Claude
-          </span>
-        </div>
-      </div>
-    </div>
-
-    <div class="scroll-indicator">
-      <span>Scroll</span>
-      <i class="fa-solid fa-chevron-down"></i>
-    </div>
-  </section>
-
-  <!-- =============================================
-       SERVICES SECTION
-  ============================================= -->
-  <section id="services">
-    <div class="container">
-      <div class="section-header fade-in">
-        <div class="section-label">Ce que nous faisons</div>
-        <h2 class="section-title">Nos <span class="gradient-text">services</span></h2>
-        <p class="section-subtitle" style="color: var(--text-light);">
-          Des solutions data et IA complètes, conçues pour générer un impact mesurable sur votre activité.
-        </p>
-      </div>
-
-      <div class="services-grid">
-
-        <!-- 4 -->
-        <div class="service-card fade-in fade-in-delay-4">
-          <div class="service-icon-wrap">
-            <i class="fa-solid fa-microchip"></i>
-          </div>
-          <h3 class="service-name">Machine Learning</h3>
-          <p class="service-desc">Modèles prédictifs qui transforment vos données en avantage compétitif.</p>
-          <div class="service-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-        </div>
-
-
-        <div class="service-card fade-in fade-in-delay-7">
-          <div class="service-icon-wrap">
-            <i class="fa-solid fa-robot"></i>
-          </div>
-          <h3 class="service-name">Agentic Systems</h3>
-          <p class="service-desc">Agents IA autonomes pour automatiser vos workflows complexes.</p>
-          <div class="service-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-        </div>
-
-
-        <!-- 5 -->
-        <div class="service-card fade-in fade-in-delay-5">
-          <div class="service-icon-wrap">
-            <i class="fa-solid fa-wand-magic-sparkles"></i>
-          </div>
-          <h3 class="service-name">Generative AI</h3>
-          <p class="service-desc">Intégration de l'IA générative dans vos produits et processus.</p>
-          <div class="service-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-        </div>
-
-        <!-- 3 -->
-        <div class="service-card fade-in fade-in-delay-3">
-          <div class="service-icon-wrap">
-            <i class="fa-solid fa-pipe-section"></i>
-          </div>
-          <h3 class="service-name">Data Engineering</h3>
-          <p class="service-desc">Pipelines robustes et architectures scalables pour vos données.</p>
-          <div class="service-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-        </div>
-
-        <!-- 1 -->
-        <div class="service-card fade-in fade-in-delay-1">
-          <div class="service-icon-wrap">
-            <i class="fa-solid fa-chess"></i>
-          </div>
-          <h3 class="service-name">Data Consulting</h3>
-          <p class="service-desc">Stratégie data sur-mesure pour aligner vos données avec vos objectifs métier.</p>
-          <div class="service-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-        </div>
-
-        <!-- 2 -->
-        <div class="service-card fade-in fade-in-delay-2">
-          <div class="service-icon-wrap">
-            <i class="fa-solid fa-chart-line"></i>
-          </div>
-          <h3 class="service-name">Dashboards / BI</h3>
-          <p class="service-desc">Tableaux de bord interactifs pour piloter votre activité en temps réel.</p>
-          <div class="service-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-        </div>
-
-
-        <!-- 6 -->
-        <div class="service-card fade-in fade-in-delay-6">
-          <div class="service-icon-wrap">
-            <i class="fa-solid fa-magnifying-glass-chart"></i>
-          </div>
-          <h3 class="service-name">AI Audit &amp; Strategy</h3>
-          <p class="service-desc">Évaluation de votre maturité IA et feuille de route personnalisée.</p>
-          <div class="service-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-        </div>
-
-        <!-- 7 -->
-
-      </div>
-    </div>
-  </section>
-
-  <!-- =============================================
-       WHY PREDYLICS SECTION
-  ============================================= -->
-  <section id="why">
-    <div class="container">
-      <div class="section-header fade-in">
-        <div class="section-label" style="color: var(--dark-blue);">Pourquoi nous choisir</div>
-        <h2 class="section-title" style="color: #0D1525;">Ce qui nous <span class="gradient-text">distingue</span></h2>
-        <p class="section-subtitle" style="color: var(--gray-text); margin: 0 auto;">
-          Une équipe d'experts qui conjugue rigueur technique et vision business pour livrer des résultats concrets.
-        </p>
-      </div>
-
-      <div class="why-grid">
-        <div class="why-card fade-in fade-in-delay-1">
-          <div class="why-icon-wrap">
-            <i class="fa-solid fa-graduation-cap"></i>
-          </div>
-          <h3>Expertise pointue</h3>
-          <p>Des spécialistes certifiés en data science, machine learning et IA générative, avec des années d'expérience
-            sur des projets exigeants.</p>
-        </div>
-
-        <div class="why-card fade-in fade-in-delay-2">
-          <div class="why-icon-wrap">
-            <i class="fa-solid fa-sliders"></i>
-          </div>
-          <h3>Approche sur-mesure</h3>
-          <p>Chaque mission est unique. Nous construisons des solutions adaptées à votre contexte, vos contraintes et
-            vos ambitions.</p>
-        </div>
-
-        <div class="why-card fade-in fade-in-delay-3">
-          <div class="why-icon-wrap">
-            <i class="fa-solid fa-chart-pie"></i>
-          </div>
-          <h3>ROI mesurable</h3>
-          <p>Nous définissons des KPIs dès le départ et mesurons l'impact de chaque action. Votre investissement se
-            traduit en résultats tangibles.</p>
-        </div>
-      </div>
-
-      <div class="stats-row fade-in">
-        <div class="stat-item">
-          <span class="stat-number">100%</span>
-          <span class="stat-label">Projets livrés dans les délais</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-number">7</span>
-          <span class="stat-label">Domaines d'expertise</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-number">6</span>
-          <span class="stat-label">Technologies maîtrisées</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-number">∞</span>
-          <span class="stat-label">Ambition partagée</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- =============================================
-       TECH STACK SECTION
-  ============================================= -->
-  <section id="tech">
-    <div class="container">
-      <div class="section-header fade-in">
-        <div class="section-label">Stack technique</div>
-        <h2 class="section-title">Nos outils de <span class="gradient-text">prédilection</span></h2>
-        <p class="section-subtitle" style="color: var(--text-light); margin: 0 auto;">
-          Les meilleures technologies du marché, maîtrisées par nos experts pour construire des solutions performantes
-          et durables.
-        </p>
-      </div>
-
-      <div class="tech-grid">
-        <!-- Python -->
-        <div class="tech-badge fade-in fade-in-delay-1">
-          <svg viewBox="0 0 24 24" fill="none">
-            <path
-              d="M11.92 2C7.52 2 7.81 3.87 7.81 3.87L7.82 5.82h4.18V6.4H5.63C5.63 6.4 2 5.98 2 10.44s3.21 4.31 3.21 4.31h1.92v-2.07s-.1-3.21 3.16-3.21h5.45s3.06.05 3.06-2.96V5.14C18.8 5.14 19.21 2 11.92 2zm-3.02 1.74c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1z"
-              fill="#3776AB" />
-            <path
-              d="M12.08 22c4.4 0 4.11-1.87 4.11-1.87l-.01-1.95h-4.18v-.58h6.37S22 18.02 22 13.56s-3.21-4.31-3.21-4.31h-1.92v2.07s.1 3.21-3.16 3.21H8.24s-3.06-.05-3.06 2.96v2.36C5.18 19.85 4.79 22 12.08 22zm3.02-1.74c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"
-              fill="#FFD43B" />
-          </svg>
-          <span>Python</span>
-        </div>
-
-        <!-- Google Cloud -->
-        <div class="tech-badge fade-in fade-in-delay-2">
-          <svg viewBox="0 0 24 24" fill="none">
-            <path d="M12 6.34l3.33-3.33A9.01 9.01 0 0 0 3 12h4a5 5 0 0 1 5-5.66z" fill="#EA4335" />
-            <path d="M17.66 6.34l2.56-2.56A11.97 11.97 0 0 1 22 12h-2a9.99 9.99 0 0 0-2.34-5.66z" fill="#FBBC05" />
-            <path d="M12 18a6 6 0 0 1-6-6H2a10 10 0 0 0 10 10v-4z" fill="#34A853" />
-            <path d="M18 12a6 6 0 0 1-6 6v4a10 10 0 0 0 10-10h-4z" fill="#4285F4" />
-          </svg>
-          <span>Google Cloud</span>
-        </div>
-
-        <!-- Azure -->
-        <div class="tech-badge fade-in fade-in-delay-3">
-          <svg viewBox="0 0 24 24" fill="none">
-            <path d="M5.5 4.5h6l-5 14H2l3.5-14zM11 4.5l5.5 9.5-7 4.5h13l-5-14H11z" fill="#0089D6" />
-          </svg>
-          <span>Microsoft Azure</span>
-        </div>
-
-        <!-- AWS -->
-        <div class="tech-badge fade-in fade-in-delay-4">
-          <svg viewBox="0 0 24 24" fill="none">
-            <path
-              d="M6.76 10.45c0 .29.03.52.08.68a3.3 3.3 0 0 0 .25.53.36.36 0 0 1 .06.19c0 .08-.05.16-.15.24l-.49.33a.38.38 0 0 1-.21.07c-.08 0-.16-.04-.24-.11a2.5 2.5 0 0 1-.29-.38 6.2 6.2 0 0 1-.25-.48C5 12.26 4.21 12.63 3.26 12.63c-.68 0-1.22-.19-1.61-.58-.39-.39-.59-.91-.59-1.56 0-.69.24-1.25.73-1.67.49-.42 1.14-.63 1.96-.63.27 0 .55.02.84.07.29.04.59.11.9.19v-.57c0-.6-.12-1.01-.37-1.25C4.87 6.39 4.44 6.27 3.83 6.27c-.28 0-.57.03-.86.1-.29.07-.57.16-.85.27a2.25 2.25 0 0 1-.27.1.47.47 0 0 1-.12.02c-.1 0-.16-.08-.16-.23V6.1c0-.12.02-.21.05-.27.03-.06.1-.12.2-.17.28-.14.62-.26 1.01-.36C3.23 5.2 3.65 5.15 4.09 5.15c.95 0 1.65.22 2.1.65.45.43.67 1.09.67 1.97v2.68zM3.5 11.67c.26 0 .53-.05.81-.15.28-.1.53-.28.74-.53.12-.15.21-.31.26-.5.05-.18.08-.4.08-.66v-.32c-.23-.05-.47-.1-.73-.14a5.98 5.98 0 0 0-.74-.05c-.53 0-.91.1-1.17.32-.26.21-.39.51-.39.9 0 .36.09.64.28.83.19.19.46.3.86.3zm6.3.84c-.13 0-.22-.02-.28-.07-.06-.04-.11-.13-.15-.26l-1.7-5.59c-.04-.14-.06-.23-.06-.28 0-.11.06-.17.17-.17h.7c.14 0 .23.02.28.07.06.04.1.13.14.26l1.21 4.78 1.13-4.78c.03-.14.08-.22.14-.26.06-.05.16-.07.29-.07h.57c.14 0 .23.02.29.07.06.04.11.13.14.26l1.14 4.84 1.25-4.84c.04-.14.09-.22.14-.26.06-.05.15-.07.28-.07h.66c.11 0 .17.05.17.17 0 .03-.01.07-.02.11a1.3 1.3 0 0 1-.04.18l-1.74 5.59c-.04.13-.09.22-.15.26-.06.05-.15.07-.28.07h-.61c-.14 0-.23-.02-.29-.07-.06-.05-.11-.14-.14-.27l-1.12-4.66-1.12 4.65c-.03.14-.08.22-.14.27-.06.05-.16.07-.29.07H9.8zm9.27.18c-.38 0-.75-.04-1.11-.13-.36-.09-.64-.19-.83-.31-.12-.07-.2-.14-.23-.21a.52.52 0 0 1-.05-.21v-.38c0-.15.06-.22.16-.22.04 0 .08.01.12.02a.96.96 0 0 1 .11.05c.3.13.63.24.98.31.35.07.7.1 1.05.1.56 0 .99-.1 1.28-.29.29-.2.44-.48.44-.83 0-.25-.08-.45-.23-.62-.15-.17-.44-.32-.87-.46l-1.24-.39c-.63-.2-1.1-.49-1.39-.87a2.1 2.1 0 0 1-.43-1.28c0-.37.08-.7.24-.98.16-.28.37-.53.64-.72.27-.2.57-.35.92-.45.35-.1.72-.15 1.11-.15.19 0 .39.01.58.04.19.03.37.07.54.11.17.04.33.09.48.15.15.06.27.12.35.18.12.08.2.15.25.23.05.08.07.18.07.3v.35c0 .15-.06.23-.16.23a.71.71 0 0 1-.26-.09 3.2 3.2 0 0 0-1.35-.26c-.5 0-.89.08-1.16.25-.27.17-.41.43-.41.79 0 .25.09.46.26.63.17.17.49.34.95.49l1.22.38c.62.2 1.07.47 1.34.84.27.36.4.78.4 1.24 0 .38-.08.72-.23 1.02-.15.3-.37.56-.65.77-.28.22-.61.38-1 .49-.41.12-.85.18-1.33.18z"
-              fill="#FF9900" />
-          </svg>
-          <span>Amazon AWS</span>
-        </div>
-
-        <!-- OpenAI -->
-        <div class="tech-badge fade-in fade-in-delay-5">
-          <svg viewBox="0 0 24 24" fill="none">
-            <path
-              d="M22.28 9.78A5.6 5.6 0 0 0 21.8 7a5.64 5.64 0 0 0-6.08-2.74A5.63 5.63 0 0 0 11.47 2a5.64 5.64 0 0 0-5.38 3.91A5.62 5.62 0 0 0 2.43 8.4a5.64 5.64 0 0 0 .69 6.59 5.6 5.6 0 0 0 .49 2.78 5.64 5.64 0 0 0 6.08 2.74A5.63 5.63 0 0 0 13.6 22a5.64 5.64 0 0 0 5.38-3.91 5.62 5.62 0 0 0 3.67-2.5 5.64 5.64 0 0 0-.37-5.81zM13.6 20.64a4.22 4.22 0 0 1-2.71-.98l.14-.07 4.5-2.6a.73.73 0 0 0 .37-.64v-6.35l1.9 1.1a.07.07 0 0 1 .04.05v5.26a4.23 4.23 0 0 1-4.24 4.23zm-9.1-3.88a4.22 4.22 0 0 1-.5-2.84l.13.08 4.5 2.6a.73.73 0 0 0 .74 0l5.5-3.17v2.2a.07.07 0 0 1-.03.06l-4.55 2.63a4.24 4.24 0 0 1-5.79-1.56zM3.66 7.89a4.22 4.22 0 0 1 2.2-1.85v5.36a.73.73 0 0 0 .37.63l5.48 3.17-1.9 1.1a.07.07 0 0 1-.07 0L5.25 13.7a4.23 4.23 0 0 1-1.59-5.81zm15.6 3.63-5.5-3.18 1.9-1.1a.07.07 0 0 1 .07 0l4.5 2.6a4.23 4.23 0 0 1-.65 7.63v-5.32a.73.73 0 0 0-.32-.63zm1.89-2.87-.13-.08-4.5-2.6a.73.73 0 0 0-.74 0L10.28 9.1V6.9a.07.07 0 0 1 .03-.06l4.55-2.62a4.24 4.24 0 0 1 6.29 4.43zM9.28 12.83l-1.9-1.1a.07.07 0 0 1-.04-.06V6.41a4.24 4.24 0 0 1 6.96-3.25l-.13.07-4.5 2.6a.73.73 0 0 0-.37.64l-.02 6.36zm1.03-2.22 2.45-1.41 2.45 1.41v2.82l-2.45 1.41-2.45-1.41v-2.82z"
-              fill="white" />
-          </svg>
-          <span>OpenAI</span>
-        </div>
-
-        <!-- Claude / Anthropic -->
-        <div class="tech-badge fade-in fade-in-delay-6">
-          <svg viewBox="0 0 24 24" width="24" height="24" fill="none">
-            <rect width="24" height="24" rx="6" fill="#CC785C" />
-            <path
-              d="M14.83 6H12.5L9.17 14.5h2.05l.68-1.87h3.18l.68 1.87H17.8L14.83 6zm-2.37 5.18 1.05-2.89 1.05 2.89H12.46zM6.2 14.5h2.1V6H6.2v8.5z"
-              fill="white" />
-          </svg>
-          <span>Claude (Anthropic)</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- =============================================
-       HOW IT WORKS SECTION
-  ============================================= -->
-  <section id="process">
-    <div class="container">
-      <div class="section-header fade-in">
-        <div class="section-label" style="color: var(--dark-blue);">Notre méthode</div>
-        <h2 class="section-title" style="color: #0D1525;">Comment ça <span class="gradient-text">fonctionne</span></h2>
-        <p class="section-subtitle" style="color: var(--gray-text); margin: 0 auto;">
-          Un processus structuré en 3 étapes pour transformer votre vision en réalité data et IA.
-        </p>
-      </div>
-
-      <div class="process-grid">
-        <div class="process-step fade-in fade-in-delay-1">
-          <div class="step-number-wrap">
-            <div class="step-circle">
-              <span class="step-num">1</span>
+<body class="bg-surface font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container">
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-md shadow-[0_1px_8px_rgba(0,0,0,0.4)]">
+<div class="h-20 max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-lg">
+<a class="flex items-center" href="#accueil" aria-label="Predylics — accueil"><img alt="Predylics" class="h-7 w-auto" src="assets/logo-predylics-light.png" width="130" height="28"/></a>
+<span class="hidden xl:inline-block font-label-sm text-label-sm text-outline tracking-wider uppercase pl-space-sm">// AI & Data Engineering</span>
+</div>
+<nav class="hidden lg:flex items-center gap-space-lg" aria-label="Navigation principale">
+<a class="nav-link font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="#accueil">Accueil</a>
+<a class="nav-link font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="#expertises">Expertises</a>
+<a class="nav-link font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="#approche">Notre approche</a>
+<a class="nav-link font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="#realisations">Réalisations</a>
+<a class="nav-link font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="#a-propos">À propos</a>
+</nav>
+<div class="flex items-center gap-space-sm">
+<a class="hidden sm:inline-flex items-center gap-space-xs px-space-md py-space-sm bg-primary text-on-primary font-label-md text-label-md uppercase tracking-wider hover:bg-primary-container hover:text-on-primary-container transition-all" href="https://calendly.com/bamoussoudjangban-predylics/30min" target="_blank" rel="noopener"><span class="font-medium">Parlons de votre projet</span><span aria-hidden="true" class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
+<button id="menu-toggle" class="lg:hidden w-10 h-10 flex items-center justify-center text-on-surface hover:text-primary transition-colors" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-menu"><span aria-hidden="true" class="material-symbols-outlined text-[24px]">menu</span></button>
+</div>
+</div>
+<nav id="mobile-menu" class="hidden lg:hidden bg-surface-container-low px-6 pb-space-lg pt-space-sm" aria-label="Navigation mobile">
+<div class="flex flex-col font-label-md text-label-md uppercase tracking-wider">
+<a class="py-space-md text-on-surface-variant hover:text-primary transition-colors" href="#accueil">Accueil</a>
+<a class="py-space-md text-on-surface-variant hover:text-primary transition-colors" href="#expertises">Expertises</a>
+<a class="py-space-md text-on-surface-variant hover:text-primary transition-colors" href="#approche">Notre approche</a>
+<a class="py-space-md text-on-surface-variant hover:text-primary transition-colors" href="#realisations">Réalisations</a>
+<a class="py-space-md text-on-surface-variant hover:text-primary transition-colors" href="#a-propos">À propos</a>
+<a class="mt-space-sm inline-flex items-center justify-center gap-space-xs px-space-md py-space-md bg-primary text-on-primary font-semibold" href="https://calendly.com/bamoussoudjangban-predylics/30min" target="_blank" rel="noopener"><span>Parlons de votre projet</span><span aria-hidden="true" class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
+</div>
+</nav>
+</header>
+<main class="w-full pt-20 bg-surface min-h-[calc(100vh-80px)]"><div class="flex flex-col w-full text-on-surface">
+<!-- 1. HERO SECTION -->
+<section class="relative w-full overflow-hidden bg-surface pb-space-xl" id="accueil">
+<div class="max-w-7xl mx-auto px-6 lg:px-12 pt-space-xl">
+<div class="flex flex-col gap-space-lg">
+<!-- Tagline Pill with Telemetry Pulse Indicator -->
+<div class="inline-flex flex-wrap items-center gap-space-sm self-start px-space-md py-space-xs bg-surface-container-high text-primary font-label-md text-label-md uppercase tracking-widest shadow-sm">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+<span>Conseil Stratégique & Ingénierie Appliquée</span>
+<span class="text-outline font-label-sm text-label-sm tracking-normal">SYS.REF // 2025.1</span>
+</div>
+<!-- Headline & Monospaced Subhead Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-end">
+<div class="lg:col-span-8">
+<h1 class="font-display-xl text-display-xl-mobile md:text-display-xl text-on-surface tracking-tight leading-[1.08]">
+              L'intelligence artificielle et la data, <span class="text-primary underline decoration-primary/40 underline-offset-8">pensées pour la production.</span>
+</h1>
+</div>
+<div class="lg:col-span-4 flex flex-col justify-end">
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+              Nous concevons et industrialisons des systèmes d'intelligence artificielle et des plateformes data robustes, évolutifs et adaptés aux enjeux critiques de votre organisation.
+            </p>
+</div>
+</div>
+<!-- Call to Action Cluster -->
+<div class="flex flex-wrap items-center gap-space-md pt-space-sm">
+<a class="inline-flex items-center gap-space-sm px-space-lg py-space-md bg-primary text-on-primary font-label-md text-label-md uppercase tracking-wider font-semibold hover:bg-primary-container transition-colors shadow-md" href="https://calendly.com/bamoussoudjangban-predylics/30min" target="_blank" rel="noopener">
+<span>Échanger avec nos experts</span>
+<span aria-hidden="true" class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+<a class="inline-flex items-center gap-space-sm px-space-lg py-space-md bg-surface-container-high text-on-surface hover:text-primary hover:bg-surface-container-highest font-label-md text-label-md uppercase tracking-wider transition-colors shadow-sm" href="#expertises">
+<span>Découvrir nos expertises</span>
+<span aria-hidden="true" class="material-symbols-outlined text-[18px]">south</span>
+</a>
+<div class="hidden xl:flex items-center gap-space-md ml-auto text-outline font-label-sm text-label-sm uppercase tracking-wider">
+<span class="inline-block w-2 h-2 bg-primary"></span>
+<span>Zero Slideware</span>
+<span class="text-surface-variant">/</span>
+<span>Production First</span>
+<span class="text-surface-variant">/</span>
+<span>Sovereign Stacks</span>
+</div>
+</div>
+<!-- Technical Telemetry Banner: Reference Architecture -->
+<div class="mt-space-lg bg-surface-container-low p-space-lg shadow-xl">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md pb-space-md bg-surface-container-high px-space-md py-space-xs">
+<div class="flex items-center gap-space-sm">
+<span aria-hidden="true" class="material-symbols-outlined text-primary text-[20px]">account_tree</span>
+<span class="font-label-md text-label-md uppercase tracking-wider text-on-surface font-semibold">
+                Architecture Référente · Agent Orchestration & Unified Data Lakehouse
+              </span>
+</div>
+<div class="flex flex-wrap items-center gap-x-space-lg gap-y-space-xs font-label-sm text-label-sm text-on-surface-variant tracking-wider">
+<span class="inline-flex items-center gap-space-xs"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> SLA: 99.98%</span>
+<span class="inline-flex items-center gap-space-xs"><span class="w-1.5 h-1.5 bg-secondary rounded-full"></span> LATENCY: &lt; 120ms</span>
+<span class="inline-flex items-center gap-space-xs text-primary"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> AUDITABLE FALLBACK ACTIVE</span>
+</div>
+</div>
+<!-- Pure CSS/SVG Architecture Node System -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-md pt-space-lg">
+<!-- Layer 1: Ingestion & Telemetry -->
+<div class="bg-surface-container p-space-md flex flex-col justify-between shadow-sm">
+<div class="space-y-space-xs">
+<div class="flex justify-between items-center text-outline font-label-sm text-label-sm">
+<span>LAYER 01</span>
+<span>INGESTION</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-medium pt-space-xs">Input Layer</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Collecte continue, batchs et flux hétérogènes multi-sources sécurisés.</p>
+</div>
+<div class="space-y-space-xs pt-space-md">
+<div class="bg-surface-container-high px-space-sm py-space-xs flex justify-between items-center font-label-sm text-label-sm">
+<span class="text-on-surface">Event Streams (Kafka)</span>
+<span class="text-primary font-mono">1.2 GB/s</span>
+</div>
+<div class="bg-surface-container-high px-space-sm py-space-xs flex justify-between items-center font-label-sm text-label-sm">
+<span class="text-on-surface">CRM & ERP Connectors</span>
+<span class="text-outline font-mono">REST/gRPC</span>
+</div>
+<div class="bg-surface-container-high px-space-sm py-space-xs flex justify-between items-center font-label-sm text-label-sm">
+<span class="text-on-surface">Documents Non Structurés</span>
+<span class="text-secondary font-mono">PDF/OCR</span>
+</div>
+</div>
+</div>
+<!-- Layer 2: Lakehouse & Semantic Storage -->
+<div class="bg-surface-container p-space-md flex flex-col justify-between shadow-sm">
+<div class="space-y-space-xs">
+<div class="flex justify-between items-center text-outline font-label-sm text-label-sm">
+<span>LAYER 02</span>
+<span>DATA FOUNDATION</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-medium pt-space-xs">Data Backbone</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Stockage unifié, sémantique Iceberg et index vectoriels haute densité.</p>
+</div>
+<div class="space-y-space-xs pt-space-md">
+<div class="bg-surface-container-high px-space-sm py-space-xs flex justify-between items-center font-label-sm text-label-sm">
+<span class="text-on-surface">Bronze / Silver / Gold Lake</span>
+<span class="text-primary font-mono">Delta/Iceberg</span>
+</div>
+<div class="bg-surface-container-high px-space-sm py-space-xs flex justify-between items-center font-label-sm text-label-sm">
+<span class="text-on-surface">Vector Embeddings Store</span>
+<span class="text-primary font-mono">HNSW Index</span>
+</div>
+<div class="bg-surface-container-high px-space-sm py-space-xs flex justify-between items-center font-label-sm text-label-sm">
+<span class="text-on-surface">Contrats de données dbt</span>
+<span class="text-outline font-mono">Validated</span>
+</div>
+</div>
+</div>
+<!-- Layer 3: Reasoning Swarm -->
+<div class="bg-surface-container p-space-md flex flex-col justify-between shadow-sm">
+<div class="space-y-space-xs">
+<div class="flex justify-between items-center text-primary font-label-sm text-label-sm">
+<span>LAYER 03</span>
+<span>REASONING CORE</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-primary font-medium pt-space-xs">Multi-Agent Swarm</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Orchestration décentralisée d'agents spécialisés autonomes.</p>
+</div>
+<div class="space-y-space-xs pt-space-md">
+<div class="bg-surface-container-high px-space-sm py-space-xs flex justify-between items-center font-label-sm text-label-sm">
+<span class="text-on-surface">Planning & Routing Agent</span>
+<span class="text-primary font-mono">ReAct</span>
+</div>
+<div class="bg-surface-container-high px-space-sm py-space-xs flex justify-between items-center font-label-sm text-label-sm">
+<span class="text-on-surface">Hybrid Retrieval Agent</span>
+<span class="text-primary font-mono">Sparse/Dense</span>
+</div>
+<div class="bg-surface-container-high px-space-sm py-space-xs flex justify-between items-center font-label-sm text-label-sm">
+<span class="text-on-surface">Deterministic Auditor</span>
+<span class="text-secondary font-mono">100% Guarded</span>
+</div>
+</div>
+</div>
+<!-- Layer 4: Governance & Ops -->
+<div class="bg-surface-container p-space-md flex flex-col justify-between shadow-sm">
+<div class="space-y-space-xs">
+<div class="flex justify-between items-center text-outline font-label-sm text-label-sm">
+<span>LAYER 04</span>
+<span>OBSERVABILITY</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-medium pt-space-xs">MLOps & Guardrails</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Supervision temps réel, traçabilité et détection de dérive statistique.</p>
+</div>
+<div class="space-y-space-xs pt-space-md">
+<div class="bg-surface-container-high px-space-sm py-space-xs flex justify-between items-center font-label-sm text-label-sm">
+<span class="text-on-surface">Model Drift Telemetry</span>
+<span class="text-primary font-mono">KS-Test OK</span>
+</div>
+<div class="bg-surface-container-high px-space-sm py-space-xs flex justify-between items-center font-label-sm text-label-sm">
+<span class="text-on-surface">Token FinOps & Cache</span>
+<span class="text-outline font-mono">-42% Cost</span>
+</div>
+<div class="bg-surface-container-high px-space-sm py-space-xs flex justify-between items-center font-label-sm text-label-sm">
+<span class="text-on-surface">Audit Trails Immuables</span>
+<span class="text-secondary font-mono">SHA-256</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Micro-metrics Bar -->
+<div class="mt-space-lg pt-space-md bg-surface-container-lowest px-space-md py-space-sm flex flex-wrap items-center justify-between gap-space-md text-on-surface-variant font-label-sm text-label-sm">
+<div class="flex flex-wrap items-center gap-x-space-lg gap-y-space-xs">
+<span class="text-on-surface font-semibold">INFRASTRUCTURE STATUS:</span>
+<span class="text-primary">EVALUATION BENCHMARK: 94.8% ACC</span>
+<span>ZERO DATA LEAKAGE VERIFIED</span>
+<span>EU AI ACT COMPLIANT</span>
+</div>
+<div class="text-outline">
+              LATENCY P99: 184ms · DUAL LLM BACKBONE (MISTRAL / ANTHROPIC)
             </div>
-            <div class="step-icon">
-              <i class="fa-solid fa-phone"></i>
-            </div>
-          </div>
-          <h3>Discovery call</h3>
-          <p>On prend le temps de comprendre vos enjeux métier, votre stack actuel, vos objectifs et vos contraintes.
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 2. EXPERTISE SECTION (The Two Pillars) -->
+<section class="w-full bg-surface-container-lowest py-space-xl" id="expertises">
+<div class="max-w-7xl mx-auto px-6 lg:px-12">
+<!-- Section Header -->
+<div class="flex flex-col gap-space-xs max-w-3xl pb-space-xl">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-semibold">// DEUX PILIERS D'ACTION</span>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface tracking-tight">Deux expertises. Une même exigence d'ingénierie.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Une synergie native entre la rigueur de l'ingénierie des données et la puissance des modèles autonomes pour délivrer un avantage compétitif mesurable.</p>
+</div>
+<!-- Two Pillar Cards Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-space-lg">
+<!-- PILLAR 1: ARTIFICIAL INTELLIGENCE -->
+<div class="bg-surface-container p-space-lg md:p-space-xl flex flex-col justify-between relative overflow-hidden group shadow-lg">
+<div class="space-y-space-md">
+<div class="flex justify-between items-center text-outline font-label-sm text-label-sm pb-space-sm bg-surface-container-high px-space-md py-space-xs">
+<span class="text-primary font-semibold">PILIER 01</span>
+<span>AUTONOMOUS INTELLIGENCE</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Intelligence Artificielle</h3>
+<p class="font-body-md text-body-md text-primary font-medium">Des systèmes intelligents, conçus pour fonctionner à grande échelle.</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Nous dépassons les prototypes isolés pour déployer des agents de raisonnement, des pipelines RAG avancés et des modèles prédictifs intégrés de bout en bout dans vos opérations de production.
+            </p>
+<!-- Vector Diagram: Multi-Agent Topology -->
+<div class="bg-surface-container-lowest p-space-md my-space-md">
+<div class="flex justify-between items-center font-label-sm text-label-sm text-outline pb-space-sm">
+<span>MULTI-AGENT ORCHESTRATION GRAPH</span>
+<span class="text-primary font-mono">DYNAMIC RE-ROUTING</span>
+</div>
+<svg class="w-full h-auto text-primary" fill="none" stroke="currentColor" viewbox="0 0 500 130">
+<!-- Nodes -->
+<rect class="fill-surface-container-high stroke-outline" height="40" stroke-width="1" width="100" x="20" y="45"></rect>
+<text class="font-label-sm text-[11px]" fill="currentColor" text-anchor="middle" x="70" y="68">Coordinator</text>
+<path class="stroke-primary" d="M120 65 L 180 30" stroke-dasharray="3 3" stroke-width="1.5"></path>
+<path class="stroke-primary" d="M120 65 L 180 65" stroke-width="1.5"></path>
+<path class="stroke-primary" d="M120 65 L 180 100" stroke-dasharray="3 3" stroke-width="1.5"></path>
+<rect class="fill-surface-container stroke-outline" height="35" stroke-width="1" width="110" x="180" y="10"></rect>
+<text class="font-label-sm text-[10px]" fill="#DFE2EE" text-anchor="middle" x="235" y="32">Agent RAG Hybride</text>
+<rect class="fill-surface-container stroke-primary" height="35" stroke-width="1.5" width="110" x="180" y="48"></rect>
+<text class="font-label-sm text-[10px]" fill="#45DEED" text-anchor="middle" x="235" y="70">Agent Code & Query</text>
+<rect class="fill-surface-container stroke-outline" height="35" stroke-width="1" width="110" x="180" y="85"></rect>
+<text class="font-label-sm text-[10px]" fill="#DFE2EE" text-anchor="middle" x="235" y="107">Agent Validation</text>
+<path class="stroke-outline" d="M290 30 L 350 65" stroke-width="1"></path>
+<path class="stroke-primary" d="M290 65 L 350 65" stroke-width="1.5"></path>
+<path class="stroke-outline" d="M290 100 L 350 65" stroke-width="1"></path>
+<rect class="fill-surface-container-highest stroke-secondary" height="40" stroke-width="1.5" width="130" x="350" y="45"></rect>
+<text class="font-label-sm text-[11px]" fill="#BAC3FF" text-anchor="middle" x="415" y="68">Vérification Sémantique</text>
+</svg>
+</div>
+<!-- Bullet Matrix -->
+<ul class="space-y-space-xs font-body-sm text-body-sm text-on-surface">
+<li class="flex items-start gap-space-sm bg-surface-container-high p-space-sm">
+<span aria-hidden="true" class="material-symbols-outlined text-primary text-[18px] mt-0.5">smart_toy</span>
+<div><strong class="font-medium text-on-surface">Systèmes Multi-Agents :</strong> Orchestration distribuée, délégation de tâches complexes et tool-calling sécurisé.</div>
+</li>
+<li class="flex items-start gap-space-sm bg-surface-container-high p-space-sm">
+<span aria-hidden="true" class="material-symbols-outlined text-primary text-[18px] mt-0.5">neurology</span>
+<div><strong class="font-medium text-on-surface">IA Générative & RAG Avancé :</strong> Recherche hybride, graph-RAG, vector stores et indexation dense souveraine.</div>
+</li>
+<li class="flex items-start gap-space-sm bg-surface-container-high p-space-sm">
+<span aria-hidden="true" class="material-symbols-outlined text-primary text-[18px] mt-0.5">deployed_code</span>
+<div><strong class="font-medium text-on-surface">MLOps & LLMOps :</strong> Évaluation continue, registre de modèles, détection de dérive et déploiement blue/green.</div>
+</li>
+<li class="flex items-start gap-space-sm bg-surface-container-high p-space-sm">
+<span aria-hidden="true" class="material-symbols-outlined text-primary text-[18px] mt-0.5">trending_up</span>
+<div><strong class="font-medium text-on-surface">Machine Learning Prédictif :</strong> Séries temporelles complexes, scoring des risques, vision industrielle et NLP.</div>
+</li>
+<li class="flex items-start gap-space-sm bg-surface-container-high p-space-sm">
+<span aria-hidden="true" class="material-symbols-outlined text-primary text-[18px] mt-0.5">shield</span>
+<div><strong class="font-medium text-on-surface">Sécurité & Gouvernance :</strong> Contrôle des hallucinations, anonymisation PII et conformité aux standards européens.</div>
+</li>
+</ul>
+</div>
+<div class="pt-space-lg">
+<a class="inline-flex items-center gap-space-xs text-primary font-label-md text-label-md uppercase tracking-wider hover:text-primary-fixed transition-colors" href="#expertises">
+<span>Explorer l'ingénierie IA</span>
+<span aria-hidden="true" class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- PILLAR 2: DATA ENGINEERING -->
+<div class="bg-surface-container p-space-lg md:p-space-xl flex flex-col justify-between relative overflow-hidden group shadow-lg">
+<div class="space-y-space-md">
+<div class="flex justify-between items-center text-outline font-label-sm text-label-sm pb-space-sm bg-surface-container-high px-space-md py-space-xs">
+<span class="text-secondary font-semibold">PILIER 02</span>
+<span>DATA INFRASTRUCTURE</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Data Engineering</h3>
+<p class="font-body-md text-body-md text-secondary font-medium">Des fondations data fiables pour accélérer vos ambitions.</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              L'excellence algorithmique n'a aucune valeur sans données intègres, fraîches et accessibles. Nous concevons les autoroutes de l'information qui alimentent vos modèles et vos analyses d'aide à la décision.
+            </p>
+<!-- Vector Diagram: Data Pipeline Lifecycle -->
+<div class="bg-surface-container-lowest p-space-md my-space-md">
+<div class="flex justify-between items-center font-label-sm text-label-sm text-outline pb-space-sm">
+<span>PIPELINE STREAM & LAKEHOUSE FLOW</span>
+<span class="text-secondary font-mono">ZERO LOSS GUARANTEED</span>
+</div>
+<svg class="w-full h-auto text-secondary" fill="none" stroke="currentColor" viewbox="0 0 500 130">
+<rect class="fill-surface-container stroke-outline" height="40" stroke-width="1" width="80" x="10" y="45"></rect>
+<text class="font-label-sm text-[10px]" fill="#DFE2EE" text-anchor="middle" x="50" y="68">Producers</text>
+<path class="stroke-secondary" d="M90 65 L 130 65" stroke-width="1.5"></path>
+<rect class="fill-surface-container-high stroke-secondary" height="60" stroke-width="1" width="95" x="130" y="35"></rect>
+<text class="font-label-sm text-[10px]" fill="#BAC3FF" text-anchor="middle" x="177" y="60">Event Stream</text>
+<text class="font-label-sm text-[9px]" fill="#859395" text-anchor="middle" x="177" y="78">Kafka / Flink</text>
+<path class="stroke-secondary" d="M225 65 L 265 65" stroke-width="1.5"></path>
+<rect class="fill-surface-container stroke-outline" height="80" stroke-width="1" width="105" x="265" y="25"></rect>
+<text class="font-label-sm text-[10px]" fill="#45DEED" text-anchor="middle" x="317" y="55">Lakehouse Core</text>
+<text class="font-label-sm text-[9px]" fill="#DFE2EE" text-anchor="middle" x="317" y="72">Iceberg / Delta</text>
+<text class="font-label-sm text-[8px]" fill="#859395" text-anchor="middle" x="317" y="88">dbt Semantic</text>
+<path class="stroke-secondary" d="M370 65 L 410 65" stroke-width="1.5"></path>
+<rect class="fill-surface-container-highest stroke-secondary" height="40" stroke-width="1.5" width="80" x="410" y="45"></rect>
+<text class="font-label-sm text-[10px]" fill="#BAC3FF" text-anchor="middle" x="450" y="68">Serving API</text>
+</svg>
+</div>
+<!-- Bullet Matrix -->
+<ul class="space-y-space-xs font-body-sm text-body-sm text-on-surface">
+<li class="flex items-start gap-space-sm bg-surface-container-high p-space-sm">
+<span aria-hidden="true" class="material-symbols-outlined text-secondary text-[18px] mt-0.5">dataset</span>
+<div><strong class="font-medium text-on-surface">Architectures Modern Data Platform :</strong> Unification des flux analytiques et opérationnels, formats ouverts (Iceberg, Parquet).</div>
+</li>
+<li class="flex items-start gap-space-sm bg-surface-container-high p-space-sm">
+<span aria-hidden="true" class="material-symbols-outlined text-secondary text-[18px] mt-0.5">sync_alt</span>
+<div><strong class="font-medium text-on-surface">Pipelines Streaming & Batch :</strong> Traitement temps réel haute volumétrie, idempotence et tolérance aux fautes.</div>
+</li>
+<li class="flex items-start gap-space-sm bg-surface-container-high p-space-sm">
+<span aria-hidden="true" class="material-symbols-outlined text-secondary text-[18px] mt-0.5">verified</span>
+<div><strong class="font-medium text-on-surface">Data Quality & Observabilité :</strong> Tests unitaires sur les données, contrats de schéma et monitoring d'anomalies.</div>
+</li>
+<li class="flex items-start gap-space-sm bg-surface-container-high p-space-sm">
+<span aria-hidden="true" class="material-symbols-outlined text-secondary text-[18px] mt-0.5">cloud</span>
+<div><strong class="font-medium text-on-surface">Cloud Infrastructure & FinOps :</strong> Déploiements souverains Snowflake, Databricks, GCP & AWS avec optimisation des coûts.</div>
+</li>
+<li class="flex items-start gap-space-sm bg-surface-container-high p-space-sm">
+<span aria-hidden="true" class="material-symbols-outlined text-secondary text-[18px] mt-0.5">hub</span>
+<div><strong class="font-medium text-on-surface">Gouvernance & Data Mesh :</strong> Découplage par domaines métier, catalogues actifs et conformité RGPD native.</div>
+</li>
+</ul>
+</div>
+<div class="pt-space-lg">
+<a class="inline-flex items-center gap-space-xs text-secondary font-label-md text-label-md uppercase tracking-wider hover:text-secondary-fixed transition-colors" href="#expertises">
+<span>Explorer nos architectures data</span>
+<span aria-hidden="true" class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. CAPABILITIES GRID (6 detailed modules) -->
+<section class="w-full bg-surface py-space-xl">
+<div class="max-w-7xl mx-auto px-6 lg:px-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md pb-space-xl">
+<div class="space-y-space-xs max-w-2xl">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-semibold">// CATALOGUE DES CAPACITÉS</span>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface tracking-tight">Expertises d'ingénierie approfondies</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Des compétences techniques de pointe déployées par des architectes et ingénieurs praticiens.</p>
+</div>
+<div class="text-outline font-label-sm text-label-sm uppercase tracking-wider">
+          MODULES TECHNIQUE // 01 — 06
+        </div>
+</div>
+<!-- 6-Card Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-md">
+<!-- Module 1: Systèmes d'agents IA -->
+<div class="bg-surface-container p-space-lg flex flex-col justify-between shadow-md">
+<div class="space-y-space-md">
+<div class="flex justify-between items-center">
+<span class="p-space-xs bg-surface-container-highest text-primary">
+<span aria-hidden="true" class="material-symbols-outlined text-[24px]">psychology</span>
+</span>
+<span class="font-label-sm text-label-sm text-outline">MOD.01 // REASONING</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Systèmes d'Agents IA</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant pt-space-xs">
+                Orchestration multi-agents, planification dynamique avec boucles de rétroaction et exécution d'appels d'outils (tool calling) étanches et sécurisés.
+              </p>
+</div>
+<div class="bg-surface-container-high p-space-sm space-y-space-xs font-label-sm text-label-sm">
+<div class="flex justify-between text-on-surface">
+<span>Mécanisme de consensus</span>
+<span class="text-primary">Tree of Thoughts</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span>Sécurité d'exécution</span>
+<span class="text-on-surface">Sandboxed Containers</span>
+</div>
+</div>
+</div>
+<div class="pt-space-md flex items-center justify-between text-outline font-label-sm text-label-sm">
+<span>LangChain · CrewAI · AutoGen</span>
+<span class="text-primary font-mono">&gt;_ RUN</span>
+</div>
+</div>
+<!-- Module 2: IA Générative & LLMOps -->
+<div class="bg-surface-container p-space-lg flex flex-col justify-between shadow-md">
+<div class="space-y-space-md">
+<div class="flex justify-between items-center">
+<span class="p-space-xs bg-surface-container-highest text-primary">
+<span aria-hidden="true" class="material-symbols-outlined text-[24px]">model_training</span>
+</span>
+<span class="font-label-sm text-label-sm text-outline">MOD.02 // LLMOPS</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">IA Générative & LLMOps</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant pt-space-xs">
+                Pipelines RAG hybrides (vecteurs + BM25), fine-tuning supervisé (LoRA/QLoRA), et évaluation automatisée de la qualité des réponses générées.
+              </p>
+</div>
+<div class="bg-surface-container-high p-space-sm space-y-space-xs font-label-sm text-label-sm">
+<div class="flex justify-between text-on-surface">
+<span>Précision d'extraction</span>
+<span class="text-primary">99.1% Recall</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span>Gestion de cache sémantique</span>
+<span class="text-on-surface">Redis Vector</span>
+</div>
+</div>
+</div>
+<div class="pt-space-md flex items-center justify-between text-outline font-label-sm text-label-sm">
+<span>Ragas · LlamaIndex · vLLM</span>
+<span class="text-primary font-mono">&gt;_ RUN</span>
+</div>
+</div>
+<!-- Module 3: MLOps & Industrialisation -->
+<div class="bg-surface-container p-space-lg flex flex-col justify-between shadow-md">
+<div class="space-y-space-md">
+<div class="flex justify-between items-center">
+<span class="p-space-xs bg-surface-container-highest text-secondary">
+<span aria-hidden="true" class="material-symbols-outlined text-[24px]">automation</span>
+</span>
+<span class="font-label-sm text-label-sm text-outline">MOD.03 // PIPELINES</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">MLOps & Industrialisation</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant pt-space-xs">
+                Intégration continue pour les modèles de machine learning, registres de features, surveillance automatisée du drift statistique et rollback sans coupure.
+              </p>
+</div>
+<div class="bg-surface-container-high p-space-sm space-y-space-xs font-label-sm text-label-sm">
+<div class="flex justify-between text-on-surface">
+<span>Cycle de déploiement</span>
+<span class="text-secondary">&lt; 15 min automatisé</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span>Contrôle de dérive</span>
+<span class="text-on-surface">Evidently AI</span>
+</div>
+</div>
+</div>
+<div class="pt-space-md flex items-center justify-between text-outline font-label-sm text-label-sm">
+<span>MLflow · Kubeflow · Seldon</span>
+<span class="text-secondary font-mono">&gt;_ RUN</span>
+</div>
+</div>
+<!-- Module 4: Machine Learning & Data Science -->
+<div class="bg-surface-container p-space-lg flex flex-col justify-between shadow-md">
+<div class="space-y-space-md">
+<div class="flex justify-between items-center">
+<span class="p-space-xs bg-surface-container-highest text-on-surface">
+<span aria-hidden="true" class="material-symbols-outlined text-[24px]">analytics</span>
+</span>
+<span class="font-label-sm text-label-sm text-outline">MOD.04 // PREDICTIVE</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Machine Learning & DS</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant pt-space-xs">
+                Modélisation prédictive supervisée/non supervisée, séries temporelles multivariées, inférence causale et traitement avancé des flux d'images et textes.
+              </p>
+</div>
+<div class="bg-surface-container-high p-space-sm space-y-space-xs font-label-sm text-label-sm">
+<div class="flex justify-between text-on-surface">
+<span>Temps de prédiction</span>
+<span class="text-primary">&lt; 12ms edge/cloud</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span>Explicabilité</span>
+<span class="text-on-surface">SHAP / LIME native</span>
+</div>
+</div>
+</div>
+<div class="pt-space-md flex items-center justify-between text-outline font-label-sm text-label-sm">
+<span>PyTorch · LightGBM · ONNX</span>
+<span class="text-primary font-mono">&gt;_ RUN</span>
+</div>
+</div>
+<!-- Module 5: Data Platforms & Architecture -->
+<div class="bg-surface-container p-space-lg flex flex-col justify-between shadow-md">
+<div class="space-y-space-md">
+<div class="flex justify-between items-center">
+<span class="p-space-xs bg-surface-container-highest text-secondary">
+<span aria-hidden="true" class="material-symbols-outlined text-[24px]">layers</span>
+</span>
+<span class="font-label-sm text-label-sm text-outline">MOD.05 // PLATFORM</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Data Platforms & Lakehouse</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant pt-space-xs">
+                Migration et modernisation vers des architectures Lakehouse, découplage calcul/stockage et implémentation de couches sémantiques avec dbt.
+              </p>
+</div>
+<div class="bg-surface-container-high p-space-sm space-y-space-xs font-label-sm text-label-sm">
+<div class="flex justify-between text-on-surface">
+<span>Format de table</span>
+<span class="text-secondary">Apache Iceberg</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span>Optimisation stockage</span>
+<span class="text-on-surface">Z-Order / Compaction</span>
+</div>
+</div>
+</div>
+<div class="pt-space-md flex items-center justify-between text-outline font-label-sm text-label-sm">
+<span>Snowflake · Databricks · dbt</span>
+<span class="text-secondary font-mono">&gt;_ RUN</span>
+</div>
+</div>
+<!-- Module 6: Data Engineering & Orchestration -->
+<div class="bg-surface-container p-space-lg flex flex-col justify-between shadow-md">
+<div class="space-y-space-md">
+<div class="flex justify-between items-center">
+<span class="p-space-xs bg-surface-container-highest text-primary">
+<span aria-hidden="true" class="material-symbols-outlined text-[24px]">hub</span>
+</span>
+<span class="font-label-sm text-label-sm text-outline">MOD.06 // ORCHESTRATION</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Pipelines & Orchestration</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant pt-space-xs">
+                Conception de pipelines de données déclaratifs, streaming temps réel et flux d'ingestion à tolérance de panne avec monitoring actif des dépendances.
+              </p>
+</div>
+<div class="bg-surface-container-high p-space-sm space-y-space-xs font-label-sm text-label-sm">
+<div class="flex justify-between text-on-surface">
+<span>Reprise sur incident</span>
+<span class="text-primary">Reprise à état zéro</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span>Tolérance de panne</span>
+<span class="text-on-surface">Exactly-Once</span>
+</div>
+</div>
+</div>
+<div class="pt-space-md flex items-center justify-between text-outline font-label-sm text-label-sm">
+<span>Dagster · Airflow · Kafka</span>
+<span class="text-primary font-mono">&gt;_ RUN</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. APPROACH SECTION -->
+<section class="w-full bg-surface-container-low py-space-xl" id="approche">
+<div class="max-w-7xl mx-auto px-6 lg:px-12">
+<div class="flex flex-col gap-space-xs max-w-3xl pb-space-xl">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-semibold">// MÉTHODOLOGIE OPÉRATIONNELLE</span>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface tracking-tight">De l'ambition à la mise en production.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Un cadre méthodologique rigoureux, éprouvé pour éliminer les effets d'annonce et garantir une adoption durable par vos équipes métiers.</p>
+</div>
+<!-- 4-Step Timeline Horizontal Layout -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- Step 01 -->
+<div class="bg-surface-container p-space-lg flex flex-col justify-between shadow-md">
+<div class="space-y-space-md">
+<div class="flex justify-between items-center">
+<span class="font-display-xl text-[36px] font-semibold text-primary leading-none">01</span>
+<span class="px-space-sm py-space-xs bg-surface-container-high text-outline font-label-sm text-label-sm uppercase">Phase 1</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Cadrer</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant pt-space-xs">
+                Évaluation approfondie de la faisabilité technique, sélection des cas d'usage à fort retour sur investissement économique et audit des risques réglementaires et éthiques.
+              </p>
+</div>
+</div>
+<div class="mt-space-lg pt-space-sm bg-surface-container-high p-space-sm">
+<span class="text-primary font-label-sm text-label-sm uppercase block font-semibold">Livrable clé :</span>
+<span class="font-body-sm text-body-sm text-on-surface">Data & AI Feasibility Charter + ROI Matrix</span>
+</div>
+</div>
+<!-- Step 02 -->
+<div class="bg-surface-container p-space-lg flex flex-col justify-between shadow-md">
+<div class="space-y-space-md">
+<div class="flex justify-between items-center">
+<span class="font-display-xl text-[36px] font-semibold text-primary leading-none">02</span>
+<span class="px-space-sm py-space-xs bg-surface-container-high text-outline font-label-sm text-label-sm uppercase">Phase 2</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Architecturer</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant pt-space-xs">
+                Design détaillé des architectures cibles, sélection technologique agnostique et prototypage technique (Proof of Concept) sur vos données réelles pour valider les hypothèses.
+              </p>
+</div>
+</div>
+<div class="mt-space-lg pt-space-sm bg-surface-container-high p-space-sm">
+<span class="text-primary font-label-sm text-label-sm uppercase block font-semibold">Livrable clé :</span>
+<span class="font-body-sm text-body-sm text-on-surface">Architecture Blueprint + Prototype Validé</span>
+</div>
+</div>
+<!-- Step 03 -->
+<div class="bg-surface-container p-space-lg flex flex-col justify-between shadow-md">
+<div class="space-y-space-md">
+<div class="flex justify-between items-center">
+<span class="font-display-xl text-[36px] font-semibold text-secondary leading-none">03</span>
+<span class="px-space-sm py-space-xs bg-surface-container-high text-outline font-label-sm text-label-sm uppercase">Phase 3</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Industrialiser</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant pt-space-xs">
+                Développement selon les standards stricts du Software Craftsmanship, mise en place des pipelines CI/CD, tests automatisés de non-régression et observabilité temps réel.
+              </p>
+</div>
+</div>
+<div class="mt-space-lg pt-space-sm bg-surface-container-high p-space-sm">
+<span class="text-secondary font-label-sm text-label-sm uppercase block font-semibold">Livrable clé :</span>
+<span class="font-body-sm text-body-sm text-on-surface">Production Release v1.0 + MLOps Pipelines</span>
+</div>
+</div>
+<!-- Step 04 -->
+<div class="bg-surface-container p-space-lg flex flex-col justify-between shadow-md">
+<div class="space-y-space-md">
+<div class="flex justify-between items-center">
+<span class="font-display-xl text-[36px] font-semibold text-primary leading-none">04</span>
+<span class="px-space-sm py-space-xs bg-surface-container-high text-outline font-label-sm text-label-sm uppercase">Phase 4</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Faire Évoluer</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant pt-space-xs">
+                Monitoring de dérive statistique en production, passage à l'échelle sur l'ensemble de vos divisions et transfert approfondi de compétences pour rendre vos équipes autonomes.
+              </p>
+</div>
+</div>
+<div class="mt-space-lg pt-space-sm bg-surface-container-high p-space-sm">
+<span class="text-primary font-label-sm text-label-sm uppercase block font-semibold">Livrable clé :</span>
+<span class="font-body-sm text-body-sm text-on-surface">Régime de Croisière + Runbook & Mentoring</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. VALUE PROPOSITION -->
+<section class="w-full bg-surface py-space-xl" id="a-propos">
+<div class="max-w-7xl mx-auto px-6 lg:px-12">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start pb-space-lg">
+<div class="lg:col-span-5 space-y-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-semibold">// ENGAGEMENT & CULTURE</span>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface tracking-tight">Une expertise pointue. Des solutions qui tiennent dans la durée.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant pt-space-xs">
+            Nous avons banni les approches superficielles et le jargon non vérifié. Notre réputation repose sur notre capacité à livrer du code fiable et des architectures pérennes.
           </p>
-        </div>
-
-        <div class="process-step fade-in fade-in-delay-2">
-          <div class="step-number-wrap">
-            <div class="step-circle">
-              <span class="step-num">2</span>
-            </div>
-            <div class="step-icon">
-              <i class="fa-solid fa-map"></i>
-            </div>
-          </div>
-          <h3>Proposition &amp; roadmap</h3>
-          <p>On vous présente une proposition claire avec une feuille de route priorisée, des jalons et des KPIs
-            définis.</p>
-        </div>
-
-        <div class="process-step fade-in fade-in-delay-3">
-          <div class="step-number-wrap">
-            <div class="step-circle">
-              <span class="step-num">3</span>
-            </div>
-            <div class="step-icon">
-              <i class="fa-solid fa-rocket"></i>
-            </div>
-          </div>
-          <h3>Implémentation &amp; suivi</h3>
-          <p>On délivre en mode agile avec des points réguliers, une documentation soignée et un accompagnement au
-            changement.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- =============================================
-       BOOKING CTA SECTION
-  ============================================= -->
-  <section id="booking">
-    <div class="container">
-      <div class="booking-inner fade-in">
-        <div class="booking-orb booking-orb-1"></div>
-        <div class="booking-orb booking-orb-2"></div>
-        <h2>Prêt à transformer vos données ?</h2>
-        <p>Échangeons sur vos enjeux data et IA. Un premier appel de 30 minutes, sans engagement, pour explorer ensemble
-          ce qui est possible.</p>
-        <a class="btn-white" href="https://calendly.com/bamoussoudjangban-predylics/30min" target="_blank"
-          rel="noopener">
-          <i class="fa-regular fa-calendar-check"></i>
-          Réserver un créneau gratuit
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- =============================================
-       CONTACT SECTION
-  ============================================= -->
-  <section id="contact">
-    <div class="container">
-      <div class="contact-grid">
-        <!-- Info side -->
-        <div class="fade-in">
-          <div class="section-label">Nous contacter</div>
-          <h2 class="section-title" style="font-size: clamp(1.8rem, 3vw, 2.4rem);">Parlons de votre <span
-              class="gradient-text">projet</span></h2>
-          <p style="color: var(--text-light); font-size: 0.95rem; line-height: 1.75; margin-bottom: 36px;">
-            Que vous souhaitiez démarrer un projet, auditer votre stack data, ou simplement explorer les possibilités de
-            l'IA — notre équipe est disponible pour vous répondre.
+</div>
+<div class="lg:col-span-7 flex flex-col gap-space-sm">
+<!-- Pillar 1 -->
+<div class="p-space-lg bg-surface-container flex flex-col md:flex-row gap-space-md justify-between items-start shadow-sm hover:bg-surface-container-high transition-colors">
+<div class="w-12 h-12 flex-shrink-0 bg-surface-container-highest flex items-center justify-center text-primary">
+<span aria-hidden="true" class="material-symbols-outlined text-[24px]">terminal</span>
+</div>
+<div class="space-y-space-xs flex-1">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-medium">Engineering-first mindset</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Pas de consultants généralistes ni de diapositives théoriques. Nos équipes sont composées d'ingénieurs et d'architectes chevronnés qui maîtrisent le code, les protocoles et les systèmes d'exploitation.
+              </p>
+</div>
+</div>
+<!-- Pillar 2 -->
+<div class="p-space-lg bg-surface-container flex flex-col md:flex-row gap-space-md justify-between items-start shadow-sm hover:bg-surface-container-high transition-colors">
+<div class="w-12 h-12 flex-shrink-0 bg-surface-container-highest flex items-center justify-center text-primary">
+<span aria-hidden="true" class="material-symbols-outlined text-[24px]">science</span>
+</div>
+<div class="space-y-space-xs flex-1">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-medium">Deep technical expertise</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Veille permanente sur les dernières avancées de recherche (papiers arXiv, contributions open source, benchmarks indépendants) pour apporter uniquement les innovations qui fonctionnent réellement.
+              </p>
+</div>
+</div>
+<!-- Pillar 3 -->
+<div class="p-space-lg bg-surface-container flex flex-col md:flex-row gap-space-md justify-between items-start shadow-sm hover:bg-surface-container-high transition-colors">
+<div class="w-12 h-12 flex-shrink-0 bg-surface-container-highest flex items-center justify-center text-secondary">
+<span aria-hidden="true" class="material-symbols-outlined text-[24px]">security</span>
+</div>
+<div class="space-y-space-xs flex-1">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-medium">Production readiness</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Fiabilité opérationnelle 24/7 garantie. Nos conceptions intègrent dès le départ les contraintes d'infrastructure critique : tolérance aux pannes, résilience réseau, et tests de charge intensifs.
+              </p>
+</div>
+</div>
+<!-- Pillar 4 -->
+<div class="p-space-lg bg-surface-container flex flex-col md:flex-row gap-space-md justify-between items-start shadow-sm hover:bg-surface-container-high transition-colors">
+<div class="w-12 h-12 flex-shrink-0 bg-surface-container-highest flex items-center justify-center text-on-surface">
+<span aria-hidden="true" class="material-symbols-outlined text-[24px]">memory</span>
+</div>
+<div class="space-y-space-xs flex-1">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-medium">Scalability & maintainability</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Nous bâtissons des architectures modulaires conçues pour survivre à l'évolution des outils technologiques, évitant le verrouillage propriétaire et réduisant activement la dette technique.
+              </p>
+</div>
+</div>
+<!-- Pillar 5 -->
+<div class="p-space-lg bg-surface-container flex flex-col md:flex-row gap-space-md justify-between items-start shadow-sm hover:bg-surface-container-high transition-colors">
+<div class="w-12 h-12 flex-shrink-0 bg-surface-container-highest flex items-center justify-center text-primary">
+<span aria-hidden="true" class="material-symbols-outlined text-[24px]">currency_exchange</span>
+</div>
+<div class="space-y-space-xs flex-1">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-medium">Business value & pragmatic execution</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                L'élégance technique n'est rien si elle ne génère pas un avantage économique direct. Chaque ligne de code et chaque pipeline data répondent à un indicateur de performance opérationnelle prédéfini.
+              </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 6. REALISTIC USE CASES (3 engineering benchmarks) -->
+<section class="w-full bg-surface-container-lowest py-space-xl" id="realisations">
+<div class="max-w-7xl mx-auto px-6 lg:px-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md pb-space-lg">
+<div class="space-y-space-xs max-w-2xl">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-semibold">// RETOURS D'EXPÉRIENCE VÉRIFIÉS</span>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface tracking-tight">Cas d'usage représentatifs</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Études de cas illustratives basées sur nos standards d'intervention auprès d'organisations complexes et d'environnements réglementés.
           </p>
-
-          <div class="contact-detail">
-            <div class="contact-detail-icon">
-              <i class="fa-solid fa-envelope"></i>
-            </div>
-            <div>
-              <div
-                style="font-size: 0.75rem; color: rgba(255,255,255,0.4); margin-bottom: 2px; letter-spacing: 0.05em; text-transform: uppercase;">
-                Email</div>
-              <a href="mailto:contact@predylics.com">contact@predylics.com</a>
-            </div>
-          </div>
-
-          <div class="contact-detail">
-            <div class="contact-detail-icon">
-              <i class="fa-solid fa-location-dot"></i>
-            </div>
-            <div>
-              <div
-                style="font-size: 0.75rem; color: rgba(255,255,255,0.4); margin-bottom: 2px; letter-spacing: 0.05em; text-transform: uppercase;">
-                Localisation</div>
-              <span>Paris</span>
-            </div>
-          </div>
-
-          <div class="contact-detail">
-            <div class="contact-detail-icon">
-              <i class="fa-solid fa-clock"></i>
-            </div>
-            <div>
-              <div
-                style="font-size: 0.75rem; color: rgba(255,255,255,0.4); margin-bottom: 2px; letter-spacing: 0.05em; text-transform: uppercase;">
-                Disponibilité</div>
-              <span>Réponse sous 24h ouvrées</span>
-            </div>
-          </div>
+</div>
+<div class="font-label-sm text-label-sm text-outline uppercase tracking-wider">
+          BENCHMARKS TECHNIQUES // ANONYMISED FOR IP
         </div>
+</div>
+<!-- 3 Benchmark Cards -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-space-lg pt-space-md">
+<!-- Case 1: Multi-Agents Regulatory & Finance -->
+<div class="bg-surface-container flex flex-col justify-between shadow-lg">
+<div class="p-space-lg space-y-space-md">
+<div class="flex justify-between items-center font-label-sm text-label-sm text-outline">
+<span class="px-space-xs py-0.5 bg-surface-container-highest text-primary">SERVICES FINANCIERS</span>
+<span>PARIS / LONDRES</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">
+              Système Multi-Agents pour l'Analyse Réglementaire et Financière
+            </h3>
+<div class="space-y-space-sm pt-space-xs">
+<div>
+<span class="font-label-sm text-label-sm text-outline uppercase block">Contexte :</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                  Traitement de milliers de rapports réglementaires et prospectus avec exigences d'auditabilité stricte et zéro tolérance pour l'hallucination.
+                </p>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-primary uppercase block">Solution d'ingénierie :</span>
+<p class="font-body-sm text-body-sm text-on-surface">
+                  Déploiement d'un essaim d'agents coordonnés avec validation humaine, auditabilité totale et traçabilité par empreintes cryptographiques.
+                </p>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-high p-space-md space-y-space-xs">
+<span class="font-label-sm text-label-sm text-outline uppercase">Impacts opérationnels :</span>
+<div class="grid grid-cols-2 gap-space-sm font-label-sm text-label-sm pt-space-xs">
+<div>
+<span class="font-display-xl text-[24px] font-semibold text-primary block leading-tight">-75%</span>
+<span class="text-on-surface-variant text-[11px]">Temps d'audit de conformité</span>
+</div>
+<div>
+<span class="font-display-xl text-[24px] font-semibold text-on-surface block leading-tight">100%</span>
+<span class="text-on-surface-variant text-[11px]">Citations vérifiables</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Case 2: Modern Data Platform & Real-Time Lakehouse -->
+<div class="bg-surface-container flex flex-col justify-between shadow-lg">
+<div class="p-space-lg space-y-space-md">
+<div class="flex justify-between items-center font-label-sm text-label-sm text-outline">
+<span class="px-space-xs py-0.5 bg-surface-container-highest text-secondary">INDUSTRIE & SUPPLY CHAIN</span>
+<span>FRANCE</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">
+              Modern Data Platform & Lakehouse Temps Réel
+            </h3>
+<div class="space-y-space-sm pt-space-xs">
+<div>
+<span class="font-label-sm text-label-sm text-outline uppercase block">Contexte :</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                  Silos de données d'usines historiques, latence de reporting de 24h et incapacité à réagir aux goulets d'étranglement logistiques en flux tendu.
+                </p>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-secondary uppercase block">Solution d'ingénierie :</span>
+<p class="font-body-sm text-body-sm text-on-surface">
+                  Refonte vers une architecture Iceberg découplée, ingestion continue Kafka/Flink et modélisation unifiée dbt pour 140 usines.
+                </p>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-high p-space-md space-y-space-xs">
+<span class="font-label-sm text-label-sm text-outline uppercase">Impacts opérationnels :</span>
+<div class="grid grid-cols-2 gap-space-sm font-label-sm text-label-sm pt-space-xs">
+<div>
+<span class="font-display-xl text-[24px] font-semibold text-secondary block leading-tight">&lt; 3 sec</span>
+<span class="text-on-surface-variant text-[11px]">Latence des métriques</span>
+</div>
+<div>
+<span class="font-display-xl text-[24px] font-semibold text-on-surface block leading-tight">-48%</span>
+<span class="text-on-surface-variant text-[11px]">Facturation cloud mensuelle</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Case 3: LLMOps & MLOps Enterprise Suite -->
+<div class="bg-surface-container flex flex-col justify-between shadow-lg">
+<div class="p-space-lg space-y-space-md">
+<div class="flex justify-between items-center font-label-sm text-label-sm text-outline">
+<span class="px-space-xs py-0.5 bg-surface-container-highest text-primary">SANTÉ & PHARMA</span>
+<span>SUISSE / UE</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">
+              Chaîne LLMOps & MLOps Sécurisée Entreprise
+            </h3>
+<div class="space-y-space-sm pt-space-xs">
+<div>
+<span class="font-label-sm text-label-sm text-outline uppercase block">Contexte :</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                  Multiplication de shadow-IA non contrôlées avec risques critiques de fuite de données de recherche sensibles et explosion des coûts API.
+                </p>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-primary uppercase block">Solution d'ingénierie :</span>
+<p class="font-body-sm text-body-sm text-on-surface">
+                  Plateforme d'accès centralisée, passerelle LLM avec détection de PII, proxy de mise en cache sémantique et modèles open source auto-hébergés.
+                </p>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-high p-space-md space-y-space-xs">
+<span class="font-label-sm text-label-sm text-outline uppercase">Impacts opérationnels :</span>
+<div class="grid grid-cols-2 gap-space-sm font-label-sm text-label-sm pt-space-xs">
+<div>
+<span class="font-display-xl text-[24px] font-semibold text-primary block leading-tight">100%</span>
+<span class="text-on-surface-variant text-[11px]">Données traitées en souverain</span>
+</div>
+<div>
+<span class="font-display-xl text-[24px] font-semibold text-on-surface block leading-tight">-60%</span>
+<span class="text-on-surface-variant text-[11px]">Coûts globaux d'inférence</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 7. FINAL CTA SECTION (Obsidian Sovereign Core) -->
+<section class="w-full bg-surface-container-lowest py-space-xl" id="contact">
+<div class="max-w-7xl mx-auto px-6 lg:px-12">
+<div class="bg-surface-container p-space-lg md:p-space-xl relative overflow-hidden shadow-2xl">
+<!-- Background Vector Ambient Elements -->
+<div class="absolute -right-16 -top-16 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute -left-16 -bottom-16 w-96 h-96 bg-secondary/5 rounded-full blur-3xl pointer-events-none"></div>
+<div class="relative z-10 max-w-4xl space-y-space-lg">
+<div class="space-y-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-semibold">// ENGAGEMENT TECHNIQUE</span>
+<h2 class="font-display-xl text-[34px] md:text-[44px] lg:text-[56px] text-on-surface tracking-tight leading-[1.1]">
+              Construisons vos prochains <span class="text-primary">systèmes intelligents.</span>
+</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl pt-space-xs">
+              De la stratégie architecturale à la mise en production continue, donnons une réalité technique rigoureuse à vos ambitions IA et Data.
+            </p>
+</div>
+<!-- CTAs & Action cluster -->
+<div class="flex flex-wrap items-center gap-space-md pt-space-sm">
+<a class="inline-flex items-center gap-space-sm px-space-xl py-space-md bg-primary text-on-primary font-label-md text-label-md uppercase tracking-wider font-semibold hover:bg-primary-container transition-colors shadow-md" href="https://calendly.com/bamoussoudjangban-predylics/30min" target="_blank" rel="noopener">
+<span>Discutons de votre projet</span>
+<span aria-hidden="true" class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+<a class="inline-flex items-center gap-space-sm px-space-lg py-space-md bg-surface-container-high text-on-surface hover:text-primary hover:bg-surface-container-highest font-label-md text-label-md uppercase tracking-wider transition-colors shadow-sm" href="https://calendly.com/bamoussoudjangban-predylics/30min" target="_blank" rel="noopener">
+<span aria-hidden="true" class="material-symbols-outlined text-[18px]">build</span>
+<span>Planifier un diagnostic d'architecture</span>
+</a>
+</div>
+<!-- Supporting Links & Corporate Metadata -->
+<div class="pt-space-md flex flex-wrap items-center gap-space-lg text-outline font-label-sm text-label-sm uppercase tracking-wider">
+<a class="inline-flex items-center gap-space-xs hover:text-on-surface transition-colors" href="mailto:contact@predylics.com?subject=Demande%20du%20livre%20blanc%20technique">
+<span aria-hidden="true" class="material-symbols-outlined text-[16px] text-primary">mail</span>
+<span>Recevoir notre livre blanc technique</span>
+</a>
+<span class="text-surface-variant">/</span>
+<span>Accompagnement Paris & International</span>
+<span class="text-surface-variant">/</span>
+<span>NDA Strict & Propriété Intellectuelle Garantie</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div></main><footer class="w-full bg-surface-container-lowest text-on-surface-variant"><div class="max-w-7xl mx-auto px-6 lg:px-12 py-space-xl"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-gutter"><div class="lg:col-span-4 flex flex-col justify-between"><div class="space-y-space-md"><div class="flex items-center gap-space-sm"><img alt="Predylics" class="h-8 w-auto" width="149" height="32" src="assets/logo-predylics-light.png"/></div><p class="font-body-sm text-body-sm text-on-surface-variant max-w-sm">Cabinet de conseil d'élite en Intelligence Artificielle et ingénierie de données souveraines. De la conception stratégique à l'industrialisation en production.</p></div><div class="pt-space-md font-label-sm text-label-sm text-outline tracking-wider uppercase">PARIS // ARCHITECTURE & APPLIED DATA</div></div><div class="lg:col-span-2 space-y-space-md"><p class="font-label-md text-label-md uppercase tracking-wider text-on-surface font-semibold">Intelligence Artificielle</p><ul class="space-y-space-xs font-body-sm text-body-sm"><li><a class="hover:text-primary transition-colors" href="#expertises">IA Générative & LLM Ops</a></li><li><a class="hover:text-primary transition-colors" href="#expertises">Computer Vision & Deep Learning</a></li><li><a class="hover:text-primary transition-colors" href="#expertises">Modèles Prédictifs & Risque</a></li><li><a class="hover:text-primary transition-colors" href="#expertises">Gouvernance & IA Éthique</a></li></ul></div><div class="lg:col-span-2 space-y-space-md"><p class="font-label-md text-label-md uppercase tracking-wider text-on-surface font-semibold">Data Engineering</p><ul class="space-y-space-xs font-body-sm text-body-sm"><li><a class="hover:text-primary transition-colors" href="#expertises">Modern Data Stack & Lakehouse</a></li><li><a class="hover:text-primary transition-colors" href="#expertises">Pipelines Streaming & Temps Réel</a></li><li><a class="hover:text-primary transition-colors" href="#expertises">Data Mesh & Contrats de Données</a></li><li><a class="hover:text-primary transition-colors" href="#expertises">Infrastructures Cloud & FinOps</a></li></ul></div><div class="lg:col-span-2 space-y-space-md"><p class="font-label-md text-label-md uppercase tracking-wider text-on-surface font-semibold">Cabinet</p><ul class="space-y-space-xs font-body-sm text-body-sm"><li><a class="hover:text-primary transition-colors" href="#approche">Méthodologie</a></li><li><a class="hover:text-primary transition-colors" href="#realisations">Cas Clients & ROI</a></li><li><a class="hover:text-primary transition-colors" href="#a-propos">L'Équipe Dirigeante</a></li><li><a class="hover:text-primary transition-colors" href="mailto:contact@predylics.com?subject=Candidature">Carrières & Recrutement</a></li></ul></div><div class="lg:col-span-2 space-y-space-md"><p class="font-label-md text-label-md uppercase tracking-wider text-on-surface font-semibold">Siège Paris</p><div class="space-y-space-xs font-body-sm text-body-sm"><p class="text-on-surface">Predylics SAS</p><p>8 Place de la Madeleine</p><p>75008 Paris, France</p><p class="text-primary hover:text-primary-fixed-dim transition-colors pt-space-xs"><a href="mailto:contact@predylics.com">contact@predylics.com</a></p><p><a class="inline-flex items-center gap-space-xs hover:text-primary transition-colors" href="https://www.linkedin.com/company/predylics/" target="_blank" rel="noopener">LinkedIn<span aria-hidden="true" class="material-symbols-outlined text-[14px]">north_east</span></a></p></div></div></div><div class="mt-space-xl pt-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md font-label-sm text-label-sm text-outline tracking-wider uppercase"><div>© <span id="year">2026</span> PREDYLICS CONSULTING. TOUS DROITS RÉSERVÉS.</div><div class="flex flex-wrap justify-center items-center gap-x-space-lg gap-y-space-xs"><a class="hover:text-on-surface transition-colors" data-path="mentions-legales" href="#">Mentions Légales</a><a class="hover:text-on-surface transition-colors" data-path="confidentialite" href="#">Politique de Confidentialité</a><a class="hover:text-on-surface transition-colors" data-path="conformite-rgpd" href="#">Conformité RGPD</a></div></div></div></footer>
+<script>
+(function () {
+  var toggle = document.getElementById('menu-toggle');
+  var menu = document.getElementById('mobile-menu');
+  function setOpen(open) {
+    menu.classList.toggle('hidden', !open);
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+    toggle.firstElementChild.textContent = open ? 'close' : 'menu';
+  }
+  toggle.addEventListener('click', function () { setOpen(menu.classList.contains('hidden')); });
+  menu.addEventListener('click', function (e) { if (e.target.closest('a')) setOpen(false); });
 
-        <!-- Form side -->
-        <div class="fade-in fade-in-delay-2">
-          <div class="contact-form-wrap">
-            <form id="contactForm" novalidate>
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="name">Nom complet *</label>
-                  <input type="text" id="name" name="name" placeholder="Jean Dupont" required />
-                </div>
-                <div class="form-group">
-                  <label for="email">Email professionnel *</label>
-                  <input type="email" id="email" name="email" placeholder="jean@entreprise.com" required />
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="company">Entreprise</label>
-                <input type="text" id="company" name="company" placeholder="Nom de votre société" />
-              </div>
-
-              <div class="form-group">
-                <label for="service">Service souhaité</label>
-                <select id="service" name="service">
-                  <option value="" disabled selected>Sélectionnez un service</option>
-                  <option value="data-consulting">Data Consulting</option>
-                  <option value="dashboards-bi">Dashboards / BI</option>
-                  <option value="data-engineering">Data Engineering</option>
-                  <option value="machine-learning">Machine Learning</option>
-                  <option value="generative-ai">Generative AI</option>
-                  <option value="ai-audit">AI Audit &amp; Strategy</option>
-                  <option value="agentic-systems">Agentic Systems</option>
-                  <option value="other">Autre / Non défini</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label for="message">Message *</label>
-                <textarea id="message" name="message" placeholder="Décrivez votre projet, vos enjeux, vos objectifs..."
-                  required></textarea>
-              </div>
-
-              <button type="submit" class="form-submit">
-                <i class="fa-solid fa-paper-plane"></i>
-                Envoyer le message
-              </button>
-            </form>
-
-            <div class="form-success" id="formSuccess">
-              <div class="success-icon">
-                <i class="fa-solid fa-check"></i>
-              </div>
-              <h3>Message envoyé !</h3>
-              <p>Merci pour votre message. Notre équipe vous répondra dans les prochaines 24 heures ouvrées.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- =============================================
-       FOOTER
-  ============================================= -->
-  <footer>
-    <div class="container">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <a class="logo" href="#hero">
-            <span class="logo-text">predylics</span><span class="logo-chevron">›</span>
-          </a>
-          <p style="margin-top: 16px;">
-            Transformez vos données en décisions stratégiques.<br />
-            Data &amp; AI consulting pour entreprises ambitieuses.
-          </p>
-          <div style="display: flex; gap: 10px; margin-top: 20px;">
-            <a href="https://www.linkedin.com/company/predylics/about/?viewAsMember=true" class="social-link"
-              target="_blank" rel="noopener" aria-label="LinkedIn">
-              <i class="fa-brands fa-linkedin-in"></i>
-            </a>
-            <a href="https://twitter.com" class="social-link" target="_blank" rel="noopener" aria-label="Twitter">
-              <i class="fa-brands fa-x-twitter"></i>
-            </a>
-            <a href="mailto:contact@predylics.com" class="social-link" aria-label="Email">
-              <i class="fa-solid fa-envelope"></i>
-            </a>
-          </div>
-        </div>
-
-        <div class="footer-col">
-          <h4>Services</h4>
-          <ul>
-            <li><a href="#services">Data Consulting</a></li>
-            <li><a href="#services">Dashboards / BI</a></li>
-            <li><a href="#services">Data Engineering</a></li>
-            <li><a href="#services">Machine Learning</a></li>
-            <li><a href="#services">Generative AI</a></li>
-            <li><a href="#services">AI Audit &amp; Strategy</a></li>
-            <li><a href="#services">Agentic Systems</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Entreprise</h4>
-          <ul>
-            <li><a href="#why">Notre approche</a></li>
-            <li><a href="#tech">Stack technique</a></li>
-            <li><a href="#process">Processus</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="https://calendly.com/bamoussoudjangban-predylics/30min" target="_blank" rel="noopener">Prendre
-                RDV</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <p>&copy; 2020 Predylics. Tous droits réservés.</p>
-        <p>
-          <a href="mailto:contact@predylics.com">contact@predylics.com</a>
-        </p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- =============================================
-       JAVASCRIPT
-  ============================================= -->
-  <script>
-    // ---- Navbar scroll effect ----
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 40) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
-      }
-    }, { passive: true });
-
-    // ---- Hamburger menu ----
-    const hamburgerBtn = document.getElementById('hamburgerBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-
-    hamburgerBtn.addEventListener('click', () => {
-      hamburgerBtn.classList.toggle('active');
-      mobileMenu.classList.toggle('open');
-    });
-
-    function closeMobile() {
-      hamburgerBtn.classList.remove('active');
-      mobileMenu.classList.remove('open');
-    }
-
-    // Close mobile menu on outside click
-    document.addEventListener('click', (e) => {
-      if (!hamburgerBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
-        closeMobile();
-      }
-    });
-
-    // ---- Intersection Observer for fade-in ----
-    const fadeEls = document.querySelectorAll('.fade-in');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.12,
-      rootMargin: '0px 0px -40px 0px'
-    });
-
-    fadeEls.forEach(el => observer.observe(el));
-
-    // Trigger hero elements immediately
-    document.querySelectorAll('#hero .fade-in').forEach(el => {
-      setTimeout(() => el.classList.add('visible'), 100);
-    });
-
-    // ---- Active nav link on scroll ----
-    const sections = document.querySelectorAll('section[id]');
-    const navAnchors = document.querySelectorAll('.nav-links a');
-
-    const sectionObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const id = entry.target.getAttribute('id');
-          navAnchors.forEach(a => {
-            a.style.color = a.getAttribute('href') === `#${id}`
-              ? 'var(--cyan)'
-              : '';
-          });
-        }
-      });
-    }, { threshold: 0.4 });
-
-    sections.forEach(s => sectionObserver.observe(s));
-
-    // ---- Contact form ----
-    const contactForm = document.getElementById('contactForm');
-    const formSuccess = document.getElementById('formSuccess');
-
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const message = document.getElementById('message').value.trim();
-
-      if (!name || !email || !message) {
-        // Simple shake on empty required fields
-        [document.getElementById('name'), document.getElementById('email'), document.getElementById('message')]
-          .forEach(field => {
-            if (!field.value.trim()) {
-              field.style.borderColor = '#ff4d6d';
-              field.addEventListener('input', () => {
-                field.style.borderColor = '';
-              }, { once: true });
-            }
-          });
-        return;
-      }
-
-      // Build mailto link
-      const service = document.getElementById('service').value;
-      const company = document.getElementById('company').value.trim();
-      const subject = encodeURIComponent(`Nouveau message de ${name} — Predylics`);
-      const body = encodeURIComponent(
-        `Nom: ${name}\nEmail: ${email}\nEntreprise: ${company || 'N/A'}\nService: ${service || 'Non précisé'}\n\nMessage:\n${message}`
-      );
-      window.location.href = `mailto:contact@predylics.com?subject=${subject}&body=${body}`;
-
-      // Show success state
-      contactForm.style.display = 'none';
-      formSuccess.classList.add('show');
-    });
-
-    // ---- Language Switcher ----
-    const translations = {
-      fr: {
-        navApproach: 'Notre approche',
-        navCta: '<i class="fa-regular fa-calendar"></i> Prendre RDV',
-        mobileCta: '<i class="fa-regular fa-calendar"></i> Prendre RDV',
-        heroTitle: 'Transformez vos données<br />en <span class="gradient-text">décisions stratégiques</span>',
-        heroDesc: "Predylics accompagne les entreprises ambitieuses dans leur transformation data et IA — de la stratégie à l'implémentation.",
-        heroCtaPrimary: 'Prendre RDV &nbsp;→',
-        heroCtaOutline: 'Découvrir nos services',
-        servicesLabel: 'Ce que nous faisons',
-        servicesTitle: 'Nos <span class="gradient-text">services</span>',
-        servicesSubtitle: 'Des solutions data et IA complètes, conçues pour générer un impact mesurable sur votre activité.',
-        serviceMlDesc: 'Modèles prédictifs qui transforment vos données en avantage compétitif.',
-        serviceAgenticDesc: 'Agents IA autonomes pour automatiser vos workflows complexes.',
-        serviceGenAIDesc: "Intégration de l'IA générative dans vos produits et processus.",
-        serviceDataEngDesc: 'Pipelines robustes et architectures scalables pour vos données.',
-        serviceConsultingDesc: 'Stratégie data sur-mesure pour aligner vos données avec vos objectifs métier.',
-        serviceDashboardDesc: 'Tableaux de bord interactifs pour piloter votre activité en temps réel.',
-        serviceAIAuditDesc: 'Évaluation de votre maturité IA et feuille de route personnalisée.',
-        whyLabel: 'Pourquoi nous choisir',
-        whyTitle: 'Ce qui nous <span class="gradient-text">distingue</span>',
-        whySubtitle: "Une équipe d'experts qui conjugue rigueur technique et vision business pour livrer des résultats concrets.",
-        whyCard1Title: 'Expertise pointue',
-        whyCard1Desc: "Des spécialistes certifiés en data science, machine learning et IA générative, avec des années d'expérience sur des projets exigeants.",
-        whyCard2Title: 'Approche sur-mesure',
-        whyCard2Desc: 'Chaque mission est unique. Nous construisons des solutions adaptées à votre contexte, vos contraintes et vos ambitions.',
-        whyCard3Title: 'ROI mesurable',
-        whyCard3Desc: "Nous définissons des KPIs dès le départ et mesurons l'impact de chaque action. Votre investissement se traduit en résultats tangibles.",
-        stat1Label: 'Projets livrés dans les délais',
-        stat2Label: "Domaines d'expertise",
-        stat3Label: 'Technologies maîtrisées',
-        stat4Label: 'Ambition partagée',
-        techLabel: 'Stack technique',
-        techTitle: 'Nos outils de <span class="gradient-text">prédilection</span>',
-        techSubtitle: 'Les meilleures technologies du marché, maîtrisées par nos experts pour construire des solutions performantes et durables.',
-        processLabel: 'Notre méthode',
-        processTitle: 'Comment ça <span class="gradient-text">fonctionne</span>',
-        processSubtitle: 'Un processus structuré en 3 étapes pour transformer votre vision en réalité data et IA.',
-        step1Title: 'Discovery call',
-        step1Desc: 'On prend le temps de comprendre vos enjeux métier, votre stack actuel, vos objectifs et vos contraintes.',
-        step2Title: 'Proposition &amp; roadmap',
-        step2Desc: 'On vous présente une proposition claire avec une feuille de route priorisée, des jalons et des KPIs définis.',
-        step3Title: 'Implémentation &amp; suivi',
-        step3Desc: 'On délivre en mode agile avec des points réguliers, une documentation soignée et un accompagnement au changement.',
-        bookingTitle: 'Prêt à transformer vos données ?',
-        bookingDesc: "Échangeons sur vos enjeux data et IA. Un premier appel de 30 minutes, sans engagement, pour explorer ensemble ce qui est possible.",
-        bookingCta: '<i class="fa-regular fa-calendar-check"></i> Réserver un créneau gratuit',
-        contactLabel: 'Nous contacter',
-        contactTitle: 'Parlons de votre <span class="gradient-text">projet</span>',
-        contactDesc: "Que vous souhaitiez démarrer un projet, auditer votre stack data, ou simplement explorer les possibilités de l'IA — notre équipe est disponible pour vous répondre.",
-        contactLocationLabel: 'Localisation',
-        contactAvailabilityLabel: 'Disponibilité',
-        contactAvailability: 'Réponse sous 24h ouvrées',
-        formNameLabel: 'Nom complet *',
-        formNamePlaceholder: 'Jean Dupont',
-        formEmailLabel: 'Email professionnel *',
-        formEmailPlaceholder: 'jean@entreprise.com',
-        formCompanyLabel: 'Entreprise',
-        formCompanyPlaceholder: 'Nom de votre société',
-        formServiceLabel: 'Service souhaité',
-        formServicePlaceholder: 'Sélectionnez un service',
-        formServiceOther: 'Autre / Non défini',
-        formMessageLabel: 'Message *',
-        formMessagePlaceholder: 'Décrivez votre projet, vos enjeux, vos objectifs...',
-        formSubmit: '<i class="fa-solid fa-paper-plane"></i> Envoyer le message',
-        formSuccessTitle: 'Message envoyé !',
-        formSuccessDesc: 'Merci pour votre message. Notre équipe vous répondra dans les prochaines 24 heures ouvrées.',
-        footerBrandDesc: 'Transformez vos données en décisions stratégiques.<br />Data &amp; AI consulting pour entreprises ambitieuses.',
-        footerCompanyTitle: 'Entreprise',
-        footerApproachLink: 'Notre approche',
-        footerRdvLink: 'Prendre RDV',
-        footerCopyright: '&copy; 2020 Predylics. Tous droits réservés.',
-      },
-      en: {
-        navApproach: 'Our approach',
-        navCta: '<i class="fa-regular fa-calendar"></i> Book a call',
-        mobileCta: '<i class="fa-regular fa-calendar"></i> Book a call',
-        heroTitle: 'Transform your data<br />into <span class="gradient-text">strategic decisions</span>',
-        heroDesc: 'Predylics supports ambitious companies in their data and AI transformation — from strategy to implementation.',
-        heroCtaPrimary: 'Book a call &nbsp;→',
-        heroCtaOutline: 'Discover our services',
-        servicesLabel: 'What we do',
-        servicesTitle: 'Our <span class="gradient-text">services</span>',
-        servicesSubtitle: 'Complete data and AI solutions, designed to generate measurable impact on your business.',
-        serviceMlDesc: 'Predictive models that turn your data into competitive advantage.',
-        serviceAgenticDesc: 'Autonomous AI agents to automate your complex workflows.',
-        serviceGenAIDesc: 'Integration of generative AI into your products and processes.',
-        serviceDataEngDesc: 'Robust pipelines and scalable architectures for your data.',
-        serviceConsultingDesc: 'Custom data strategy to align your data with your business objectives.',
-        serviceDashboardDesc: 'Interactive dashboards to manage your business in real time.',
-        serviceAIAuditDesc: 'Assessment of your AI maturity and personalized roadmap.',
-        whyLabel: 'Why choose us',
-        whyTitle: 'What sets us <span class="gradient-text">apart</span>',
-        whySubtitle: 'A team of experts combining technical rigor and business vision to deliver concrete results.',
-        whyCard1Title: 'Deep expertise',
-        whyCard1Desc: 'Certified specialists in data science, machine learning and generative AI, with years of experience on demanding projects.',
-        whyCard2Title: 'Tailored approach',
-        whyCard2Desc: 'Every engagement is unique. We build solutions adapted to your context, constraints, and ambitions.',
-        whyCard3Title: 'Measurable ROI',
-        whyCard3Desc: 'We define KPIs from the start and measure the impact of every action. Your investment translates into tangible results.',
-        stat1Label: 'Projects delivered on time',
-        stat2Label: 'Areas of expertise',
-        stat3Label: 'Mastered technologies',
-        stat4Label: 'Shared ambition',
-        techLabel: 'Tech stack',
-        techTitle: 'Our tools of <span class="gradient-text">choice</span>',
-        techSubtitle: 'The best market technologies, mastered by our experts to build high-performance and durable solutions.',
-        processLabel: 'Our method',
-        processTitle: 'How it <span class="gradient-text">works</span>',
-        processSubtitle: 'A structured 3-step process to turn your vision into data and AI reality.',
-        step1Title: 'Discovery call',
-        step1Desc: 'We take the time to understand your business challenges, your current stack, your objectives and constraints.',
-        step2Title: 'Proposal &amp; roadmap',
-        step2Desc: 'We present you with a clear proposal with a prioritized roadmap, defined milestones and KPIs.',
-        step3Title: 'Implementation &amp; follow-up',
-        step3Desc: 'We deliver in agile mode with regular check-ins, thorough documentation and change management support.',
-        bookingTitle: 'Ready to transform your data?',
-        bookingDesc: "Let's discuss your data and AI challenges. A 30-minute first call, no commitment, to explore together what's possible.",
-        bookingCta: '<i class="fa-regular fa-calendar-check"></i> Book a free slot',
-        contactLabel: 'Contact us',
-        contactTitle: "Let's talk about your <span class=\"gradient-text\">project</span>",
-        contactDesc: 'Whether you want to start a project, audit your data stack, or simply explore the possibilities of AI — our team is available to respond.',
-        contactLocationLabel: 'Location',
-        contactAvailabilityLabel: 'Availability',
-        contactAvailability: 'Response within 24 business hours',
-        formNameLabel: 'Full name *',
-        formNamePlaceholder: 'John Doe',
-        formEmailLabel: 'Professional email *',
-        formEmailPlaceholder: 'john@company.com',
-        formCompanyLabel: 'Company',
-        formCompanyPlaceholder: 'Your company name',
-        formServiceLabel: 'Desired service',
-        formServicePlaceholder: 'Select a service',
-        formServiceOther: 'Other / Undefined',
-        formMessageLabel: 'Message *',
-        formMessagePlaceholder: 'Describe your project, challenges, objectives...',
-        formSubmit: '<i class="fa-solid fa-paper-plane"></i> Send message',
-        formSuccessTitle: 'Message sent!',
-        formSuccessDesc: 'Thank you for your message. Our team will respond within the next 24 business hours.',
-        footerBrandDesc: 'Transform your data into strategic decisions.<br />Data &amp; AI consulting for ambitious companies.',
-        footerCompanyTitle: 'Company',
-        footerApproachLink: 'Our approach',
-        footerRdvLink: 'Book a call',
-        footerCopyright: '&copy; 2020 Predylics. All rights reserved.',
-      }
-    };
-
-    let currentLang = 'fr';
-
-    function applyTranslations(lang) {
-      const t = translations[lang];
-      document.documentElement.lang = lang;
-
-      const setText = (sel, text) => {
-        const el = document.querySelector(sel);
-        if (el) el.textContent = text;
-      };
-      const setHTML = (sel, html) => {
-        const el = document.querySelector(sel);
-        if (el) el.innerHTML = html;
-      };
-
-      // Nav
-      setText('.nav-links li:nth-child(3) a', t.navApproach);
-      setHTML('.nav-cta', t.navCta);
-
-      // Mobile menu
-      setText('#mobileMenu a:nth-child(3)', t.navApproach);
-      setHTML('#mobileCta', t.mobileCta);
-
-      // Hero
-      setHTML('.hero-title', t.heroTitle);
-      setText('.hero-desc', t.heroDesc);
-      setHTML('.hero-ctas .btn-primary', t.heroCtaPrimary);
-      setText('.hero-ctas .btn-outline', t.heroCtaOutline);
-
-      // Services
-      setText('#services .section-label', t.servicesLabel);
-      setHTML('#services .section-title', t.servicesTitle);
-      setText('#services .section-subtitle', t.servicesSubtitle);
-      const serviceDescs = [
-        t.serviceMlDesc, t.serviceAgenticDesc, t.serviceGenAIDesc,
-        t.serviceDataEngDesc, t.serviceConsultingDesc, t.serviceDashboardDesc, t.serviceAIAuditDesc
-      ];
-      document.querySelectorAll('.services-grid .service-card').forEach((card, i) => {
-        const desc = card.querySelector('.service-desc');
-        if (desc && serviceDescs[i]) desc.textContent = serviceDescs[i];
-      });
-
-      // Why
-      setText('#why .section-label', t.whyLabel);
-      setHTML('#why .section-title', t.whyTitle);
-      setText('#why .section-subtitle', t.whySubtitle);
-      const whyCards = document.querySelectorAll('.why-grid .why-card');
-      const whyData = [
-        { title: t.whyCard1Title, desc: t.whyCard1Desc },
-        { title: t.whyCard2Title, desc: t.whyCard2Desc },
-        { title: t.whyCard3Title, desc: t.whyCard3Desc },
-      ];
-      whyCards.forEach((card, i) => {
-        if (whyData[i]) {
-          card.querySelector('h3').textContent = whyData[i].title;
-          card.querySelector('p').textContent = whyData[i].desc;
-        }
-      });
-      const statLabels = document.querySelectorAll('.stat-label');
-      const statTexts = [t.stat1Label, t.stat2Label, t.stat3Label, t.stat4Label];
-      statLabels.forEach((el, i) => { if (statTexts[i]) el.textContent = statTexts[i]; });
-
-      // Tech
-      setText('#tech .section-label', t.techLabel);
-      setHTML('#tech .section-title', t.techTitle);
-      setText('#tech .section-subtitle', t.techSubtitle);
-
-      // Process
-      setText('#process .section-label', t.processLabel);
-      setHTML('#process .section-title', t.processTitle);
-      setText('#process .section-subtitle', t.processSubtitle);
-      const steps = document.querySelectorAll('.process-step');
-      const stepData = [
-        { title: t.step1Title, desc: t.step1Desc },
-        { title: t.step2Title, desc: t.step2Desc },
-        { title: t.step3Title, desc: t.step3Desc },
-      ];
-      steps.forEach((step, i) => {
-        if (stepData[i]) {
-          step.querySelector('h3').innerHTML = stepData[i].title;
-          step.querySelector('p').textContent = stepData[i].desc;
-        }
-      });
-
-      // Booking
-      setText('#booking .booking-inner h2', t.bookingTitle);
-      setText('#booking .booking-inner > p', t.bookingDesc);
-      setHTML('#booking .btn-white', t.bookingCta);
-
-      // Contact
-      setText('#contact .section-label', t.contactLabel);
-      setHTML('#contact .section-title', t.contactTitle);
-      const contactDesc = document.querySelector('#contact .contact-grid > div:first-child > p');
-      if (contactDesc) contactDesc.textContent = t.contactDesc;
-      const contactDetails = document.querySelectorAll('#contact .contact-detail');
-      if (contactDetails[1]) {
-        const lbl = contactDetails[1].querySelector('div > div:first-child');
-        if (lbl) lbl.textContent = t.contactLocationLabel;
-      }
-      if (contactDetails[2]) {
-        const lbl = contactDetails[2].querySelector('div > div:first-child');
-        if (lbl) lbl.textContent = t.contactAvailabilityLabel;
-        const sp = contactDetails[2].querySelector('div > span');
-        if (sp) sp.textContent = t.contactAvailability;
-      }
-
-      // Form
-      const formFields = [
-        { labelFor: 'name', label: t.formNameLabel, input: document.getElementById('name'), placeholder: t.formNamePlaceholder },
-        { labelFor: 'email', label: t.formEmailLabel, input: document.getElementById('email'), placeholder: t.formEmailPlaceholder },
-        { labelFor: 'company', label: t.formCompanyLabel, input: document.getElementById('company'), placeholder: t.formCompanyPlaceholder },
-        { labelFor: 'service', label: t.formServiceLabel },
-        { labelFor: 'message', label: t.formMessageLabel, input: document.getElementById('message'), placeholder: t.formMessagePlaceholder },
-      ];
-      formFields.forEach(f => {
-        const lbl = document.querySelector('label[for="' + f.labelFor + '"]');
-        if (lbl) lbl.textContent = f.label;
-        if (f.input && f.placeholder) f.input.placeholder = f.placeholder;
-      });
-      const serviceSelect = document.getElementById('service');
-      if (serviceSelect) {
-        serviceSelect.options[0].textContent = t.formServicePlaceholder;
-        serviceSelect.options[serviceSelect.options.length - 1].textContent = t.formServiceOther;
-      }
-      setHTML('.form-submit', t.formSubmit);
-      setText('#formSuccess h3', t.formSuccessTitle);
-      setText('#formSuccess p', t.formSuccessDesc);
-
-      // Footer
-      const footerBrandP = document.querySelector('.footer-brand p[style]');
-      if (footerBrandP) footerBrandP.innerHTML = t.footerBrandDesc;
-      setText('.footer-top > div:nth-child(3) > h4', t.footerCompanyTitle);
-      setText('.footer-top > div:nth-child(3) ul li:nth-child(1) a', t.footerApproachLink);
-      setText('.footer-top > div:nth-child(3) ul li:nth-child(5) a', t.footerRdvLink);
-      setHTML('.footer-bottom > p:first-child', t.footerCopyright);
-
-      // Update all lang buttons
-      document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.lang === lang);
-      });
-
-      currentLang = lang;
-      localStorage.setItem('predylics-lang', lang);
-    }
-
-    // Lang button click handlers
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        if (btn.dataset.lang !== currentLang) {
-          applyTranslations(btn.dataset.lang);
-        }
+  var links = document.querySelectorAll('.nav-link');
+  var active = ['text-primary', 'font-semibold'];
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      links.forEach(function (link) {
+        var on = link.getAttribute('href') === '#' + entry.target.id;
+        active.forEach(function (c) { link.classList.toggle(c, on); });
+        link.classList.toggle('text-on-surface-variant', !on);
+        if (on) link.setAttribute('aria-current', 'location'); else link.removeAttribute('aria-current');
       });
     });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  links.forEach(function (link) {
+    var section = document.querySelector(link.getAttribute('href'));
+    if (section) observer.observe(section);
+  });
 
-    // Restore saved preference (default: fr)
-    const savedLang = localStorage.getItem('predylics-lang') || 'fr';
-    if (savedLang !== 'fr') applyTranslations(savedLang);
-
-    // ---- Smooth scroll for all anchor links ----
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', (e) => {
-        const target = document.querySelector(a.getAttribute('href'));
-        if (target) {
-          e.preventDefault();
-          const top = target.getBoundingClientRect().top + window.scrollY - 72;
-          window.scrollTo({ top, behavior: 'smooth' });
-        }
-      });
-    });
-  </script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+})();
+</script>
 </body>
-
 </html>
