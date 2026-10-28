@@ -1,974 +1,1269 @@
 <!DOCTYPE html>
 <html class="dark scroll-smooth" lang="fr">
+
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Predylics — Conseil & ingénierie IA et Data</title>
-<meta name="description" content="Predylics conçoit et industrialise des systèmes d'intelligence artificielle et des plateformes data robustes, évolutifs et adaptés aux enjeux critiques de votre organisation."/>
-<meta name="theme-color" content="#0f131c"/>
-<meta property="og:type" content="website"/>
-<meta property="og:title" content="Predylics — L'IA et la data, pensées pour la production"/>
-<meta property="og:description" content="Conseil stratégique et ingénierie appliquée en intelligence artificielle et data engineering."/>
-<meta property="og:image" content="assets/logo-predylics.png"/>
-<link rel="icon" type="image/png" href="assets/favicon.png"/>
-<link rel="apple-touch-icon" href="assets/apple-touch-icon.png"/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Hanken+Grotesk:wght@100..900&display=swap" rel="stylesheet"/>
-<style>
-html,body{margin:0;padding:0;}
-body{overscroll-behavior:none;}
-section[id]{scroll-margin-top:5rem;}
-.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;}
-</style>
-<link rel="stylesheet" href="assets/interactions.css"/>
-<script src="https://cdn.tailwindcss.com/3.4.16"></script>
-<script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"primary-fixed":"#88f3ff","surface-container-low":"#181c24","inverse-surface":"#dfe2ee","surface-variant":"#31353e","surface-dim":"#0f131c","on-secondary-container":"#ccd2ff","outline":"#859395","surface-container-high":"#262a33","surface":"#0f131c","on-background":"#dfe2ee","secondary-container":"#0340fc","on-tertiary":"#213145","secondary-fixed-dim":"#bac3ff","secondary-fixed":"#dee0ff","surface-container-highest":"#31353e","on-primary":"#00363b","on-primary-container":"#004a51","on-tertiary-fixed":"#0b1c30","on-primary-fixed":"#001f23","surface-container":"#1c2028","on-error-container":"#ffdad6","primary-container":"#00c2d1","tertiary":"#bccce6","tertiary-container":"#a1b1ca","secondary":"#bac3ff","tertiary-fixed":"#d3e4fe","inverse-primary":"#006971","on-surface":"#dfe2ee","primary":"#45deed","error-container":"#93000a","surface-bright":"#353942","on-secondary-fixed-variant":"#0030c8","on-surface-variant":"#bbc9cb","tertiary-fixed-dim":"#b7c8e1","outline-variant":"#3c494b","on-secondary-fixed":"#00105a","on-error":"#690005","error":"#ffb4ab","on-tertiary-fixed-variant":"#38485d","background":"#0f131c","surface-tint":"#3ed9e9","inverse-on-surface":"#2c3039","on-secondary":"#00208f","on-primary-fixed-variant":"#004f56","primary-fixed-dim":"#3ed9e9","on-tertiary-container":"#344459","surface-container-lowest":"#0a0e16"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{"space-md":"1rem","gutter-mobile":"1rem","margin-mobile":"1.25rem",gutter:"1.5rem","space-xl":"2.5rem","space-xs":"0.25rem","space-lg":"1.5rem","space-sm":"0.5rem",margin:"3rem"},fontFamily:{"body-sm":["Hanken Grotesk"],"display-xl":["Geist"],"label-sm":["Geist"],"headline-lg-mobile":["Geist"],"headline-lg":["Geist"],"label-md":["Geist"],"headline-md":["Geist"],"display-xl-mobile":["Geist"],"headline-sm":["Geist"],"body-md":["Hanken Grotesk"],"body-lg":["Hanken Grotesk"]},fontSize:{"body-sm":["13px",{lineHeight:"20px",fontWeight:"400"}],"display-xl":["64px",{lineHeight:"72px",fontWeight:"600"}],"label-sm":["10px",{lineHeight:"14px",fontWeight:"600"}],"headline-lg-mobile":["32px",{lineHeight:"40px",fontWeight:"500"}],"headline-lg":["44px",{lineHeight:"52px",fontWeight:"500"}],"label-md":["12px",{lineHeight:"16px",fontWeight:"500"}],"headline-md":["28px",{lineHeight:"36px",fontWeight:"500"}],"display-xl-mobile":["40px",{lineHeight:"48px",fontWeight:"600"}],"headline-sm":["20px",{lineHeight:"28px",fontWeight:"500"}],"body-md":["15px",{lineHeight:"24px",fontWeight:"400"}],"body-lg":["18px",{lineHeight:"28px",fontWeight:"400"}]}}}};</script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Predylics — Conseil & ingénierie IA et Data</title>
+  <meta name="description"
+    content="Predylics conçoit et industrialise des systèmes d'intelligence artificielle et des plateformes data robustes, évolutifs et adaptés aux enjeux critiques de votre organisation." />
+  <meta name="theme-color" content="#0f131c" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Predylics — L'IA et la data, pensées pour la production" />
+  <meta property="og:description"
+    content="Conseil stratégique et ingénierie appliquée en intelligence artificielle et data engineering." />
+  <meta property="og:image" content="assets/logo-predylics.png" />
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Hanken+Grotesk:wght@100..900&display=swap"
+    rel="stylesheet" />
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      overscroll-behavior: none;
+    }
+
+    section[id] {
+      scroll-margin-top: 5rem;
+    }
+
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+  <link rel="stylesheet" href="assets/interactions.css" />
+  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+  <script
+    id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "primary-fixed": "#88f3ff", "surface-container-low": "#181c24", "inverse-surface": "#dfe2ee", "surface-variant": "#31353e", "surface-dim": "#0f131c", "on-secondary-container": "#ccd2ff", "outline": "#859395", "surface-container-high": "#262a33", "surface": "#0f131c", "on-background": "#dfe2ee", "secondary-container": "#0340fc", "on-tertiary": "#213145", "secondary-fixed-dim": "#bac3ff", "secondary-fixed": "#dee0ff", "surface-container-highest": "#31353e", "on-primary": "#00363b", "on-primary-container": "#004a51", "on-tertiary-fixed": "#0b1c30", "on-primary-fixed": "#001f23", "surface-container": "#1c2028", "on-error-container": "#ffdad6", "primary-container": "#00c2d1", "tertiary": "#bccce6", "tertiary-container": "#a1b1ca", "secondary": "#bac3ff", "tertiary-fixed": "#d3e4fe", "inverse-primary": "#006971", "on-surface": "#dfe2ee", "primary": "#45deed", "error-container": "#93000a", "surface-bright": "#353942", "on-secondary-fixed-variant": "#0030c8", "on-surface-variant": "#bbc9cb", "tertiary-fixed-dim": "#b7c8e1", "outline-variant": "#3c494b", "on-secondary-fixed": "#00105a", "on-error": "#690005", "error": "#ffb4ab", "on-tertiary-fixed-variant": "#38485d", "background": "#0f131c", "surface-tint": "#3ed9e9", "inverse-on-surface": "#2c3039", "on-secondary": "#00208f", "on-primary-fixed-variant": "#004f56", "primary-fixed-dim": "#3ed9e9", "on-tertiary-container": "#344459", "surface-container-lowest": "#0a0e16" }, borderRadius: { DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px" }, spacing: { "space-md": "1rem", "gutter-mobile": "1rem", "margin-mobile": "1.25rem", gutter: "1.5rem", "space-xl": "2.5rem", "space-xs": "0.25rem", "space-lg": "1.5rem", "space-sm": "0.5rem", margin: "3rem" }, fontFamily: { "body-sm": ["Hanken Grotesk"], "display-xl": ["Geist"], "label-sm": ["Geist"], "headline-lg-mobile": ["Geist"], "headline-lg": ["Geist"], "label-md": ["Geist"], "headline-md": ["Geist"], "display-xl-mobile": ["Geist"], "headline-sm": ["Geist"], "body-md": ["Hanken Grotesk"], "body-lg": ["Hanken Grotesk"] }, fontSize: { "body-sm": ["13px", { lineHeight: "20px", fontWeight: "400" }], "display-xl": ["64px", { lineHeight: "72px", fontWeight: "600" }], "label-sm": ["10px", { lineHeight: "14px", fontWeight: "600" }], "headline-lg-mobile": ["32px", { lineHeight: "40px", fontWeight: "500" }], "headline-lg": ["44px", { lineHeight: "52px", fontWeight: "500" }], "label-md": ["12px", { lineHeight: "16px", fontWeight: "500" }], "headline-md": ["28px", { lineHeight: "36px", fontWeight: "500" }], "display-xl-mobile": ["40px", { lineHeight: "48px", fontWeight: "600" }], "headline-sm": ["20px", { lineHeight: "28px", fontWeight: "500" }], "body-md": ["15px", { lineHeight: "24px", fontWeight: "400" }], "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }] } } } };</script>
 </head>
-<body class="bg-surface font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container">
-<header class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-md shadow-[0_1px_8px_rgba(0,0,0,0.4)]">
-<div class="h-20 max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between gap-space-md">
-<div class="flex items-center gap-space-lg">
-<a class="flex items-center" href="#accueil" aria-label="Predylics — accueil"><img alt="Predylics" class="h-7 w-auto" src="assets/logo-predylics-light.png" width="130" height="28"/></a>
-<span class="hidden xl:inline-block font-label-sm text-label-sm text-outline tracking-wider uppercase pl-space-sm">// AI & Data Engineering</span>
-</div>
-<nav class="hidden lg:flex items-center gap-space-lg" aria-label="Navigation principale">
-<a class="nav-link font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="#accueil">Accueil</a>
-<a class="nav-link font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="#expertises">Expertises</a>
-<a class="nav-link font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="#approche">Notre approche</a>
-<a class="nav-link font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="#realisations">Réalisations</a>
-<a class="nav-link font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="#a-propos">À propos</a>
-</nav>
-<div class="flex items-center gap-space-sm">
-<a class="hidden sm:inline-flex items-center gap-space-xs px-space-md py-space-sm bg-primary text-on-primary font-label-md text-label-md uppercase tracking-wider hover:bg-primary-container hover:text-on-primary-container transition-all" href="https://calendly.com/bamoussoudjangban-predylics/30min" target="_blank" rel="noopener"><span class="font-medium">Parlons de votre projet</span><span aria-hidden="true" class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
-<button id="menu-toggle" class="lg:hidden w-10 h-10 flex items-center justify-center text-on-surface hover:text-primary transition-colors" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-menu"><span aria-hidden="true" class="material-symbols-outlined text-[24px]">menu</span></button>
-</div>
-</div>
-<nav id="mobile-menu" class="hidden lg:hidden bg-surface-container-low px-6 pb-space-lg pt-space-sm" aria-label="Navigation mobile">
-<div class="flex flex-col font-label-md text-label-md uppercase tracking-wider">
-<a class="py-space-md text-on-surface-variant hover:text-primary transition-colors" href="#accueil">Accueil</a>
-<a class="py-space-md text-on-surface-variant hover:text-primary transition-colors" href="#expertises">Expertises</a>
-<a class="py-space-md text-on-surface-variant hover:text-primary transition-colors" href="#approche">Notre approche</a>
-<a class="py-space-md text-on-surface-variant hover:text-primary transition-colors" href="#realisations">Réalisations</a>
-<a class="py-space-md text-on-surface-variant hover:text-primary transition-colors" href="#a-propos">À propos</a>
-<a class="mt-space-sm inline-flex items-center justify-center gap-space-xs px-space-md py-space-md bg-primary text-on-primary font-semibold" href="https://calendly.com/bamoussoudjangban-predylics/30min" target="_blank" rel="noopener"><span>Parlons de votre projet</span><span aria-hidden="true" class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
-</div>
-</nav>
-</header>
-<main class="w-full pt-20 bg-surface min-h-[calc(100vh-80px)]"><div class="flex flex-col w-full text-on-surface">
-<!-- 1. HERO SECTION -->
-<section class="relative w-full overflow-hidden bg-surface pb-space-xl" id="accueil">
-<div class="max-w-7xl mx-auto px-6 lg:px-12 pt-space-xl">
-<div class="flex flex-col gap-space-lg">
-<!-- Tagline Pill with Telemetry Pulse Indicator -->
-<div class="inline-flex flex-wrap items-center gap-space-sm self-start px-space-md py-space-xs bg-surface-container-high text-primary font-label-md text-label-md uppercase tracking-widest shadow-sm">
-<span class="relative flex h-2 w-2">
-<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-</span>
-<span>Conseil Stratégique & Ingénierie Appliquée</span>
-<span class="text-outline font-label-sm text-label-sm tracking-normal">SYS.REF // 2025.1</span>
-</div>
-<!-- Headline & Monospaced Subhead Grid -->
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-end">
-<div class="lg:col-span-8">
-<h1 class="font-display-xl text-display-xl-mobile md:text-display-xl text-on-surface tracking-tight leading-[1.08]">
-              L'intelligence artificielle et la data, <span class="text-primary underline decoration-primary/40 underline-offset-8">pensées pour la production.</span>
-</h1>
-</div>
-<div class="lg:col-span-4 flex flex-col justify-end">
-<p class="font-body-lg text-body-lg text-on-surface-variant">
-              Nous concevons et industrialisons des systèmes d'intelligence artificielle et des plateformes data robustes, évolutifs et adaptés aux enjeux critiques de votre organisation.
-            </p>
-</div>
-</div>
-<!-- Call to Action Cluster -->
-<div class="flex flex-wrap items-center gap-space-md pt-space-sm">
-<a class="inline-flex items-center gap-space-sm px-space-lg py-space-md bg-primary text-on-primary font-label-md text-label-md uppercase tracking-wider font-semibold hover:bg-primary-container transition-colors shadow-md" href="https://calendly.com/bamoussoudjangban-predylics/30min" target="_blank" rel="noopener">
-<span>Échanger avec nos experts</span>
-<span aria-hidden="true" class="material-symbols-outlined text-[18px]">arrow_forward</span>
-</a>
-<a class="inline-flex items-center gap-space-sm px-space-lg py-space-md bg-surface-container-high text-on-surface hover:text-primary hover:bg-surface-container-highest font-label-md text-label-md uppercase tracking-wider transition-colors shadow-sm" href="#expertises">
-<span>Découvrir nos expertises</span>
-<span aria-hidden="true" class="material-symbols-outlined text-[18px]">south</span>
-</a>
-<div class="hidden xl:flex items-center gap-space-md ml-auto text-outline font-label-sm text-label-sm uppercase tracking-wider">
-<span class="inline-block w-2 h-2 bg-primary"></span>
-<span>Zero Slideware</span>
-<span class="text-surface-variant">/</span>
-<span>Production First</span>
-<span class="text-surface-variant">/</span>
-<span>Sovereign Stacks</span>
-</div>
-</div>
-<!-- Technical Telemetry Banner: Reference Architecture -->
-<div class="mt-space-lg bg-surface-container-low p-space-lg shadow-xl">
-<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md pb-space-md bg-surface-container-high px-space-md py-space-xs">
-<div class="flex items-center gap-space-sm">
-<span aria-hidden="true" class="material-symbols-outlined text-primary text-[20px]">account_tree</span>
-<span class="font-label-md text-label-md uppercase tracking-wider text-on-surface font-semibold">
-                Architecture Référente · Agent Orchestration & Unified Data Lakehouse
+
+<body
+  class="bg-surface font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container">
+  <header class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-md shadow-[0_1px_8px_rgba(0,0,0,0.4)]">
+    <div class="h-20 max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between gap-space-md">
+      <div class="flex items-center gap-space-lg">
+        <a class="flex items-center" href="#accueil" aria-label="Predylics — accueil"><img alt="Predylics"
+            class="h-7 w-auto" src="assets/logo-predylics-light.png" width="130" height="28" /></a>
+        <span
+          class="hidden xl:inline-block font-label-sm text-label-sm text-outline tracking-wider uppercase pl-space-sm">//
+          AI & Data Engineering</span>
+      </div>
+      <nav class="hidden lg:flex items-center gap-space-lg" aria-label="Navigation principale">
+        <a class="nav-link font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors"
+          href="#accueil">Accueil</a>
+        <a class="nav-link font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors"
+          href="#expertises">Expertises</a>
+        <a class="nav-link font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors"
+          href="#approche">Notre approche</a>
+        <a class="nav-link font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors"
+          href="#realisations">Réalisations</a>
+        <a class="nav-link font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors"
+          href="#a-propos">À propos</a>
+      </nav>
+      <div class="flex items-center gap-space-sm">
+        <a class="hidden sm:inline-flex items-center gap-space-xs px-space-md py-space-sm bg-primary text-on-primary font-label-md text-label-md uppercase tracking-wider hover:bg-primary-container hover:text-on-primary-container transition-all"
+          href="https://calendly.com/bamoussoudjangban-predylics/30min" target="_blank" rel="noopener"><span
+            class="font-medium">Parlons de votre projet</span><span aria-hidden="true"
+            class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
+        <button id="menu-toggle"
+          class="lg:hidden w-10 h-10 flex items-center justify-center text-on-surface hover:text-primary transition-colors"
+          type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-menu"><span
+            aria-hidden="true" class="material-symbols-outlined text-[24px]">menu</span></button>
+      </div>
+    </div>
+    <nav id="mobile-menu" class="hidden lg:hidden bg-surface-container-low px-6 pb-space-lg pt-space-sm"
+      aria-label="Navigation mobile">
+      <div class="flex flex-col font-label-md text-label-md uppercase tracking-wider">
+        <a class="py-space-md text-on-surface-variant hover:text-primary transition-colors" href="#accueil">Accueil</a>
+        <a class="py-space-md text-on-surface-variant hover:text-primary transition-colors"
+          href="#expertises">Expertises</a>
+        <a class="py-space-md text-on-surface-variant hover:text-primary transition-colors" href="#approche">Notre
+          approche</a>
+        <a class="py-space-md text-on-surface-variant hover:text-primary transition-colors"
+          href="#realisations">Réalisations</a>
+        <a class="py-space-md text-on-surface-variant hover:text-primary transition-colors" href="#a-propos">À
+          propos</a>
+        <a class="mt-space-sm inline-flex items-center justify-center gap-space-xs px-space-md py-space-md bg-primary text-on-primary font-semibold"
+          href="https://calendly.com/bamoussoudjangban-predylics/30min" target="_blank" rel="noopener"><span>Parlons de
+            votre projet</span><span aria-hidden="true"
+            class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
+      </div>
+    </nav>
+  </header>
+  <main class="w-full pt-20 bg-surface min-h-[calc(100vh-80px)]">
+    <div class="flex flex-col w-full text-on-surface">
+      <!-- 1. HERO SECTION -->
+      <section class="relative w-full overflow-hidden bg-surface pb-space-xl" id="accueil">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 pt-space-xl">
+          <div class="flex flex-col gap-space-lg">
+            <!-- Tagline Pill with Telemetry Pulse Indicator -->
+            <div
+              class="inline-flex flex-wrap items-center gap-space-sm self-start px-space-md py-space-xs bg-surface-container-high text-primary font-label-md text-label-md uppercase tracking-widest shadow-sm">
+              <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
               </span>
-</div>
-<div class="flex flex-wrap items-center gap-x-space-lg gap-y-space-xs font-label-sm text-label-sm text-on-surface-variant tracking-wider">
-<span class="inline-flex items-center gap-space-xs"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> SLA: 99.98%</span>
-<span class="inline-flex items-center gap-space-xs"><span class="w-1.5 h-1.5 bg-secondary rounded-full"></span> LATENCY: &lt; 120ms</span>
-<span class="inline-flex items-center gap-space-xs text-primary"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> AUDITABLE FALLBACK ACTIVE</span>
-</div>
-</div>
-<!-- Pure CSS/SVG Architecture Node System -->
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-md pt-space-lg">
-<!-- Layer 1: Ingestion & Telemetry -->
-<div class="bg-surface-container p-space-md flex flex-col justify-between shadow-sm">
-<div class="space-y-space-xs">
-<div class="flex justify-between items-center text-outline font-label-sm text-label-sm">
-<span>LAYER 01</span>
-<span>INGESTION</span>
-</div>
-<h2 class="font-headline-sm text-headline-sm text-on-surface font-medium pt-space-xs">Input Layer</h2>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Collecte continue, batchs et flux hétérogènes multi-sources sécurisés.</p>
-</div>
-<div class="space-y-space-xs pt-space-md">
-<div class="bg-surface-container-high px-space-sm py-space-xs flex justify-between items-center font-label-sm text-label-sm">
-<span class="text-on-surface">Event Streams (Kafka)</span>
-<span class="text-primary font-mono">1.2 GB/s</span>
-</div>
-<div class="bg-surface-container-high px-space-sm py-space-xs flex justify-between items-center font-label-sm text-label-sm">
-<span class="text-on-surface">CRM & ERP Connectors</span>
-<span class="text-outline font-mono">REST/gRPC</span>
-</div>
-<div class="bg-surface-container-high px-space-sm py-space-xs flex justify-between items-center font-label-sm text-label-sm">
-<span class="text-on-surface">Documents Non Structurés</span>
-<span class="text-secondary font-mono">PDF/OCR</span>
-</div>
-</div>
-</div>
-<!-- Layer 2: Lakehouse & Semantic Storage -->
-<div class="bg-surface-container p-space-md flex flex-col justify-between shadow-sm">
-<div class="space-y-space-xs">
-<div class="flex justify-between items-center text-outline font-label-sm text-label-sm">
-<span>LAYER 02</span>
-<span>DATA FOUNDATION</span>
-</div>
-<h2 class="font-headline-sm text-headline-sm text-on-surface font-medium pt-space-xs">Data Backbone</h2>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Stockage unifié, sémantique Iceberg et index vectoriels haute densité.</p>
-</div>
-<div class="space-y-space-xs pt-space-md">
-<div class="bg-surface-container-high px-space-sm py-space-xs flex justify-between items-center font-label-sm text-label-sm">
-<span class="text-on-surface">Bronze / Silver / Gold Lake</span>
-<span class="text-primary font-mono">Delta/Iceberg</span>
-</div>
-<div class="bg-surface-container-high px-space-sm py-space-xs flex justify-between items-center font-label-sm text-label-sm">
-<span class="text-on-surface">Vector Embeddings Store</span>
-<span class="text-primary font-mono">HNSW Index</span>
-</div>
-<div class="bg-surface-container-high px-space-sm py-space-xs flex justify-between items-center font-label-sm text-label-sm">
-<span class="text-on-surface">Contrats de données dbt</span>
-<span class="text-outline font-mono">Validated</span>
-</div>
-</div>
-</div>
-<!-- Layer 3: Reasoning Swarm -->
-<div class="bg-surface-container p-space-md flex flex-col justify-between shadow-sm">
-<div class="space-y-space-xs">
-<div class="flex justify-between items-center text-primary font-label-sm text-label-sm">
-<span>LAYER 03</span>
-<span>REASONING CORE</span>
-</div>
-<h2 class="font-headline-sm text-headline-sm text-primary font-medium pt-space-xs">Multi-Agent Swarm</h2>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Orchestration décentralisée d'agents spécialisés autonomes.</p>
-</div>
-<div class="space-y-space-xs pt-space-md">
-<div class="bg-surface-container-high px-space-sm py-space-xs flex justify-between items-center font-label-sm text-label-sm">
-<span class="text-on-surface">Planning & Routing Agent</span>
-<span class="text-primary font-mono">ReAct</span>
-</div>
-<div class="bg-surface-container-high px-space-sm py-space-xs flex justify-between items-center font-label-sm text-label-sm">
-<span class="text-on-surface">Hybrid Retrieval Agent</span>
-<span class="text-primary font-mono">Sparse/Dense</span>
-</div>
-<div class="bg-surface-container-high px-space-sm py-space-xs flex justify-between items-center font-label-sm text-label-sm">
-<span class="text-on-surface">Deterministic Auditor</span>
-<span class="text-secondary font-mono">100% Guarded</span>
-</div>
-</div>
-</div>
-<!-- Layer 4: Governance & Ops -->
-<div class="bg-surface-container p-space-md flex flex-col justify-between shadow-sm">
-<div class="space-y-space-xs">
-<div class="flex justify-between items-center text-outline font-label-sm text-label-sm">
-<span>LAYER 04</span>
-<span>OBSERVABILITY</span>
-</div>
-<h2 class="font-headline-sm text-headline-sm text-on-surface font-medium pt-space-xs">MLOps & Guardrails</h2>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Supervision temps réel, traçabilité et détection de dérive statistique.</p>
-</div>
-<div class="space-y-space-xs pt-space-md">
-<div class="bg-surface-container-high px-space-sm py-space-xs flex justify-between items-center font-label-sm text-label-sm">
-<span class="text-on-surface">Model Drift Telemetry</span>
-<span class="text-primary font-mono">KS-Test OK</span>
-</div>
-<div class="bg-surface-container-high px-space-sm py-space-xs flex justify-between items-center font-label-sm text-label-sm">
-<span class="text-on-surface">Token FinOps & Cache</span>
-<span class="text-outline font-mono">-42% Cost</span>
-</div>
-<div class="bg-surface-container-high px-space-sm py-space-xs flex justify-between items-center font-label-sm text-label-sm">
-<span class="text-on-surface">Audit Trails Immuables</span>
-<span class="text-secondary font-mono">SHA-256</span>
-</div>
-</div>
-</div>
-</div>
-<!-- Bottom Micro-metrics Bar -->
-<div class="mt-space-lg pt-space-md bg-surface-container-lowest px-space-md py-space-sm flex flex-wrap items-center justify-between gap-space-md text-on-surface-variant font-label-sm text-label-sm">
-<div class="flex flex-wrap items-center gap-x-space-lg gap-y-space-xs">
-<span class="text-on-surface font-semibold">INFRASTRUCTURE STATUS:</span>
-<span class="text-primary">EVALUATION BENCHMARK: 94.8% ACC</span>
-<span>ZERO DATA LEAKAGE VERIFIED</span>
-<span>EU AI ACT COMPLIANT</span>
-</div>
-<div class="text-outline">
-              LATENCY P99: 184ms · DUAL LLM BACKBONE (MISTRAL / ANTHROPIC)
+              <span>Conseil Stratégique & Ingénierie Appliquée</span>
+              <span class="text-outline font-label-sm text-label-sm tracking-normal">SYS.REF // 2025.1</span>
             </div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- 2. EXPERTISE SECTION (The Two Pillars) -->
-<section class="w-full bg-surface-container-lowest py-space-xl" id="expertises">
-<div class="max-w-7xl mx-auto px-6 lg:px-12">
-<!-- Section Header -->
-<div class="flex flex-col gap-space-xs max-w-3xl pb-space-xl">
-<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-semibold">// DEUX PILIERS D'ACTION</span>
-<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface tracking-tight">Deux expertises. Une même exigence d'ingénierie.</h2>
-<p class="font-body-lg text-body-lg text-on-surface-variant">Une synergie native entre la rigueur de l'ingénierie des données et la puissance des modèles autonomes pour délivrer un avantage compétitif mesurable.</p>
-</div>
-<!-- Two Pillar Cards Grid -->
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-space-lg">
-<!-- PILLAR 1: ARTIFICIAL INTELLIGENCE -->
-<div class="bg-surface-container p-space-lg md:p-space-xl flex flex-col justify-between relative overflow-hidden group shadow-lg">
-<div class="space-y-space-md">
-<div class="flex justify-between items-center text-outline font-label-sm text-label-sm pb-space-sm bg-surface-container-high px-space-md py-space-xs">
-<span class="text-primary font-semibold">PILIER 01</span>
-<span>AUTONOMOUS INTELLIGENCE</span>
-</div>
-<h3 class="font-headline-md text-headline-md text-on-surface">Intelligence Artificielle</h3>
-<p class="font-body-md text-body-md text-primary font-medium">Des systèmes intelligents, conçus pour fonctionner à grande échelle.</p>
-<p class="font-body-sm text-body-sm text-on-surface-variant">
-              Nous dépassons les prototypes isolés pour déployer des agents de raisonnement, des pipelines RAG avancés et des modèles prédictifs intégrés de bout en bout dans vos opérations de production.
-            </p>
-<!-- Vector Diagram: Multi-Agent Topology -->
-<div class="bg-surface-container-lowest p-space-md my-space-md">
-<div class="flex justify-between items-center font-label-sm text-label-sm text-outline pb-space-sm">
-<span>MULTI-AGENT ORCHESTRATION GRAPH</span>
-<span class="text-primary font-mono">DYNAMIC RE-ROUTING</span>
-</div>
-<svg class="w-full h-auto text-primary" fill="none" stroke="currentColor" viewbox="0 0 500 130">
-<!-- Nodes -->
-<rect class="fill-surface-container-high stroke-outline" height="40" stroke-width="1" width="100" x="20" y="45"></rect>
-<text class="font-label-sm text-[11px]" fill="currentColor" text-anchor="middle" x="70" y="68">Coordinator</text>
-<path class="stroke-primary" d="M120 65 L 180 30" stroke-dasharray="3 3" stroke-width="1.5"></path>
-<path class="stroke-primary" d="M120 65 L 180 65" stroke-width="1.5"></path>
-<path class="stroke-primary" d="M120 65 L 180 100" stroke-dasharray="3 3" stroke-width="1.5"></path>
-<rect class="fill-surface-container stroke-outline" height="35" stroke-width="1" width="110" x="180" y="10"></rect>
-<text class="font-label-sm text-[10px]" fill="#DFE2EE" text-anchor="middle" x="235" y="32">Agent RAG Hybride</text>
-<rect class="fill-surface-container stroke-primary" height="35" stroke-width="1.5" width="110" x="180" y="48"></rect>
-<text class="font-label-sm text-[10px]" fill="#45DEED" text-anchor="middle" x="235" y="70">Agent Code & Query</text>
-<rect class="fill-surface-container stroke-outline" height="35" stroke-width="1" width="110" x="180" y="85"></rect>
-<text class="font-label-sm text-[10px]" fill="#DFE2EE" text-anchor="middle" x="235" y="107">Agent Validation</text>
-<path class="stroke-outline" d="M290 30 L 350 65" stroke-width="1"></path>
-<path class="stroke-primary" d="M290 65 L 350 65" stroke-width="1.5"></path>
-<path class="stroke-outline" d="M290 100 L 350 65" stroke-width="1"></path>
-<rect class="fill-surface-container-highest stroke-secondary" height="40" stroke-width="1.5" width="130" x="350" y="45"></rect>
-<text class="font-label-sm text-[11px]" fill="#BAC3FF" text-anchor="middle" x="415" y="68">Vérification Sémantique</text>
-</svg>
-</div>
-<!-- Bullet Matrix -->
-<ul class="space-y-space-xs font-body-sm text-body-sm text-on-surface">
-<li class="flex items-start gap-space-sm bg-surface-container-high p-space-sm">
-<span aria-hidden="true" class="material-symbols-outlined text-primary text-[18px] mt-0.5">smart_toy</span>
-<div><strong class="font-medium text-on-surface">Systèmes Multi-Agents :</strong> Orchestration distribuée, délégation de tâches complexes et tool-calling sécurisé.</div>
-</li>
-<li class="flex items-start gap-space-sm bg-surface-container-high p-space-sm">
-<span aria-hidden="true" class="material-symbols-outlined text-primary text-[18px] mt-0.5">neurology</span>
-<div><strong class="font-medium text-on-surface">IA Générative & RAG Avancé :</strong> Recherche hybride, graph-RAG, vector stores et indexation dense souveraine.</div>
-</li>
-<li class="flex items-start gap-space-sm bg-surface-container-high p-space-sm">
-<span aria-hidden="true" class="material-symbols-outlined text-primary text-[18px] mt-0.5">deployed_code</span>
-<div><strong class="font-medium text-on-surface">MLOps & LLMOps :</strong> Évaluation continue, registre de modèles, détection de dérive et déploiement blue/green.</div>
-</li>
-<li class="flex items-start gap-space-sm bg-surface-container-high p-space-sm">
-<span aria-hidden="true" class="material-symbols-outlined text-primary text-[18px] mt-0.5">trending_up</span>
-<div><strong class="font-medium text-on-surface">Machine Learning Prédictif :</strong> Séries temporelles complexes, scoring des risques, vision industrielle et NLP.</div>
-</li>
-<li class="flex items-start gap-space-sm bg-surface-container-high p-space-sm">
-<span aria-hidden="true" class="material-symbols-outlined text-primary text-[18px] mt-0.5">shield</span>
-<div><strong class="font-medium text-on-surface">Sécurité & Gouvernance :</strong> Contrôle des hallucinations, anonymisation PII et conformité aux standards européens.</div>
-</li>
-</ul>
-</div>
-<div class="pt-space-lg">
-<a class="inline-flex items-center gap-space-xs text-primary font-label-md text-label-md uppercase tracking-wider hover:text-primary-fixed transition-colors" href="#expertises">
-<span>Explorer l'ingénierie IA</span>
-<span aria-hidden="true" class="material-symbols-outlined text-[16px]">arrow_forward</span>
-</a>
-</div>
-</div>
-<!-- PILLAR 2: DATA ENGINEERING -->
-<div class="bg-surface-container p-space-lg md:p-space-xl flex flex-col justify-between relative overflow-hidden group shadow-lg">
-<div class="space-y-space-md">
-<div class="flex justify-between items-center text-outline font-label-sm text-label-sm pb-space-sm bg-surface-container-high px-space-md py-space-xs">
-<span class="text-secondary font-semibold">PILIER 02</span>
-<span>DATA INFRASTRUCTURE</span>
-</div>
-<h3 class="font-headline-md text-headline-md text-on-surface">Data Engineering</h3>
-<p class="font-body-md text-body-md text-secondary font-medium">Des fondations data fiables pour accélérer vos ambitions.</p>
-<p class="font-body-sm text-body-sm text-on-surface-variant">
-              L'excellence algorithmique n'a aucune valeur sans données intègres, fraîches et accessibles. Nous concevons les autoroutes de l'information qui alimentent vos modèles et vos analyses d'aide à la décision.
-            </p>
-<!-- Vector Diagram: Data Pipeline Lifecycle -->
-<div class="bg-surface-container-lowest p-space-md my-space-md">
-<div class="flex justify-between items-center font-label-sm text-label-sm text-outline pb-space-sm">
-<span>PIPELINE STREAM & LAKEHOUSE FLOW</span>
-<span class="text-secondary font-mono">ZERO LOSS GUARANTEED</span>
-</div>
-<svg class="w-full h-auto text-secondary" fill="none" stroke="currentColor" viewbox="0 0 500 130">
-<rect class="fill-surface-container stroke-outline" height="40" stroke-width="1" width="80" x="10" y="45"></rect>
-<text class="font-label-sm text-[10px]" fill="#DFE2EE" text-anchor="middle" x="50" y="68">Producers</text>
-<path class="stroke-secondary" d="M90 65 L 130 65" stroke-width="1.5"></path>
-<rect class="fill-surface-container-high stroke-secondary" height="60" stroke-width="1" width="95" x="130" y="35"></rect>
-<text class="font-label-sm text-[10px]" fill="#BAC3FF" text-anchor="middle" x="177" y="60">Event Stream</text>
-<text class="font-label-sm text-[9px]" fill="#859395" text-anchor="middle" x="177" y="78">Kafka / Flink</text>
-<path class="stroke-secondary" d="M225 65 L 265 65" stroke-width="1.5"></path>
-<rect class="fill-surface-container stroke-outline" height="80" stroke-width="1" width="105" x="265" y="25"></rect>
-<text class="font-label-sm text-[10px]" fill="#45DEED" text-anchor="middle" x="317" y="55">Lakehouse Core</text>
-<text class="font-label-sm text-[9px]" fill="#DFE2EE" text-anchor="middle" x="317" y="72">Iceberg / Delta</text>
-<text class="font-label-sm text-[8px]" fill="#859395" text-anchor="middle" x="317" y="88">dbt Semantic</text>
-<path class="stroke-secondary" d="M370 65 L 410 65" stroke-width="1.5"></path>
-<rect class="fill-surface-container-highest stroke-secondary" height="40" stroke-width="1.5" width="80" x="410" y="45"></rect>
-<text class="font-label-sm text-[10px]" fill="#BAC3FF" text-anchor="middle" x="450" y="68">Serving API</text>
-</svg>
-</div>
-<!-- Bullet Matrix -->
-<ul class="space-y-space-xs font-body-sm text-body-sm text-on-surface">
-<li class="flex items-start gap-space-sm bg-surface-container-high p-space-sm">
-<span aria-hidden="true" class="material-symbols-outlined text-secondary text-[18px] mt-0.5">dataset</span>
-<div><strong class="font-medium text-on-surface">Architectures Modern Data Platform :</strong> Unification des flux analytiques et opérationnels, formats ouverts (Iceberg, Parquet).</div>
-</li>
-<li class="flex items-start gap-space-sm bg-surface-container-high p-space-sm">
-<span aria-hidden="true" class="material-symbols-outlined text-secondary text-[18px] mt-0.5">sync_alt</span>
-<div><strong class="font-medium text-on-surface">Pipelines Streaming & Batch :</strong> Traitement temps réel haute volumétrie, idempotence et tolérance aux fautes.</div>
-</li>
-<li class="flex items-start gap-space-sm bg-surface-container-high p-space-sm">
-<span aria-hidden="true" class="material-symbols-outlined text-secondary text-[18px] mt-0.5">verified</span>
-<div><strong class="font-medium text-on-surface">Data Quality & Observabilité :</strong> Tests unitaires sur les données, contrats de schéma et monitoring d'anomalies.</div>
-</li>
-<li class="flex items-start gap-space-sm bg-surface-container-high p-space-sm">
-<span aria-hidden="true" class="material-symbols-outlined text-secondary text-[18px] mt-0.5">cloud</span>
-<div><strong class="font-medium text-on-surface">Cloud Infrastructure & FinOps :</strong> Déploiements souverains Snowflake, Databricks, GCP & AWS avec optimisation des coûts.</div>
-</li>
-<li class="flex items-start gap-space-sm bg-surface-container-high p-space-sm">
-<span aria-hidden="true" class="material-symbols-outlined text-secondary text-[18px] mt-0.5">hub</span>
-<div><strong class="font-medium text-on-surface">Gouvernance & Data Mesh :</strong> Découplage par domaines métier, catalogues actifs et conformité RGPD native.</div>
-</li>
-</ul>
-</div>
-<div class="pt-space-lg">
-<a class="inline-flex items-center gap-space-xs text-secondary font-label-md text-label-md uppercase tracking-wider hover:text-secondary-fixed transition-colors" href="#expertises">
-<span>Explorer nos architectures data</span>
-<span aria-hidden="true" class="material-symbols-outlined text-[16px]">arrow_forward</span>
-</a>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- 3. CAPABILITIES GRID (6 detailed modules) -->
-<section class="w-full bg-surface py-space-xl">
-<div class="max-w-7xl mx-auto px-6 lg:px-12">
-<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md pb-space-xl">
-<div class="space-y-space-xs max-w-2xl">
-<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-semibold">// CATALOGUE DES CAPACITÉS</span>
-<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface tracking-tight">Expertises d'ingénierie approfondies</h2>
-<p class="font-body-md text-body-md text-on-surface-variant">Des compétences techniques de pointe déployées par des architectes et ingénieurs praticiens.</p>
-</div>
-<div class="text-outline font-label-sm text-label-sm uppercase tracking-wider">
-          MODULES TECHNIQUE // 01 — 06
+            <!-- Headline & Monospaced Subhead Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-end">
+              <div class="lg:col-span-8">
+                <h1
+                  class="font-display-xl text-display-xl-mobile md:text-display-xl text-on-surface tracking-tight leading-[1.08]">
+                  L'intelligence artificielle et la data, <span
+                    class="text-primary underline decoration-primary/40 underline-offset-8">pensées pour la
+                    production.</span>
+                </h1>
+              </div>
+              <div class="lg:col-span-4 flex flex-col justify-end">
+                <p class="font-body-lg text-body-lg text-on-surface-variant">
+                  Nous concevons et industrialisons des systèmes d'intelligence artificielle et des plateformes data
+                  robustes, évolutifs et adaptés aux enjeux critiques de votre organisation.
+                </p>
+              </div>
+            </div>
+            <!-- Call to Action Cluster -->
+            <div class="flex flex-wrap items-center gap-space-md pt-space-sm">
+              <a class="inline-flex items-center gap-space-sm px-space-lg py-space-md bg-primary text-on-primary font-label-md text-label-md uppercase tracking-wider font-semibold hover:bg-primary-container transition-colors shadow-md"
+                href="https://calendly.com/bamoussoudjangban-predylics/30min" target="_blank" rel="noopener">
+                <span>Échanger avec nos experts</span>
+                <span aria-hidden="true" class="material-symbols-outlined text-[18px]">arrow_forward</span>
+              </a>
+              <a class="inline-flex items-center gap-space-sm px-space-lg py-space-md bg-surface-container-high text-on-surface hover:text-primary hover:bg-surface-container-highest font-label-md text-label-md uppercase tracking-wider transition-colors shadow-sm"
+                href="#expertises">
+                <span>Découvrir nos expertises</span>
+                <span aria-hidden="true" class="material-symbols-outlined text-[18px]">south</span>
+              </a>
+              <div
+                class="hidden xl:flex items-center gap-space-md ml-auto text-outline font-label-sm text-label-sm uppercase tracking-wider">
+                <span class="inline-block w-2 h-2 bg-primary"></span>
+                <span>Zero Slideware</span>
+                <span class="text-surface-variant">/</span>
+                <span>Production First</span>
+                <span class="text-surface-variant">/</span>
+                <span>Sovereign Stacks</span>
+              </div>
+            </div>
+            <!-- Technical Telemetry Banner: Reference Architecture -->
+            <div class="mt-space-lg bg-surface-container-low p-space-lg shadow-xl">
+              <div
+                class="flex flex-col md:flex-row md:items-center justify-between gap-space-md pb-space-md bg-surface-container-high px-space-md py-space-xs">
+                <div class="flex items-center gap-space-sm">
+                  <span aria-hidden="true"
+                    class="material-symbols-outlined text-primary text-[20px]">account_tree</span>
+                  <span class="font-label-md text-label-md uppercase tracking-wider text-on-surface font-semibold">
+                    Architecture Référente · Agent Orchestration & Unified Data Lakehouse
+                  </span>
+                </div>
+                <div
+                  class="flex flex-wrap items-center gap-x-space-lg gap-y-space-xs font-label-sm text-label-sm text-on-surface-variant tracking-wider">
+                  <span class="inline-flex items-center gap-space-xs"><span
+                      class="w-1.5 h-1.5 bg-primary rounded-full"></span> SLA: 99.98%</span>
+                  <span class="inline-flex items-center gap-space-xs"><span
+                      class="w-1.5 h-1.5 bg-secondary rounded-full"></span> LATENCY: &lt; 120ms</span>
+                  <span class="inline-flex items-center gap-space-xs text-primary"><span
+                      class="w-1.5 h-1.5 bg-primary rounded-full"></span> AUDITABLE FALLBACK ACTIVE</span>
+                </div>
+              </div>
+              <!-- Pure CSS/SVG Architecture Node System -->
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-md pt-space-lg">
+                <!-- Layer 1: Ingestion & Telemetry -->
+                <div class="bg-surface-container p-space-md flex flex-col justify-between shadow-sm">
+                  <div class="space-y-space-xs">
+                    <div class="flex justify-between items-center text-outline font-label-sm text-label-sm">
+                      <span>LAYER 01</span>
+                      <span>INGESTION</span>
+                    </div>
+                    <h2 class="font-headline-sm text-headline-sm text-on-surface font-medium pt-space-xs">Input Layer
+                    </h2>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant">Collecte continue, batchs et flux
+                      hétérogènes multi-sources sécurisés.</p>
+                  </div>
+                  <div class="space-y-space-xs pt-space-md">
+                    <div
+                      class="bg-surface-container-high px-space-sm py-space-xs flex justify-between items-center font-label-sm text-label-sm">
+                      <span class="text-on-surface">Event Streams (Kafka)</span>
+                      <span class="text-primary font-mono">1.2 GB/s</span>
+                    </div>
+                    <div
+                      class="bg-surface-container-high px-space-sm py-space-xs flex justify-between items-center font-label-sm text-label-sm">
+                      <span class="text-on-surface">CRM & ERP Connectors</span>
+                      <span class="text-outline font-mono">REST/gRPC</span>
+                    </div>
+                    <div
+                      class="bg-surface-container-high px-space-sm py-space-xs flex justify-between items-center font-label-sm text-label-sm">
+                      <span class="text-on-surface">Documents Non Structurés</span>
+                      <span class="text-secondary font-mono">PDF/OCR</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- Layer 2: Lakehouse & Semantic Storage -->
+                <div class="bg-surface-container p-space-md flex flex-col justify-between shadow-sm">
+                  <div class="space-y-space-xs">
+                    <div class="flex justify-between items-center text-outline font-label-sm text-label-sm">
+                      <span>LAYER 02</span>
+                      <span>DATA FOUNDATION</span>
+                    </div>
+                    <h2 class="font-headline-sm text-headline-sm text-on-surface font-medium pt-space-xs">Data Backbone
+                    </h2>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant">Stockage unifié, sémantique Iceberg et
+                      index vectoriels haute densité.</p>
+                  </div>
+                  <div class="space-y-space-xs pt-space-md">
+                    <div
+                      class="bg-surface-container-high px-space-sm py-space-xs flex justify-between items-center font-label-sm text-label-sm">
+                      <span class="text-on-surface">Bronze / Silver / Gold Lake</span>
+                      <span class="text-primary font-mono">Delta/Iceberg</span>
+                    </div>
+                    <div
+                      class="bg-surface-container-high px-space-sm py-space-xs flex justify-between items-center font-label-sm text-label-sm">
+                      <span class="text-on-surface">Vector Embeddings Store</span>
+                      <span class="text-primary font-mono">HNSW Index</span>
+                    </div>
+                    <div
+                      class="bg-surface-container-high px-space-sm py-space-xs flex justify-between items-center font-label-sm text-label-sm">
+                      <span class="text-on-surface">Contrats de données dbt</span>
+                      <span class="text-outline font-mono">Validated</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- Layer 3: Reasoning Swarm -->
+                <div class="bg-surface-container p-space-md flex flex-col justify-between shadow-sm">
+                  <div class="space-y-space-xs">
+                    <div class="flex justify-between items-center text-primary font-label-sm text-label-sm">
+                      <span>LAYER 03</span>
+                      <span>REASONING CORE</span>
+                    </div>
+                    <h2 class="font-headline-sm text-headline-sm text-primary font-medium pt-space-xs">Multi-Agent Swarm
+                    </h2>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant">Orchestration décentralisée d'agents
+                      spécialisés autonomes.</p>
+                  </div>
+                  <div class="space-y-space-xs pt-space-md">
+                    <div
+                      class="bg-surface-container-high px-space-sm py-space-xs flex justify-between items-center font-label-sm text-label-sm">
+                      <span class="text-on-surface">Planning & Routing Agent</span>
+                      <span class="text-primary font-mono">ReAct</span>
+                    </div>
+                    <div
+                      class="bg-surface-container-high px-space-sm py-space-xs flex justify-between items-center font-label-sm text-label-sm">
+                      <span class="text-on-surface">Hybrid Retrieval Agent</span>
+                      <span class="text-primary font-mono">Sparse/Dense</span>
+                    </div>
+                    <div
+                      class="bg-surface-container-high px-space-sm py-space-xs flex justify-between items-center font-label-sm text-label-sm">
+                      <span class="text-on-surface">Deterministic Auditor</span>
+                      <span class="text-secondary font-mono">100% Guarded</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- Layer 4: Governance & Ops -->
+                <div class="bg-surface-container p-space-md flex flex-col justify-between shadow-sm">
+                  <div class="space-y-space-xs">
+                    <div class="flex justify-between items-center text-outline font-label-sm text-label-sm">
+                      <span>LAYER 04</span>
+                      <span>OBSERVABILITY</span>
+                    </div>
+                    <h2 class="font-headline-sm text-headline-sm text-on-surface font-medium pt-space-xs">MLOps &
+                      Guardrails</h2>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant">Supervision temps réel, traçabilité et
+                      détection de dérive statistique.</p>
+                  </div>
+                  <div class="space-y-space-xs pt-space-md">
+                    <div
+                      class="bg-surface-container-high px-space-sm py-space-xs flex justify-between items-center font-label-sm text-label-sm">
+                      <span class="text-on-surface">Model Drift Telemetry</span>
+                      <span class="text-primary font-mono">KS-Test OK</span>
+                    </div>
+                    <div
+                      class="bg-surface-container-high px-space-sm py-space-xs flex justify-between items-center font-label-sm text-label-sm">
+                      <span class="text-on-surface">Token FinOps & Cache</span>
+                      <span class="text-outline font-mono">-42% Cost</span>
+                    </div>
+                    <div
+                      class="bg-surface-container-high px-space-sm py-space-xs flex justify-between items-center font-label-sm text-label-sm">
+                      <span class="text-on-surface">Audit Trails Immuables</span>
+                      <span class="text-secondary font-mono">SHA-256</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Bottom Micro-metrics Bar -->
+              <div
+                class="mt-space-lg pt-space-md bg-surface-container-lowest px-space-md py-space-sm flex flex-wrap items-center justify-between gap-space-md text-on-surface-variant font-label-sm text-label-sm">
+                <div class="flex flex-wrap items-center gap-x-space-lg gap-y-space-xs">
+                  <span class="text-on-surface font-semibold">INFRASTRUCTURE STATUS:</span>
+                  <span class="text-primary">EVALUATION BENCHMARK: 94.8% ACC</span>
+                  <span>ZERO DATA LEAKAGE VERIFIED</span>
+                  <span>EU AI ACT COMPLIANT</span>
+                </div>
+                <div class="text-outline">
+                  LATENCY P99: 184ms · DUAL LLM BACKBONE (MISTRAL / ANTHROPIC)
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-</div>
-<!-- 6-Card Grid -->
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-md">
-<!-- Module 1: Systèmes d'agents IA -->
-<div class="bg-surface-container p-space-lg flex flex-col justify-between shadow-md">
-<div class="space-y-space-md">
-<div class="flex justify-between items-center">
-<span class="p-space-xs bg-surface-container-highest text-primary">
-<span aria-hidden="true" class="material-symbols-outlined text-[24px]">psychology</span>
-</span>
-<span class="font-label-sm text-label-sm text-outline">MOD.01 // REASONING</span>
-</div>
-<div>
-<h3 class="font-headline-sm text-headline-sm text-on-surface">Systèmes d'Agents IA</h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant pt-space-xs">
-                Orchestration multi-agents, planification dynamique avec boucles de rétroaction et exécution d'appels d'outils (tool calling) étanches et sécurisés.
-              </p>
-</div>
-<div class="bg-surface-container-high p-space-sm space-y-space-xs font-label-sm text-label-sm">
-<div class="flex justify-between text-on-surface">
-<span>Mécanisme de consensus</span>
-<span class="text-primary">Tree of Thoughts</span>
-</div>
-<div class="flex justify-between text-on-surface-variant">
-<span>Sécurité d'exécution</span>
-<span class="text-on-surface">Sandboxed Containers</span>
-</div>
-</div>
-</div>
-<div class="pt-space-md flex items-center justify-between text-outline font-label-sm text-label-sm">
-<span>LangChain · CrewAI · AutoGen</span>
-<span class="text-primary font-mono">&gt;_ RUN</span>
-</div>
-</div>
-<!-- Module 2: IA Générative & LLMOps -->
-<div class="bg-surface-container p-space-lg flex flex-col justify-between shadow-md">
-<div class="space-y-space-md">
-<div class="flex justify-between items-center">
-<span class="p-space-xs bg-surface-container-highest text-primary">
-<span aria-hidden="true" class="material-symbols-outlined text-[24px]">model_training</span>
-</span>
-<span class="font-label-sm text-label-sm text-outline">MOD.02 // LLMOPS</span>
-</div>
-<div>
-<h3 class="font-headline-sm text-headline-sm text-on-surface">IA Générative & LLMOps</h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant pt-space-xs">
-                Pipelines RAG hybrides (vecteurs + BM25), fine-tuning supervisé (LoRA/QLoRA), et évaluation automatisée de la qualité des réponses générées.
-              </p>
-</div>
-<div class="bg-surface-container-high p-space-sm space-y-space-xs font-label-sm text-label-sm">
-<div class="flex justify-between text-on-surface">
-<span>Précision d'extraction</span>
-<span class="text-primary">99.1% Recall</span>
-</div>
-<div class="flex justify-between text-on-surface-variant">
-<span>Gestion de cache sémantique</span>
-<span class="text-on-surface">Redis Vector</span>
-</div>
-</div>
-</div>
-<div class="pt-space-md flex items-center justify-between text-outline font-label-sm text-label-sm">
-<span>Ragas · LlamaIndex · vLLM</span>
-<span class="text-primary font-mono">&gt;_ RUN</span>
-</div>
-</div>
-<!-- Module 3: MLOps & Industrialisation -->
-<div class="bg-surface-container p-space-lg flex flex-col justify-between shadow-md">
-<div class="space-y-space-md">
-<div class="flex justify-between items-center">
-<span class="p-space-xs bg-surface-container-highest text-secondary">
-<span aria-hidden="true" class="material-symbols-outlined text-[24px]">automation</span>
-</span>
-<span class="font-label-sm text-label-sm text-outline">MOD.03 // PIPELINES</span>
-</div>
-<div>
-<h3 class="font-headline-sm text-headline-sm text-on-surface">MLOps & Industrialisation</h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant pt-space-xs">
-                Intégration continue pour les modèles de machine learning, registres de features, surveillance automatisée du drift statistique et rollback sans coupure.
-              </p>
-</div>
-<div class="bg-surface-container-high p-space-sm space-y-space-xs font-label-sm text-label-sm">
-<div class="flex justify-between text-on-surface">
-<span>Cycle de déploiement</span>
-<span class="text-secondary">&lt; 15 min automatisé</span>
-</div>
-<div class="flex justify-between text-on-surface-variant">
-<span>Contrôle de dérive</span>
-<span class="text-on-surface">Evidently AI</span>
-</div>
-</div>
-</div>
-<div class="pt-space-md flex items-center justify-between text-outline font-label-sm text-label-sm">
-<span>MLflow · Kubeflow · Seldon</span>
-<span class="text-secondary font-mono">&gt;_ RUN</span>
-</div>
-</div>
-<!-- Module 4: Machine Learning & Data Science -->
-<div class="bg-surface-container p-space-lg flex flex-col justify-between shadow-md">
-<div class="space-y-space-md">
-<div class="flex justify-between items-center">
-<span class="p-space-xs bg-surface-container-highest text-on-surface">
-<span aria-hidden="true" class="material-symbols-outlined text-[24px]">analytics</span>
-</span>
-<span class="font-label-sm text-label-sm text-outline">MOD.04 // PREDICTIVE</span>
-</div>
-<div>
-<h3 class="font-headline-sm text-headline-sm text-on-surface">Machine Learning & DS</h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant pt-space-xs">
-                Modélisation prédictive supervisée/non supervisée, séries temporelles multivariées, inférence causale et traitement avancé des flux d'images et textes.
-              </p>
-</div>
-<div class="bg-surface-container-high p-space-sm space-y-space-xs font-label-sm text-label-sm">
-<div class="flex justify-between text-on-surface">
-<span>Temps de prédiction</span>
-<span class="text-primary">&lt; 12ms edge/cloud</span>
-</div>
-<div class="flex justify-between text-on-surface-variant">
-<span>Explicabilité</span>
-<span class="text-on-surface">SHAP / LIME native</span>
-</div>
-</div>
-</div>
-<div class="pt-space-md flex items-center justify-between text-outline font-label-sm text-label-sm">
-<span>PyTorch · LightGBM · ONNX</span>
-<span class="text-primary font-mono">&gt;_ RUN</span>
-</div>
-</div>
-<!-- Module 5: Data Platforms & Architecture -->
-<div class="bg-surface-container p-space-lg flex flex-col justify-between shadow-md">
-<div class="space-y-space-md">
-<div class="flex justify-between items-center">
-<span class="p-space-xs bg-surface-container-highest text-secondary">
-<span aria-hidden="true" class="material-symbols-outlined text-[24px]">layers</span>
-</span>
-<span class="font-label-sm text-label-sm text-outline">MOD.05 // PLATFORM</span>
-</div>
-<div>
-<h3 class="font-headline-sm text-headline-sm text-on-surface">Data Platforms & Lakehouse</h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant pt-space-xs">
-                Migration et modernisation vers des architectures Lakehouse, découplage calcul/stockage et implémentation de couches sémantiques avec dbt.
-              </p>
-</div>
-<div class="bg-surface-container-high p-space-sm space-y-space-xs font-label-sm text-label-sm">
-<div class="flex justify-between text-on-surface">
-<span>Format de table</span>
-<span class="text-secondary">Apache Iceberg</span>
-</div>
-<div class="flex justify-between text-on-surface-variant">
-<span>Optimisation stockage</span>
-<span class="text-on-surface">Z-Order / Compaction</span>
-</div>
-</div>
-</div>
-<div class="pt-space-md flex items-center justify-between text-outline font-label-sm text-label-sm">
-<span>Snowflake · Databricks · dbt</span>
-<span class="text-secondary font-mono">&gt;_ RUN</span>
-</div>
-</div>
-<!-- Module 6: Data Engineering & Orchestration -->
-<div class="bg-surface-container p-space-lg flex flex-col justify-between shadow-md">
-<div class="space-y-space-md">
-<div class="flex justify-between items-center">
-<span class="p-space-xs bg-surface-container-highest text-primary">
-<span aria-hidden="true" class="material-symbols-outlined text-[24px]">hub</span>
-</span>
-<span class="font-label-sm text-label-sm text-outline">MOD.06 // ORCHESTRATION</span>
-</div>
-<div>
-<h3 class="font-headline-sm text-headline-sm text-on-surface">Pipelines & Orchestration</h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant pt-space-xs">
-                Conception de pipelines de données déclaratifs, streaming temps réel et flux d'ingestion à tolérance de panne avec monitoring actif des dépendances.
-              </p>
-</div>
-<div class="bg-surface-container-high p-space-sm space-y-space-xs font-label-sm text-label-sm">
-<div class="flex justify-between text-on-surface">
-<span>Reprise sur incident</span>
-<span class="text-primary">Reprise à état zéro</span>
-</div>
-<div class="flex justify-between text-on-surface-variant">
-<span>Tolérance de panne</span>
-<span class="text-on-surface">Exactly-Once</span>
-</div>
-</div>
-</div>
-<div class="pt-space-md flex items-center justify-between text-outline font-label-sm text-label-sm">
-<span>Dagster · Airflow · Kafka</span>
-<span class="text-primary font-mono">&gt;_ RUN</span>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- 4. APPROACH SECTION -->
-<section class="w-full bg-surface-container-low py-space-xl" id="approche">
-<div class="max-w-7xl mx-auto px-6 lg:px-12">
-<div class="flex flex-col gap-space-xs max-w-3xl pb-space-xl">
-<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-semibold">// MÉTHODOLOGIE OPÉRATIONNELLE</span>
-<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface tracking-tight">De l'ambition à la mise en production.</h2>
-<p class="font-body-lg text-body-lg text-on-surface-variant">Un cadre méthodologique rigoureux, éprouvé pour éliminer les effets d'annonce et garantir une adoption durable par vos équipes métiers.</p>
-</div>
-<!-- 4-Step Timeline Horizontal Layout -->
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-md">
-<!-- Step 01 -->
-<div class="bg-surface-container p-space-lg flex flex-col justify-between shadow-md">
-<div class="space-y-space-md">
-<div class="flex justify-between items-center">
-<span class="font-display-xl text-[36px] font-semibold text-primary leading-none">01</span>
-<span class="px-space-sm py-space-xs bg-surface-container-high text-outline font-label-sm text-label-sm uppercase">Phase 1</span>
-</div>
-<div>
-<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Cadrer</h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant pt-space-xs">
-                Évaluation approfondie de la faisabilité technique, sélection des cas d'usage à fort retour sur investissement économique et audit des risques réglementaires et éthiques.
-              </p>
-</div>
-</div>
-<div class="mt-space-lg pt-space-sm bg-surface-container-high p-space-sm">
-<span class="text-primary font-label-sm text-label-sm uppercase block font-semibold">Livrable clé :</span>
-<span class="font-body-sm text-body-sm text-on-surface">Data & AI Feasibility Charter + ROI Matrix</span>
-</div>
-</div>
-<!-- Step 02 -->
-<div class="bg-surface-container p-space-lg flex flex-col justify-between shadow-md">
-<div class="space-y-space-md">
-<div class="flex justify-between items-center">
-<span class="font-display-xl text-[36px] font-semibold text-primary leading-none">02</span>
-<span class="px-space-sm py-space-xs bg-surface-container-high text-outline font-label-sm text-label-sm uppercase">Phase 2</span>
-</div>
-<div>
-<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Architecturer</h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant pt-space-xs">
-                Design détaillé des architectures cibles, sélection technologique agnostique et prototypage technique (Proof of Concept) sur vos données réelles pour valider les hypothèses.
-              </p>
-</div>
-</div>
-<div class="mt-space-lg pt-space-sm bg-surface-container-high p-space-sm">
-<span class="text-primary font-label-sm text-label-sm uppercase block font-semibold">Livrable clé :</span>
-<span class="font-body-sm text-body-sm text-on-surface">Architecture Blueprint + Prototype Validé</span>
-</div>
-</div>
-<!-- Step 03 -->
-<div class="bg-surface-container p-space-lg flex flex-col justify-between shadow-md">
-<div class="space-y-space-md">
-<div class="flex justify-between items-center">
-<span class="font-display-xl text-[36px] font-semibold text-secondary leading-none">03</span>
-<span class="px-space-sm py-space-xs bg-surface-container-high text-outline font-label-sm text-label-sm uppercase">Phase 3</span>
-</div>
-<div>
-<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Industrialiser</h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant pt-space-xs">
-                Développement selon les standards stricts du Software Craftsmanship, mise en place des pipelines CI/CD, tests automatisés de non-régression et observabilité temps réel.
-              </p>
-</div>
-</div>
-<div class="mt-space-lg pt-space-sm bg-surface-container-high p-space-sm">
-<span class="text-secondary font-label-sm text-label-sm uppercase block font-semibold">Livrable clé :</span>
-<span class="font-body-sm text-body-sm text-on-surface">Production Release v1.0 + MLOps Pipelines</span>
-</div>
-</div>
-<!-- Step 04 -->
-<div class="bg-surface-container p-space-lg flex flex-col justify-between shadow-md">
-<div class="space-y-space-md">
-<div class="flex justify-between items-center">
-<span class="font-display-xl text-[36px] font-semibold text-primary leading-none">04</span>
-<span class="px-space-sm py-space-xs bg-surface-container-high text-outline font-label-sm text-label-sm uppercase">Phase 4</span>
-</div>
-<div>
-<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Faire Évoluer</h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant pt-space-xs">
-                Monitoring de dérive statistique en production, passage à l'échelle sur l'ensemble de vos divisions et transfert approfondi de compétences pour rendre vos équipes autonomes.
-              </p>
-</div>
-</div>
-<div class="mt-space-lg pt-space-sm bg-surface-container-high p-space-sm">
-<span class="text-primary font-label-sm text-label-sm uppercase block font-semibold">Livrable clé :</span>
-<span class="font-body-sm text-body-sm text-on-surface">Régime de Croisière + Runbook & Mentoring</span>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- 5. VALUE PROPOSITION -->
-<section class="w-full bg-surface py-space-xl" id="a-propos">
-<div class="max-w-7xl mx-auto px-6 lg:px-12">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start pb-space-lg">
-<div class="lg:col-span-5 space-y-space-xs">
-<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-semibold">// ENGAGEMENT & CULTURE</span>
-<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface tracking-tight">Une expertise pointue. Des solutions qui tiennent dans la durée.</h2>
-<p class="font-body-lg text-body-lg text-on-surface-variant pt-space-xs">
-            Nous avons banni les approches superficielles et le jargon non vérifié. Notre réputation repose sur notre capacité à livrer du code fiable et des architectures pérennes.
-          </p>
-</div>
-<div class="lg:col-span-7 flex flex-col gap-space-sm">
-<!-- Pillar 1 -->
-<div class="p-space-lg bg-surface-container flex flex-col md:flex-row gap-space-md justify-between items-start shadow-sm hover:bg-surface-container-high transition-colors">
-<div class="w-12 h-12 flex-shrink-0 bg-surface-container-highest flex items-center justify-center text-primary">
-<span aria-hidden="true" class="material-symbols-outlined text-[24px]">terminal</span>
-</div>
-<div class="space-y-space-xs flex-1">
-<h3 class="font-headline-sm text-headline-sm text-on-surface font-medium">Engineering-first mindset</h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant">
-                Pas de consultants généralistes ni de diapositives théoriques. Nos équipes sont composées d'ingénieurs et d'architectes chevronnés qui maîtrisent le code, les protocoles et les systèmes d'exploitation.
-              </p>
-</div>
-</div>
-<!-- Pillar 2 -->
-<div class="p-space-lg bg-surface-container flex flex-col md:flex-row gap-space-md justify-between items-start shadow-sm hover:bg-surface-container-high transition-colors">
-<div class="w-12 h-12 flex-shrink-0 bg-surface-container-highest flex items-center justify-center text-primary">
-<span aria-hidden="true" class="material-symbols-outlined text-[24px]">science</span>
-</div>
-<div class="space-y-space-xs flex-1">
-<h3 class="font-headline-sm text-headline-sm text-on-surface font-medium">Deep technical expertise</h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant">
-                Veille permanente sur les dernières avancées de recherche (papiers arXiv, contributions open source, benchmarks indépendants) pour apporter uniquement les innovations qui fonctionnent réellement.
-              </p>
-</div>
-</div>
-<!-- Pillar 3 -->
-<div class="p-space-lg bg-surface-container flex flex-col md:flex-row gap-space-md justify-between items-start shadow-sm hover:bg-surface-container-high transition-colors">
-<div class="w-12 h-12 flex-shrink-0 bg-surface-container-highest flex items-center justify-center text-secondary">
-<span aria-hidden="true" class="material-symbols-outlined text-[24px]">security</span>
-</div>
-<div class="space-y-space-xs flex-1">
-<h3 class="font-headline-sm text-headline-sm text-on-surface font-medium">Production readiness</h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant">
-                Fiabilité opérationnelle 24/7 garantie. Nos conceptions intègrent dès le départ les contraintes d'infrastructure critique : tolérance aux pannes, résilience réseau, et tests de charge intensifs.
-              </p>
-</div>
-</div>
-<!-- Pillar 4 -->
-<div class="p-space-lg bg-surface-container flex flex-col md:flex-row gap-space-md justify-between items-start shadow-sm hover:bg-surface-container-high transition-colors">
-<div class="w-12 h-12 flex-shrink-0 bg-surface-container-highest flex items-center justify-center text-on-surface">
-<span aria-hidden="true" class="material-symbols-outlined text-[24px]">memory</span>
-</div>
-<div class="space-y-space-xs flex-1">
-<h3 class="font-headline-sm text-headline-sm text-on-surface font-medium">Scalability & maintainability</h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant">
-                Nous bâtissons des architectures modulaires conçues pour survivre à l'évolution des outils technologiques, évitant le verrouillage propriétaire et réduisant activement la dette technique.
-              </p>
-</div>
-</div>
-<!-- Pillar 5 -->
-<div class="p-space-lg bg-surface-container flex flex-col md:flex-row gap-space-md justify-between items-start shadow-sm hover:bg-surface-container-high transition-colors">
-<div class="w-12 h-12 flex-shrink-0 bg-surface-container-highest flex items-center justify-center text-primary">
-<span aria-hidden="true" class="material-symbols-outlined text-[24px]">currency_exchange</span>
-</div>
-<div class="space-y-space-xs flex-1">
-<h3 class="font-headline-sm text-headline-sm text-on-surface font-medium">Business value & pragmatic execution</h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant">
-                L'élégance technique n'est rien si elle ne génère pas un avantage économique direct. Chaque ligne de code et chaque pipeline data répondent à un indicateur de performance opérationnelle prédéfini.
-              </p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- 6. REALISTIC USE CASES (3 engineering benchmarks) -->
-<section class="w-full bg-surface-container-lowest py-space-xl" id="realisations">
-<div class="max-w-7xl mx-auto px-6 lg:px-12">
-<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md pb-space-lg">
-<div class="space-y-space-xs max-w-2xl">
-<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-semibold">// RETOURS D'EXPÉRIENCE VÉRIFIÉS</span>
-<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface tracking-tight">Cas d'usage représentatifs</h2>
-<p class="font-body-md text-body-md text-on-surface-variant">
-            Études de cas illustratives basées sur nos standards d'intervention auprès d'organisations complexes et d'environnements réglementés.
-          </p>
-</div>
-<div class="font-label-sm text-label-sm text-outline uppercase tracking-wider">
-          BENCHMARKS TECHNIQUES // ANONYMISED FOR IP
+      </section>
+      <!-- 2. EXPERTISE SECTION (The Two Pillars) -->
+      <section class="w-full bg-surface-container-lowest py-space-xl" id="expertises">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+          <!-- Section Header -->
+          <div class="flex flex-col gap-space-xs max-w-3xl pb-space-xl">
+            <span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-semibold">// DEUX
+              PILIERS D'ACTION</span>
+            <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface tracking-tight">Deux
+              expertises. Une même exigence d'ingénierie.</h2>
+            <p class="font-body-lg text-body-lg text-on-surface-variant">Une synergie native entre la rigueur de
+              l'ingénierie des données et la puissance des modèles autonomes pour délivrer un avantage compétitif
+              mesurable.</p>
+          </div>
+          <!-- Two Pillar Cards Grid -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-space-lg">
+            <!-- PILLAR 1: ARTIFICIAL INTELLIGENCE -->
+            <div
+              class="bg-surface-container p-space-lg md:p-space-xl flex flex-col justify-between relative overflow-hidden group shadow-lg">
+              <div class="space-y-space-md">
+                <div
+                  class="flex justify-between items-center text-outline font-label-sm text-label-sm pb-space-sm bg-surface-container-high px-space-md py-space-xs">
+                  <span class="text-primary font-semibold">PILIER 01</span>
+                  <span>AUTONOMOUS INTELLIGENCE</span>
+                </div>
+                <h3 class="font-headline-md text-headline-md text-on-surface">Intelligence Artificielle</h3>
+                <p class="font-body-md text-body-md text-primary font-medium">Des systèmes intelligents, conçus pour
+                  fonctionner à grande échelle.</p>
+                <p class="font-body-sm text-body-sm text-on-surface-variant">
+                  Nous dépassons les prototypes isolés pour déployer des agents de raisonnement, des pipelines RAG
+                  avancés et des modèles prédictifs intégrés de bout en bout dans vos opérations de production.
+                </p>
+                <!-- Vector Diagram: Multi-Agent Topology -->
+                <div class="bg-surface-container-lowest p-space-md my-space-md">
+                  <div class="flex justify-between items-center font-label-sm text-label-sm text-outline pb-space-sm">
+                    <span>MULTI-AGENT ORCHESTRATION GRAPH</span>
+                    <span class="text-primary font-mono">DYNAMIC RE-ROUTING</span>
+                  </div>
+                  <svg class="w-full h-auto text-primary" fill="none" stroke="currentColor" viewbox="0 0 500 130">
+                    <!-- Nodes -->
+                    <rect class="fill-surface-container-high stroke-outline" height="40" stroke-width="1" width="100"
+                      x="20" y="45"></rect>
+                    <text class="font-label-sm text-[11px]" fill="currentColor" text-anchor="middle" x="70"
+                      y="68">Coordinator</text>
+                    <path class="stroke-primary" d="M120 65 L 180 30" stroke-dasharray="3 3" stroke-width="1.5"></path>
+                    <path class="stroke-primary" d="M120 65 L 180 65" stroke-width="1.5"></path>
+                    <path class="stroke-primary" d="M120 65 L 180 100" stroke-dasharray="3 3" stroke-width="1.5"></path>
+                    <rect class="fill-surface-container stroke-outline" height="35" stroke-width="1" width="110" x="180"
+                      y="10"></rect>
+                    <text class="font-label-sm text-[10px]" fill="#DFE2EE" text-anchor="middle" x="235" y="32">Agent RAG
+                      Hybride</text>
+                    <rect class="fill-surface-container stroke-primary" height="35" stroke-width="1.5" width="110"
+                      x="180" y="48"></rect>
+                    <text class="font-label-sm text-[10px]" fill="#45DEED" text-anchor="middle" x="235" y="70">Agent
+                      Code & Query</text>
+                    <rect class="fill-surface-container stroke-outline" height="35" stroke-width="1" width="110" x="180"
+                      y="85"></rect>
+                    <text class="font-label-sm text-[10px]" fill="#DFE2EE" text-anchor="middle" x="235" y="107">Agent
+                      Validation</text>
+                    <path class="stroke-outline" d="M290 30 L 350 65" stroke-width="1"></path>
+                    <path class="stroke-primary" d="M290 65 L 350 65" stroke-width="1.5"></path>
+                    <path class="stroke-outline" d="M290 100 L 350 65" stroke-width="1"></path>
+                    <rect class="fill-surface-container-highest stroke-secondary" height="40" stroke-width="1.5"
+                      width="130" x="350" y="45"></rect>
+                    <text class="font-label-sm text-[11px]" fill="#BAC3FF" text-anchor="middle" x="415"
+                      y="68">Vérification Sémantique</text>
+                  </svg>
+                </div>
+                <!-- Bullet Matrix -->
+                <ul class="space-y-space-xs font-body-sm text-body-sm text-on-surface">
+                  <li class="flex items-start gap-space-sm bg-surface-container-high p-space-sm">
+                    <span aria-hidden="true"
+                      class="material-symbols-outlined text-primary text-[18px] mt-0.5">smart_toy</span>
+                    <div><strong class="font-medium text-on-surface">Systèmes Multi-Agents :</strong> Orchestration
+                      distribuée, délégation de tâches complexes et tool-calling sécurisé.</div>
+                  </li>
+                  <li class="flex items-start gap-space-sm bg-surface-container-high p-space-sm">
+                    <span aria-hidden="true"
+                      class="material-symbols-outlined text-primary text-[18px] mt-0.5">neurology</span>
+                    <div><strong class="font-medium text-on-surface">IA Générative & RAG Avancé :</strong> Recherche
+                      hybride, graph-RAG, vector stores et indexation dense souveraine.</div>
+                  </li>
+                  <li class="flex items-start gap-space-sm bg-surface-container-high p-space-sm">
+                    <span aria-hidden="true"
+                      class="material-symbols-outlined text-primary text-[18px] mt-0.5">deployed_code</span>
+                    <div><strong class="font-medium text-on-surface">MLOps & LLMOps :</strong> Évaluation continue,
+                      registre de modèles, détection de dérive et déploiement blue/green.</div>
+                  </li>
+                  <li class="flex items-start gap-space-sm bg-surface-container-high p-space-sm">
+                    <span aria-hidden="true"
+                      class="material-symbols-outlined text-primary text-[18px] mt-0.5">trending_up</span>
+                    <div><strong class="font-medium text-on-surface">Machine Learning Prédictif :</strong> Séries
+                      temporelles complexes, scoring des risques, vision industrielle et NLP.</div>
+                  </li>
+                  <li class="flex items-start gap-space-sm bg-surface-container-high p-space-sm">
+                    <span aria-hidden="true"
+                      class="material-symbols-outlined text-primary text-[18px] mt-0.5">shield</span>
+                    <div><strong class="font-medium text-on-surface">Sécurité & Gouvernance :</strong> Contrôle des
+                      hallucinations, anonymisation PII et conformité aux standards européens.</div>
+                  </li>
+                </ul>
+              </div>
+              <div class="pt-space-lg">
+                <a class="inline-flex items-center gap-space-xs text-primary font-label-md text-label-md uppercase tracking-wider hover:text-primary-fixed transition-colors"
+                  href="#expertises">
+                  <span>Explorer l'ingénierie IA</span>
+                  <span aria-hidden="true" class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                </a>
+              </div>
+            </div>
+            <!-- PILLAR 2: DATA ENGINEERING -->
+            <div
+              class="bg-surface-container p-space-lg md:p-space-xl flex flex-col justify-between relative overflow-hidden group shadow-lg">
+              <div class="space-y-space-md">
+                <div
+                  class="flex justify-between items-center text-outline font-label-sm text-label-sm pb-space-sm bg-surface-container-high px-space-md py-space-xs">
+                  <span class="text-secondary font-semibold">PILIER 02</span>
+                  <span>DATA INFRASTRUCTURE</span>
+                </div>
+                <h3 class="font-headline-md text-headline-md text-on-surface">Data Engineering</h3>
+                <p class="font-body-md text-body-md text-secondary font-medium">Des fondations data fiables pour
+                  accélérer vos ambitions.</p>
+                <p class="font-body-sm text-body-sm text-on-surface-variant">
+                  L'excellence algorithmique n'a aucune valeur sans données intègres, fraîches et accessibles. Nous
+                  concevons les autoroutes de l'information qui alimentent vos modèles et vos analyses d'aide à la
+                  décision.
+                </p>
+                <!-- Vector Diagram: Data Pipeline Lifecycle -->
+                <div class="bg-surface-container-lowest p-space-md my-space-md">
+                  <div class="flex justify-between items-center font-label-sm text-label-sm text-outline pb-space-sm">
+                    <span>PIPELINE STREAM & LAKEHOUSE FLOW</span>
+                    <span class="text-secondary font-mono">ZERO LOSS GUARANTEED</span>
+                  </div>
+                  <svg class="w-full h-auto text-secondary" fill="none" stroke="currentColor" viewbox="0 0 500 130">
+                    <rect class="fill-surface-container stroke-outline" height="40" stroke-width="1" width="80" x="10"
+                      y="45"></rect>
+                    <text class="font-label-sm text-[10px]" fill="#DFE2EE" text-anchor="middle" x="50"
+                      y="68">Producers</text>
+                    <path class="stroke-secondary" d="M90 65 L 130 65" stroke-width="1.5"></path>
+                    <rect class="fill-surface-container-high stroke-secondary" height="60" stroke-width="1" width="95"
+                      x="130" y="35"></rect>
+                    <text class="font-label-sm text-[10px]" fill="#BAC3FF" text-anchor="middle" x="177" y="60">Event
+                      Stream</text>
+                    <text class="font-label-sm text-[9px]" fill="#859395" text-anchor="middle" x="177" y="78">Kafka /
+                      Flink</text>
+                    <path class="stroke-secondary" d="M225 65 L 265 65" stroke-width="1.5"></path>
+                    <rect class="fill-surface-container stroke-outline" height="80" stroke-width="1" width="105" x="265"
+                      y="25"></rect>
+                    <text class="font-label-sm text-[10px]" fill="#45DEED" text-anchor="middle" x="317" y="55">Lakehouse
+                      Core</text>
+                    <text class="font-label-sm text-[9px]" fill="#DFE2EE" text-anchor="middle" x="317" y="72">Iceberg /
+                      Delta</text>
+                    <text class="font-label-sm text-[8px]" fill="#859395" text-anchor="middle" x="317" y="88">dbt
+                      Semantic</text>
+                    <path class="stroke-secondary" d="M370 65 L 410 65" stroke-width="1.5"></path>
+                    <rect class="fill-surface-container-highest stroke-secondary" height="40" stroke-width="1.5"
+                      width="80" x="410" y="45"></rect>
+                    <text class="font-label-sm text-[10px]" fill="#BAC3FF" text-anchor="middle" x="450" y="68">Serving
+                      API</text>
+                  </svg>
+                </div>
+                <!-- Bullet Matrix -->
+                <ul class="space-y-space-xs font-body-sm text-body-sm text-on-surface">
+                  <li class="flex items-start gap-space-sm bg-surface-container-high p-space-sm">
+                    <span aria-hidden="true"
+                      class="material-symbols-outlined text-secondary text-[18px] mt-0.5">dataset</span>
+                    <div><strong class="font-medium text-on-surface">Architectures Modern Data Platform :</strong>
+                      Unification des flux analytiques et opérationnels, formats ouverts (Iceberg, Parquet).</div>
+                  </li>
+                  <li class="flex items-start gap-space-sm bg-surface-container-high p-space-sm">
+                    <span aria-hidden="true"
+                      class="material-symbols-outlined text-secondary text-[18px] mt-0.5">sync_alt</span>
+                    <div><strong class="font-medium text-on-surface">Pipelines Streaming & Batch :</strong> Traitement
+                      temps réel haute volumétrie, idempotence et tolérance aux fautes.</div>
+                  </li>
+                  <li class="flex items-start gap-space-sm bg-surface-container-high p-space-sm">
+                    <span aria-hidden="true"
+                      class="material-symbols-outlined text-secondary text-[18px] mt-0.5">verified</span>
+                    <div><strong class="font-medium text-on-surface">Data Quality & Observabilité :</strong> Tests
+                      unitaires sur les données, contrats de schéma et monitoring d'anomalies.</div>
+                  </li>
+                  <li class="flex items-start gap-space-sm bg-surface-container-high p-space-sm">
+                    <span aria-hidden="true"
+                      class="material-symbols-outlined text-secondary text-[18px] mt-0.5">cloud</span>
+                    <div><strong class="font-medium text-on-surface">Cloud Infrastructure & FinOps :</strong>
+                      Déploiements souverains Snowflake, Databricks, GCP & AWS avec optimisation des coûts.</div>
+                  </li>
+                  <li class="flex items-start gap-space-sm bg-surface-container-high p-space-sm">
+                    <span aria-hidden="true"
+                      class="material-symbols-outlined text-secondary text-[18px] mt-0.5">hub</span>
+                    <div><strong class="font-medium text-on-surface">Gouvernance & Data Mesh :</strong> Découplage par
+                      domaines métier, catalogues actifs et conformité RGPD native.</div>
+                  </li>
+                </ul>
+              </div>
+              <div class="pt-space-lg">
+                <a class="inline-flex items-center gap-space-xs text-secondary font-label-md text-label-md uppercase tracking-wider hover:text-secondary-fixed transition-colors"
+                  href="#expertises">
+                  <span>Explorer nos architectures data</span>
+                  <span aria-hidden="true" class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
-</div>
-<!-- 3 Benchmark Cards -->
-<div class="grid grid-cols-1 lg:grid-cols-3 gap-space-lg pt-space-md">
-<!-- Case 1: Multi-Agents Regulatory & Finance -->
-<div class="bg-surface-container flex flex-col justify-between shadow-lg">
-<div class="p-space-lg space-y-space-md">
-<div class="flex justify-between items-center font-label-sm text-label-sm text-outline">
-<span class="px-space-xs py-0.5 bg-surface-container-highest text-primary">SERVICES FINANCIERS</span>
-<span>PARIS / LONDRES</span>
-</div>
-<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">
-              Système Multi-Agents pour l'Analyse Réglementaire et Financière
-            </h3>
-<div class="space-y-space-sm pt-space-xs">
-<div>
-<span class="font-label-sm text-label-sm text-outline uppercase block">Contexte :</span>
-<p class="font-body-sm text-body-sm text-on-surface-variant">
-                  Traitement de milliers de rapports réglementaires et prospectus avec exigences d'auditabilité stricte et zéro tolérance pour l'hallucination.
+      </section>
+      <!-- 3. CAPABILITIES GRID (6 detailed modules) -->
+      <section class="w-full bg-surface py-space-xl">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md pb-space-xl">
+            <div class="space-y-space-xs max-w-2xl">
+              <span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-semibold">//
+                CATALOGUE DES CAPACITÉS</span>
+              <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface tracking-tight">
+                Expertises d'ingénierie approfondies</h2>
+              <p class="font-body-md text-body-md text-on-surface-variant">Des compétences techniques de pointe
+                déployées par des architectes et ingénieurs praticiens.</p>
+            </div>
+            <div class="text-outline font-label-sm text-label-sm uppercase tracking-wider">
+              MODULES TECHNIQUE // 01 — 06
+            </div>
+          </div>
+          <!-- 6-Card Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-md">
+            <!-- Module 1: Systèmes d'agents IA -->
+            <div class="bg-surface-container p-space-lg flex flex-col justify-between shadow-md">
+              <div class="space-y-space-md">
+                <div class="flex justify-between items-center">
+                  <span class="p-space-xs bg-surface-container-highest text-primary">
+                    <span aria-hidden="true" class="material-symbols-outlined text-[24px]">psychology</span>
+                  </span>
+                  <span class="font-label-sm text-label-sm text-outline">MOD.01 // REASONING</span>
+                </div>
+                <div>
+                  <h3 class="font-headline-sm text-headline-sm text-on-surface">Systèmes d'Agents IA</h3>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant pt-space-xs">
+                    Orchestration multi-agents, planification dynamique avec boucles de rétroaction et exécution
+                    d'appels d'outils (tool calling) étanches et sécurisés.
+                  </p>
+                </div>
+                <div class="bg-surface-container-high p-space-sm space-y-space-xs font-label-sm text-label-sm">
+                  <div class="flex justify-between text-on-surface">
+                    <span>Mécanisme de consensus</span>
+                    <span class="text-primary">Tree of Thoughts</span>
+                  </div>
+                  <div class="flex justify-between text-on-surface-variant">
+                    <span>Sécurité d'exécution</span>
+                    <span class="text-on-surface">Sandboxed Containers</span>
+                  </div>
+                </div>
+              </div>
+              <div class="pt-space-md flex items-center justify-between text-outline font-label-sm text-label-sm">
+                <span>LangChain · CrewAI · AutoGen</span>
+                <span class="text-primary font-mono">&gt;_ RUN</span>
+              </div>
+            </div>
+            <!-- Module 2: IA Générative & LLMOps -->
+            <div class="bg-surface-container p-space-lg flex flex-col justify-between shadow-md">
+              <div class="space-y-space-md">
+                <div class="flex justify-between items-center">
+                  <span class="p-space-xs bg-surface-container-highest text-primary">
+                    <span aria-hidden="true" class="material-symbols-outlined text-[24px]">model_training</span>
+                  </span>
+                  <span class="font-label-sm text-label-sm text-outline">MOD.02 // LLMOPS</span>
+                </div>
+                <div>
+                  <h3 class="font-headline-sm text-headline-sm text-on-surface">IA Générative & LLMOps</h3>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant pt-space-xs">
+                    Pipelines RAG hybrides (vecteurs + BM25), fine-tuning supervisé (LoRA/QLoRA), et évaluation
+                    automatisée de la qualité des réponses générées.
+                  </p>
+                </div>
+                <div class="bg-surface-container-high p-space-sm space-y-space-xs font-label-sm text-label-sm">
+                  <div class="flex justify-between text-on-surface">
+                    <span>Précision d'extraction</span>
+                    <span class="text-primary">99.1% Recall</span>
+                  </div>
+                  <div class="flex justify-between text-on-surface-variant">
+                    <span>Gestion de cache sémantique</span>
+                    <span class="text-on-surface">Redis Vector</span>
+                  </div>
+                </div>
+              </div>
+              <div class="pt-space-md flex items-center justify-between text-outline font-label-sm text-label-sm">
+                <span>Ragas · LlamaIndex · vLLM</span>
+                <span class="text-primary font-mono">&gt;_ RUN</span>
+              </div>
+            </div>
+            <!-- Module 3: MLOps & Industrialisation -->
+            <div class="bg-surface-container p-space-lg flex flex-col justify-between shadow-md">
+              <div class="space-y-space-md">
+                <div class="flex justify-between items-center">
+                  <span class="p-space-xs bg-surface-container-highest text-secondary">
+                    <span aria-hidden="true" class="material-symbols-outlined text-[24px]">automation</span>
+                  </span>
+                  <span class="font-label-sm text-label-sm text-outline">MOD.03 // PIPELINES</span>
+                </div>
+                <div>
+                  <h3 class="font-headline-sm text-headline-sm text-on-surface">MLOps & Industrialisation</h3>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant pt-space-xs">
+                    Intégration continue pour les modèles de machine learning, registres de features, surveillance
+                    automatisée du drift statistique et rollback sans coupure.
+                  </p>
+                </div>
+                <div class="bg-surface-container-high p-space-sm space-y-space-xs font-label-sm text-label-sm">
+                  <div class="flex justify-between text-on-surface">
+                    <span>Cycle de déploiement</span>
+                    <span class="text-secondary">&lt; 15 min automatisé</span>
+                  </div>
+                  <div class="flex justify-between text-on-surface-variant">
+                    <span>Contrôle de dérive</span>
+                    <span class="text-on-surface">Evidently AI</span>
+                  </div>
+                </div>
+              </div>
+              <div class="pt-space-md flex items-center justify-between text-outline font-label-sm text-label-sm">
+                <span>MLflow · Kubeflow · Seldon</span>
+                <span class="text-secondary font-mono">&gt;_ RUN</span>
+              </div>
+            </div>
+            <!-- Module 4: Machine Learning & Data Science -->
+            <div class="bg-surface-container p-space-lg flex flex-col justify-between shadow-md">
+              <div class="space-y-space-md">
+                <div class="flex justify-between items-center">
+                  <span class="p-space-xs bg-surface-container-highest text-on-surface">
+                    <span aria-hidden="true" class="material-symbols-outlined text-[24px]">analytics</span>
+                  </span>
+                  <span class="font-label-sm text-label-sm text-outline">MOD.04 // PREDICTIVE</span>
+                </div>
+                <div>
+                  <h3 class="font-headline-sm text-headline-sm text-on-surface">Machine Learning & DS</h3>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant pt-space-xs">
+                    Modélisation prédictive supervisée/non supervisée, séries temporelles multivariées, inférence
+                    causale et traitement avancé des flux d'images et textes.
+                  </p>
+                </div>
+                <div class="bg-surface-container-high p-space-sm space-y-space-xs font-label-sm text-label-sm">
+                  <div class="flex justify-between text-on-surface">
+                    <span>Temps de prédiction</span>
+                    <span class="text-primary">&lt; 12ms edge/cloud</span>
+                  </div>
+                  <div class="flex justify-between text-on-surface-variant">
+                    <span>Explicabilité</span>
+                    <span class="text-on-surface">SHAP / LIME native</span>
+                  </div>
+                </div>
+              </div>
+              <div class="pt-space-md flex items-center justify-between text-outline font-label-sm text-label-sm">
+                <span>PyTorch · LightGBM · ONNX</span>
+                <span class="text-primary font-mono">&gt;_ RUN</span>
+              </div>
+            </div>
+            <!-- Module 5: Data Platforms & Architecture -->
+            <div class="bg-surface-container p-space-lg flex flex-col justify-between shadow-md">
+              <div class="space-y-space-md">
+                <div class="flex justify-between items-center">
+                  <span class="p-space-xs bg-surface-container-highest text-secondary">
+                    <span aria-hidden="true" class="material-symbols-outlined text-[24px]">layers</span>
+                  </span>
+                  <span class="font-label-sm text-label-sm text-outline">MOD.05 // PLATFORM</span>
+                </div>
+                <div>
+                  <h3 class="font-headline-sm text-headline-sm text-on-surface">Data Platforms & Lakehouse</h3>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant pt-space-xs">
+                    Migration et modernisation vers des architectures Lakehouse, découplage calcul/stockage et
+                    implémentation de couches sémantiques avec dbt.
+                  </p>
+                </div>
+                <div class="bg-surface-container-high p-space-sm space-y-space-xs font-label-sm text-label-sm">
+                  <div class="flex justify-between text-on-surface">
+                    <span>Format de table</span>
+                    <span class="text-secondary">Apache Iceberg</span>
+                  </div>
+                  <div class="flex justify-between text-on-surface-variant">
+                    <span>Optimisation stockage</span>
+                    <span class="text-on-surface">Z-Order / Compaction</span>
+                  </div>
+                </div>
+              </div>
+              <div class="pt-space-md flex items-center justify-between text-outline font-label-sm text-label-sm">
+                <span>Snowflake · Databricks · dbt</span>
+                <span class="text-secondary font-mono">&gt;_ RUN</span>
+              </div>
+            </div>
+            <!-- Module 6: Data Engineering & Orchestration -->
+            <div class="bg-surface-container p-space-lg flex flex-col justify-between shadow-md">
+              <div class="space-y-space-md">
+                <div class="flex justify-between items-center">
+                  <span class="p-space-xs bg-surface-container-highest text-primary">
+                    <span aria-hidden="true" class="material-symbols-outlined text-[24px]">hub</span>
+                  </span>
+                  <span class="font-label-sm text-label-sm text-outline">MOD.06 // ORCHESTRATION</span>
+                </div>
+                <div>
+                  <h3 class="font-headline-sm text-headline-sm text-on-surface">Pipelines & Orchestration</h3>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant pt-space-xs">
+                    Conception de pipelines de données déclaratifs, streaming temps réel et flux d'ingestion à tolérance
+                    de panne avec monitoring actif des dépendances.
+                  </p>
+                </div>
+                <div class="bg-surface-container-high p-space-sm space-y-space-xs font-label-sm text-label-sm">
+                  <div class="flex justify-between text-on-surface">
+                    <span>Reprise sur incident</span>
+                    <span class="text-primary">Reprise à état zéro</span>
+                  </div>
+                  <div class="flex justify-between text-on-surface-variant">
+                    <span>Tolérance de panne</span>
+                    <span class="text-on-surface">Exactly-Once</span>
+                  </div>
+                </div>
+              </div>
+              <div class="pt-space-md flex items-center justify-between text-outline font-label-sm text-label-sm">
+                <span>Dagster · Airflow · Kafka</span>
+                <span class="text-primary font-mono">&gt;_ RUN</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- 4. APPROACH SECTION -->
+      <section class="w-full bg-surface-container-low py-space-xl" id="approche">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+          <div class="flex flex-col gap-space-xs max-w-3xl pb-space-xl">
+            <span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-semibold">//
+              MÉTHODOLOGIE OPÉRATIONNELLE</span>
+            <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface tracking-tight">De
+              l'ambition à la mise en production.</h2>
+            <p class="font-body-lg text-body-lg text-on-surface-variant">Un cadre méthodologique rigoureux, éprouvé pour
+              éliminer les effets d'annonce et garantir une adoption durable par vos équipes métiers.</p>
+          </div>
+          <!-- 4-Step Timeline Horizontal Layout -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-md">
+            <!-- Step 01 -->
+            <div class="bg-surface-container p-space-lg flex flex-col justify-between shadow-md">
+              <div class="space-y-space-md">
+                <div class="flex justify-between items-center">
+                  <span class="font-display-xl text-[36px] font-semibold text-primary leading-none">01</span>
+                  <span
+                    class="px-space-sm py-space-xs bg-surface-container-high text-outline font-label-sm text-label-sm uppercase">Phase
+                    1</span>
+                </div>
+                <div>
+                  <h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Cadrer</h3>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant pt-space-xs">
+                    Évaluation approfondie de la faisabilité technique, sélection des cas d'usage à fort retour sur
+                    investissement économique et audit des risques réglementaires et éthiques.
+                  </p>
+                </div>
+              </div>
+              <div class="mt-space-lg pt-space-sm bg-surface-container-high p-space-sm">
+                <span class="text-primary font-label-sm text-label-sm uppercase block font-semibold">Livrable clé
+                  :</span>
+                <span class="font-body-sm text-body-sm text-on-surface">Data & AI Feasibility Charter + ROI
+                  Matrix</span>
+              </div>
+            </div>
+            <!-- Step 02 -->
+            <div class="bg-surface-container p-space-lg flex flex-col justify-between shadow-md">
+              <div class="space-y-space-md">
+                <div class="flex justify-between items-center">
+                  <span class="font-display-xl text-[36px] font-semibold text-primary leading-none">02</span>
+                  <span
+                    class="px-space-sm py-space-xs bg-surface-container-high text-outline font-label-sm text-label-sm uppercase">Phase
+                    2</span>
+                </div>
+                <div>
+                  <h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Architecturer</h3>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant pt-space-xs">
+                    Design détaillé des architectures cibles, sélection technologique agnostique et prototypage
+                    technique (Proof of Concept) sur vos données réelles pour valider les hypothèses.
+                  </p>
+                </div>
+              </div>
+              <div class="mt-space-lg pt-space-sm bg-surface-container-high p-space-sm">
+                <span class="text-primary font-label-sm text-label-sm uppercase block font-semibold">Livrable clé
+                  :</span>
+                <span class="font-body-sm text-body-sm text-on-surface">Architecture Blueprint + Prototype Validé</span>
+              </div>
+            </div>
+            <!-- Step 03 -->
+            <div class="bg-surface-container p-space-lg flex flex-col justify-between shadow-md">
+              <div class="space-y-space-md">
+                <div class="flex justify-between items-center">
+                  <span class="font-display-xl text-[36px] font-semibold text-secondary leading-none">03</span>
+                  <span
+                    class="px-space-sm py-space-xs bg-surface-container-high text-outline font-label-sm text-label-sm uppercase">Phase
+                    3</span>
+                </div>
+                <div>
+                  <h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Industrialiser</h3>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant pt-space-xs">
+                    Développement selon les standards stricts du Software Craftsmanship, mise en place des pipelines
+                    CI/CD, tests automatisés de non-régression et observabilité temps réel.
+                  </p>
+                </div>
+              </div>
+              <div class="mt-space-lg pt-space-sm bg-surface-container-high p-space-sm">
+                <span class="text-secondary font-label-sm text-label-sm uppercase block font-semibold">Livrable clé
+                  :</span>
+                <span class="font-body-sm text-body-sm text-on-surface">Production Release v1.0 + MLOps Pipelines</span>
+              </div>
+            </div>
+            <!-- Step 04 -->
+            <div class="bg-surface-container p-space-lg flex flex-col justify-between shadow-md">
+              <div class="space-y-space-md">
+                <div class="flex justify-between items-center">
+                  <span class="font-display-xl text-[36px] font-semibold text-primary leading-none">04</span>
+                  <span
+                    class="px-space-sm py-space-xs bg-surface-container-high text-outline font-label-sm text-label-sm uppercase">Phase
+                    4</span>
+                </div>
+                <div>
+                  <h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Faire Évoluer</h3>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant pt-space-xs">
+                    Monitoring de dérive statistique en production, passage à l'échelle sur l'ensemble de vos divisions
+                    et transfert approfondi de compétences pour rendre vos équipes autonomes.
+                  </p>
+                </div>
+              </div>
+              <div class="mt-space-lg pt-space-sm bg-surface-container-high p-space-sm">
+                <span class="text-primary font-label-sm text-label-sm uppercase block font-semibold">Livrable clé
+                  :</span>
+                <span class="font-body-sm text-body-sm text-on-surface">Régime de Croisière + Runbook & Mentoring</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- 5. VALUE PROPOSITION -->
+      <section class="w-full bg-surface py-space-xl" id="a-propos">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start pb-space-lg">
+            <div class="lg:col-span-5 space-y-space-xs">
+              <span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-semibold">//
+                ENGAGEMENT & CULTURE</span>
+              <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface tracking-tight">
+                Une expertise pointue. Des solutions qui tiennent dans la durée.</h2>
+              <p class="font-body-lg text-body-lg text-on-surface-variant pt-space-xs">
+                Nous avons banni les approches superficielles et le jargon non vérifié. Notre réputation repose sur
+                notre capacité à livrer du code fiable et des architectures pérennes.
+              </p>
+            </div>
+            <div class="lg:col-span-7 flex flex-col gap-space-sm">
+              <!-- Pillar 1 -->
+              <div
+                class="p-space-lg bg-surface-container flex flex-col md:flex-row gap-space-md justify-between items-start shadow-sm hover:bg-surface-container-high transition-colors">
+                <div
+                  class="w-12 h-12 flex-shrink-0 bg-surface-container-highest flex items-center justify-center text-primary">
+                  <span aria-hidden="true" class="material-symbols-outlined text-[24px]">terminal</span>
+                </div>
+                <div class="space-y-space-xs flex-1">
+                  <h3 class="font-headline-sm text-headline-sm text-on-surface font-medium">Engineering-first mindset
+                  </h3>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant">
+                    Pas de consultants généralistes ni de diapositives théoriques. Nos équipes sont composées
+                    d'ingénieurs et d'architectes chevronnés qui maîtrisent le code, les protocoles et les systèmes
+                    d'exploitation.
+                  </p>
+                </div>
+              </div>
+              <!-- Pillar 2 -->
+              <div
+                class="p-space-lg bg-surface-container flex flex-col md:flex-row gap-space-md justify-between items-start shadow-sm hover:bg-surface-container-high transition-colors">
+                <div
+                  class="w-12 h-12 flex-shrink-0 bg-surface-container-highest flex items-center justify-center text-primary">
+                  <span aria-hidden="true" class="material-symbols-outlined text-[24px]">science</span>
+                </div>
+                <div class="space-y-space-xs flex-1">
+                  <h3 class="font-headline-sm text-headline-sm text-on-surface font-medium">Deep technical expertise
+                  </h3>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant">
+                    Veille permanente sur les dernières avancées de recherche (papiers arXiv, contributions open source,
+                    benchmarks indépendants) pour apporter uniquement les innovations qui fonctionnent réellement.
+                  </p>
+                </div>
+              </div>
+              <!-- Pillar 3 -->
+              <div
+                class="p-space-lg bg-surface-container flex flex-col md:flex-row gap-space-md justify-between items-start shadow-sm hover:bg-surface-container-high transition-colors">
+                <div
+                  class="w-12 h-12 flex-shrink-0 bg-surface-container-highest flex items-center justify-center text-secondary">
+                  <span aria-hidden="true" class="material-symbols-outlined text-[24px]">security</span>
+                </div>
+                <div class="space-y-space-xs flex-1">
+                  <h3 class="font-headline-sm text-headline-sm text-on-surface font-medium">Production readiness</h3>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant">
+                    Fiabilité opérationnelle 24/7 garantie. Nos conceptions intègrent dès le départ les contraintes
+                    d'infrastructure critique : tolérance aux pannes, résilience réseau, et tests de charge intensifs.
+                  </p>
+                </div>
+              </div>
+              <!-- Pillar 4 -->
+              <div
+                class="p-space-lg bg-surface-container flex flex-col md:flex-row gap-space-md justify-between items-start shadow-sm hover:bg-surface-container-high transition-colors">
+                <div
+                  class="w-12 h-12 flex-shrink-0 bg-surface-container-highest flex items-center justify-center text-on-surface">
+                  <span aria-hidden="true" class="material-symbols-outlined text-[24px]">memory</span>
+                </div>
+                <div class="space-y-space-xs flex-1">
+                  <h3 class="font-headline-sm text-headline-sm text-on-surface font-medium">Scalability &
+                    maintainability</h3>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant">
+                    Nous bâtissons des architectures modulaires conçues pour survivre à l'évolution des outils
+                    technologiques, évitant le verrouillage propriétaire et réduisant activement la dette technique.
+                  </p>
+                </div>
+              </div>
+              <!-- Pillar 5 -->
+              <div
+                class="p-space-lg bg-surface-container flex flex-col md:flex-row gap-space-md justify-between items-start shadow-sm hover:bg-surface-container-high transition-colors">
+                <div
+                  class="w-12 h-12 flex-shrink-0 bg-surface-container-highest flex items-center justify-center text-primary">
+                  <span aria-hidden="true" class="material-symbols-outlined text-[24px]">currency_exchange</span>
+                </div>
+                <div class="space-y-space-xs flex-1">
+                  <h3 class="font-headline-sm text-headline-sm text-on-surface font-medium">Business value & pragmatic
+                    execution</h3>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant">
+                    L'élégance technique n'est rien si elle ne génère pas un avantage économique direct. Chaque ligne de
+                    code et chaque pipeline data répondent à un indicateur de performance opérationnelle prédéfini.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- 6. REALISTIC USE CASES (3 engineering benchmarks) -->
+      <section class="w-full bg-surface-container-lowest py-space-xl" id="realisations">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md pb-space-lg">
+            <div class="space-y-space-xs max-w-2xl">
+              <span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-semibold">// RETOURS
+                D'EXPÉRIENCE VÉRIFIÉS</span>
+              <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface tracking-tight">
+                Cas d'usage représentatifs</h2>
+              <p class="font-body-md text-body-md text-on-surface-variant">
+                Études de cas illustratives basées sur nos standards d'intervention auprès d'organisations complexes et
+                d'environnements réglementés.
+              </p>
+            </div>
+            <div class="font-label-sm text-label-sm text-outline uppercase tracking-wider">
+              BENCHMARKS TECHNIQUES // ANONYMISED FOR IP
+            </div>
+          </div>
+          <!-- 3 Benchmark Cards -->
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-space-lg pt-space-md">
+            <!-- Case 1: Multi-Agents Regulatory & Finance -->
+            <div class="bg-surface-container flex flex-col justify-between shadow-lg">
+              <div class="p-space-lg space-y-space-md">
+                <div class="flex justify-between items-center font-label-sm text-label-sm text-outline">
+                  <span class="px-space-xs py-0.5 bg-surface-container-highest text-primary">SERVICES FINANCIERS</span>
+                  <span>PARIS / LONDRES</span>
+                </div>
+                <h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">
+                  Système Multi-Agents pour l'Analyse Réglementaire et Financière
+                </h3>
+                <div class="space-y-space-sm pt-space-xs">
+                  <div>
+                    <span class="font-label-sm text-label-sm text-outline uppercase block">Contexte :</span>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant">
+                      Traitement de milliers de rapports réglementaires et prospectus avec exigences d'auditabilité
+                      stricte et zéro tolérance pour l'hallucination.
+                    </p>
+                  </div>
+                  <div>
+                    <span class="font-label-sm text-label-sm text-primary uppercase block">Solution d'ingénierie
+                      :</span>
+                    <p class="font-body-sm text-body-sm text-on-surface">
+                      Déploiement d'un essaim d'agents coordonnés avec validation humaine, auditabilité totale et
+                      traçabilité par empreintes cryptographiques.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-surface-container-high p-space-md space-y-space-xs">
+                <span class="font-label-sm text-label-sm text-outline uppercase">Impacts opérationnels :</span>
+                <div class="grid grid-cols-2 gap-space-sm font-label-sm text-label-sm pt-space-xs">
+                  <div>
+                    <span class="font-display-xl text-[24px] font-semibold text-primary block leading-tight">-75%</span>
+                    <span class="text-on-surface-variant text-[11px]">Temps d'audit de conformité</span>
+                  </div>
+                  <div>
+                    <span
+                      class="font-display-xl text-[24px] font-semibold text-on-surface block leading-tight">100%</span>
+                    <span class="text-on-surface-variant text-[11px]">Citations vérifiables</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Case 2: Modern Data Platform & Real-Time Lakehouse -->
+            <div class="bg-surface-container flex flex-col justify-between shadow-lg">
+              <div class="p-space-lg space-y-space-md">
+                <div class="flex justify-between items-center font-label-sm text-label-sm text-outline">
+                  <span class="px-space-xs py-0.5 bg-surface-container-highest text-secondary">INDUSTRIE & SUPPLY
+                    CHAIN</span>
+                  <span>FRANCE</span>
+                </div>
+                <h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">
+                  Modern Data Platform & Lakehouse Temps Réel
+                </h3>
+                <div class="space-y-space-sm pt-space-xs">
+                  <div>
+                    <span class="font-label-sm text-label-sm text-outline uppercase block">Contexte :</span>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant">
+                      Silos de données d'usines historiques, latence de reporting de 24h et incapacité à réagir aux
+                      goulets d'étranglement logistiques en flux tendu.
+                    </p>
+                  </div>
+                  <div>
+                    <span class="font-label-sm text-label-sm text-secondary uppercase block">Solution d'ingénierie
+                      :</span>
+                    <p class="font-body-sm text-body-sm text-on-surface">
+                      Refonte vers une architecture Iceberg découplée, ingestion continue Kafka/Flink et modélisation
+                      unifiée dbt pour 140 usines.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-surface-container-high p-space-md space-y-space-xs">
+                <span class="font-label-sm text-label-sm text-outline uppercase">Impacts opérationnels :</span>
+                <div class="grid grid-cols-2 gap-space-sm font-label-sm text-label-sm pt-space-xs">
+                  <div>
+                    <span class="font-display-xl text-[24px] font-semibold text-secondary block leading-tight">&lt; 3
+                      sec</span>
+                    <span class="text-on-surface-variant text-[11px]">Latence des métriques</span>
+                  </div>
+                  <div>
+                    <span
+                      class="font-display-xl text-[24px] font-semibold text-on-surface block leading-tight">-48%</span>
+                    <span class="text-on-surface-variant text-[11px]">Facturation cloud mensuelle</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Case 3: LLMOps & MLOps Enterprise Suite -->
+            <div class="bg-surface-container flex flex-col justify-between shadow-lg">
+              <div class="p-space-lg space-y-space-md">
+                <div class="flex justify-between items-center font-label-sm text-label-sm text-outline">
+                  <span class="px-space-xs py-0.5 bg-surface-container-highest text-primary">SANTÉ & PHARMA</span>
+                  <span>SUISSE / UE</span>
+                </div>
+                <h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">
+                  Chaîne LLMOps & MLOps Sécurisée Entreprise
+                </h3>
+                <div class="space-y-space-sm pt-space-xs">
+                  <div>
+                    <span class="font-label-sm text-label-sm text-outline uppercase block">Contexte :</span>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant">
+                      Multiplication de shadow-IA non contrôlées avec risques critiques de fuite de données de recherche
+                      sensibles et explosion des coûts API.
+                    </p>
+                  </div>
+                  <div>
+                    <span class="font-label-sm text-label-sm text-primary uppercase block">Solution d'ingénierie
+                      :</span>
+                    <p class="font-body-sm text-body-sm text-on-surface">
+                      Plateforme d'accès centralisée, passerelle LLM avec détection de PII, proxy de mise en cache
+                      sémantique et modèles open source auto-hébergés.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-surface-container-high p-space-md space-y-space-xs">
+                <span class="font-label-sm text-label-sm text-outline uppercase">Impacts opérationnels :</span>
+                <div class="grid grid-cols-2 gap-space-sm font-label-sm text-label-sm pt-space-xs">
+                  <div>
+                    <span class="font-display-xl text-[24px] font-semibold text-primary block leading-tight">100%</span>
+                    <span class="text-on-surface-variant text-[11px]">Données traitées en souverain</span>
+                  </div>
+                  <div>
+                    <span
+                      class="font-display-xl text-[24px] font-semibold text-on-surface block leading-tight">-60%</span>
+                    <span class="text-on-surface-variant text-[11px]">Coûts globaux d'inférence</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- 7. FINAL CTA SECTION (Obsidian Sovereign Core) -->
+      <section class="w-full bg-surface-container-lowest py-space-xl" id="contact">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+          <div class="bg-surface-container p-space-lg md:p-space-xl relative overflow-hidden shadow-2xl">
+            <!-- Background Vector Ambient Elements -->
+            <div class="absolute -right-16 -top-16 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none">
+            </div>
+            <div
+              class="absolute -left-16 -bottom-16 w-96 h-96 bg-secondary/5 rounded-full blur-3xl pointer-events-none">
+            </div>
+            <div class="relative z-10 max-w-4xl space-y-space-lg">
+              <div class="space-y-space-xs">
+                <span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-semibold">//
+                  ENGAGEMENT TECHNIQUE</span>
+                <h2
+                  class="font-display-xl text-[34px] md:text-[44px] lg:text-[56px] text-on-surface tracking-tight leading-[1.1]">
+                  Construisons vos prochains <span class="text-primary">systèmes intelligents.</span>
+                </h2>
+                <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl pt-space-xs">
+                  De la stratégie architecturale à la mise en production continue, donnons une réalité technique
+                  rigoureuse à vos ambitions IA et Data.
                 </p>
-</div>
-<div>
-<span class="font-label-sm text-label-sm text-primary uppercase block">Solution d'ingénierie :</span>
-<p class="font-body-sm text-body-sm text-on-surface">
-                  Déploiement d'un essaim d'agents coordonnés avec validation humaine, auditabilité totale et traçabilité par empreintes cryptographiques.
-                </p>
-</div>
-</div>
-</div>
-<div class="bg-surface-container-high p-space-md space-y-space-xs">
-<span class="font-label-sm text-label-sm text-outline uppercase">Impacts opérationnels :</span>
-<div class="grid grid-cols-2 gap-space-sm font-label-sm text-label-sm pt-space-xs">
-<div>
-<span class="font-display-xl text-[24px] font-semibold text-primary block leading-tight">-75%</span>
-<span class="text-on-surface-variant text-[11px]">Temps d'audit de conformité</span>
-</div>
-<div>
-<span class="font-display-xl text-[24px] font-semibold text-on-surface block leading-tight">100%</span>
-<span class="text-on-surface-variant text-[11px]">Citations vérifiables</span>
-</div>
-</div>
-</div>
-</div>
-<!-- Case 2: Modern Data Platform & Real-Time Lakehouse -->
-<div class="bg-surface-container flex flex-col justify-between shadow-lg">
-<div class="p-space-lg space-y-space-md">
-<div class="flex justify-between items-center font-label-sm text-label-sm text-outline">
-<span class="px-space-xs py-0.5 bg-surface-container-highest text-secondary">INDUSTRIE & SUPPLY CHAIN</span>
-<span>FRANCE</span>
-</div>
-<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">
-              Modern Data Platform & Lakehouse Temps Réel
-            </h3>
-<div class="space-y-space-sm pt-space-xs">
-<div>
-<span class="font-label-sm text-label-sm text-outline uppercase block">Contexte :</span>
-<p class="font-body-sm text-body-sm text-on-surface-variant">
-                  Silos de données d'usines historiques, latence de reporting de 24h et incapacité à réagir aux goulets d'étranglement logistiques en flux tendu.
-                </p>
-</div>
-<div>
-<span class="font-label-sm text-label-sm text-secondary uppercase block">Solution d'ingénierie :</span>
-<p class="font-body-sm text-body-sm text-on-surface">
-                  Refonte vers une architecture Iceberg découplée, ingestion continue Kafka/Flink et modélisation unifiée dbt pour 140 usines.
-                </p>
-</div>
-</div>
-</div>
-<div class="bg-surface-container-high p-space-md space-y-space-xs">
-<span class="font-label-sm text-label-sm text-outline uppercase">Impacts opérationnels :</span>
-<div class="grid grid-cols-2 gap-space-sm font-label-sm text-label-sm pt-space-xs">
-<div>
-<span class="font-display-xl text-[24px] font-semibold text-secondary block leading-tight">&lt; 3 sec</span>
-<span class="text-on-surface-variant text-[11px]">Latence des métriques</span>
-</div>
-<div>
-<span class="font-display-xl text-[24px] font-semibold text-on-surface block leading-tight">-48%</span>
-<span class="text-on-surface-variant text-[11px]">Facturation cloud mensuelle</span>
-</div>
-</div>
-</div>
-</div>
-<!-- Case 3: LLMOps & MLOps Enterprise Suite -->
-<div class="bg-surface-container flex flex-col justify-between shadow-lg">
-<div class="p-space-lg space-y-space-md">
-<div class="flex justify-between items-center font-label-sm text-label-sm text-outline">
-<span class="px-space-xs py-0.5 bg-surface-container-highest text-primary">SANTÉ & PHARMA</span>
-<span>SUISSE / UE</span>
-</div>
-<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">
-              Chaîne LLMOps & MLOps Sécurisée Entreprise
-            </h3>
-<div class="space-y-space-sm pt-space-xs">
-<div>
-<span class="font-label-sm text-label-sm text-outline uppercase block">Contexte :</span>
-<p class="font-body-sm text-body-sm text-on-surface-variant">
-                  Multiplication de shadow-IA non contrôlées avec risques critiques de fuite de données de recherche sensibles et explosion des coûts API.
-                </p>
-</div>
-<div>
-<span class="font-label-sm text-label-sm text-primary uppercase block">Solution d'ingénierie :</span>
-<p class="font-body-sm text-body-sm text-on-surface">
-                  Plateforme d'accès centralisée, passerelle LLM avec détection de PII, proxy de mise en cache sémantique et modèles open source auto-hébergés.
-                </p>
-</div>
-</div>
-</div>
-<div class="bg-surface-container-high p-space-md space-y-space-xs">
-<span class="font-label-sm text-label-sm text-outline uppercase">Impacts opérationnels :</span>
-<div class="grid grid-cols-2 gap-space-sm font-label-sm text-label-sm pt-space-xs">
-<div>
-<span class="font-display-xl text-[24px] font-semibold text-primary block leading-tight">100%</span>
-<span class="text-on-surface-variant text-[11px]">Données traitées en souverain</span>
-</div>
-<div>
-<span class="font-display-xl text-[24px] font-semibold text-on-surface block leading-tight">-60%</span>
-<span class="text-on-surface-variant text-[11px]">Coûts globaux d'inférence</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- 7. FINAL CTA SECTION (Obsidian Sovereign Core) -->
-<section class="w-full bg-surface-container-lowest py-space-xl" id="contact">
-<div class="max-w-7xl mx-auto px-6 lg:px-12">
-<div class="bg-surface-container p-space-lg md:p-space-xl relative overflow-hidden shadow-2xl">
-<!-- Background Vector Ambient Elements -->
-<div class="absolute -right-16 -top-16 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
-<div class="absolute -left-16 -bottom-16 w-96 h-96 bg-secondary/5 rounded-full blur-3xl pointer-events-none"></div>
-<div class="relative z-10 max-w-4xl space-y-space-lg">
-<div class="space-y-space-xs">
-<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-semibold">// ENGAGEMENT TECHNIQUE</span>
-<h2 class="font-display-xl text-[34px] md:text-[44px] lg:text-[56px] text-on-surface tracking-tight leading-[1.1]">
-              Construisons vos prochains <span class="text-primary">systèmes intelligents.</span>
-</h2>
-<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl pt-space-xs">
-              De la stratégie architecturale à la mise en production continue, donnons une réalité technique rigoureuse à vos ambitions IA et Data.
-            </p>
-</div>
-<!-- CTAs & Action cluster -->
-<div class="flex flex-wrap items-center gap-space-md pt-space-sm">
-<a class="inline-flex items-center gap-space-sm px-space-xl py-space-md bg-primary text-on-primary font-label-md text-label-md uppercase tracking-wider font-semibold hover:bg-primary-container transition-colors shadow-md" href="https://calendly.com/bamoussoudjangban-predylics/30min" target="_blank" rel="noopener">
-<span>Discutons de votre projet</span>
-<span aria-hidden="true" class="material-symbols-outlined text-[18px]">arrow_forward</span>
-</a>
-<a class="inline-flex items-center gap-space-sm px-space-lg py-space-md bg-surface-container-high text-on-surface hover:text-primary hover:bg-surface-container-highest font-label-md text-label-md uppercase tracking-wider transition-colors shadow-sm" href="https://calendly.com/bamoussoudjangban-predylics/30min" target="_blank" rel="noopener">
-<span aria-hidden="true" class="material-symbols-outlined text-[18px]">build</span>
-<span>Planifier un diagnostic d'architecture</span>
-</a>
-</div>
-<!-- Supporting Links & Corporate Metadata -->
-<div class="pt-space-md flex flex-wrap items-center gap-space-lg text-outline font-label-sm text-label-sm uppercase tracking-wider">
-<a class="inline-flex items-center gap-space-xs hover:text-on-surface transition-colors" href="mailto:contact@predylics.com?subject=Demande%20du%20livre%20blanc%20technique">
-<span aria-hidden="true" class="material-symbols-outlined text-[16px] text-primary">mail</span>
-<span>Recevoir notre livre blanc technique</span>
-</a>
-<span class="text-surface-variant">/</span>
-<span>Accompagnement Paris & International</span>
-<span class="text-surface-variant">/</span>
-<span>NDA Strict & Propriété Intellectuelle Garantie</span>
-</div>
-</div>
-</div>
-</div>
-</section>
-</div></main><footer class="w-full bg-surface-container-lowest text-on-surface-variant"><div class="max-w-7xl mx-auto px-6 lg:px-12 py-space-xl"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-gutter"><div class="lg:col-span-4 flex flex-col justify-between"><div class="space-y-space-md"><div class="flex items-center gap-space-sm"><img alt="Predylics" class="h-8 w-auto" width="149" height="32" src="assets/logo-predylics-light.png"/></div><p class="font-body-sm text-body-sm text-on-surface-variant max-w-sm">Cabinet de conseil d'élite en Intelligence Artificielle et ingénierie de données souveraines. De la conception stratégique à l'industrialisation en production.</p></div><div class="pt-space-md font-label-sm text-label-sm text-outline tracking-wider uppercase">PARIS // ARCHITECTURE & APPLIED DATA</div></div><div class="lg:col-span-2 space-y-space-md"><p class="font-label-md text-label-md uppercase tracking-wider text-on-surface font-semibold">Intelligence Artificielle</p><ul class="space-y-space-xs font-body-sm text-body-sm"><li><a class="hover:text-primary transition-colors" href="#expertises">IA Générative & LLM Ops</a></li><li><a class="hover:text-primary transition-colors" href="#expertises">Computer Vision & Deep Learning</a></li><li><a class="hover:text-primary transition-colors" href="#expertises">Modèles Prédictifs & Risque</a></li><li><a class="hover:text-primary transition-colors" href="#expertises">Gouvernance & IA Éthique</a></li></ul></div><div class="lg:col-span-2 space-y-space-md"><p class="font-label-md text-label-md uppercase tracking-wider text-on-surface font-semibold">Data Engineering</p><ul class="space-y-space-xs font-body-sm text-body-sm"><li><a class="hover:text-primary transition-colors" href="#expertises">Modern Data Stack & Lakehouse</a></li><li><a class="hover:text-primary transition-colors" href="#expertises">Pipelines Streaming & Temps Réel</a></li><li><a class="hover:text-primary transition-colors" href="#expertises">Data Mesh & Contrats de Données</a></li><li><a class="hover:text-primary transition-colors" href="#expertises">Infrastructures Cloud & FinOps</a></li></ul></div><div class="lg:col-span-2 space-y-space-md"><p class="font-label-md text-label-md uppercase tracking-wider text-on-surface font-semibold">Cabinet</p><ul class="space-y-space-xs font-body-sm text-body-sm"><li><a class="hover:text-primary transition-colors" href="#approche">Méthodologie</a></li><li><a class="hover:text-primary transition-colors" href="#realisations">Cas Clients & ROI</a></li><li><a class="hover:text-primary transition-colors" href="#a-propos">L'Équipe Dirigeante</a></li><li><a class="hover:text-primary transition-colors" href="mailto:contact@predylics.com?subject=Candidature">Carrières & Recrutement</a></li></ul></div><div class="lg:col-span-2 space-y-space-md"><p class="font-label-md text-label-md uppercase tracking-wider text-on-surface font-semibold">Siège Paris</p><div class="space-y-space-xs font-body-sm text-body-sm"><p class="text-on-surface">Predylics SAS</p><p>8 Place de la Madeleine</p><p>75008 Paris, France</p><p class="text-primary hover:text-primary-fixed-dim transition-colors pt-space-xs"><a href="mailto:contact@predylics.com">contact@predylics.com</a></p><p><a class="inline-flex items-center gap-space-xs hover:text-primary transition-colors" href="https://www.linkedin.com/company/predylics/" target="_blank" rel="noopener">LinkedIn<span aria-hidden="true" class="material-symbols-outlined text-[14px]">north_east</span></a></p></div></div></div><div class="mt-space-xl pt-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md font-label-sm text-label-sm text-outline tracking-wider uppercase"><div>© <span id="year">2026</span> PREDYLICS CONSULTING. TOUS DROITS RÉSERVÉS.</div><div class="flex flex-wrap justify-center items-center gap-x-space-lg gap-y-space-xs"><a class="hover:text-on-surface transition-colors" data-path="mentions-legales" href="#">Mentions Légales</a><a class="hover:text-on-surface transition-colors" data-path="confidentialite" href="#">Politique de Confidentialité</a><a class="hover:text-on-surface transition-colors" data-path="conformite-rgpd" href="#">Conformité RGPD</a></div></div></div></footer>
-<script>
-(function () {
-  var toggle = document.getElementById('menu-toggle');
-  var menu = document.getElementById('mobile-menu');
-  function setOpen(open) {
-    menu.classList.toggle('hidden', !open);
-    toggle.setAttribute('aria-expanded', String(open));
-    toggle.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
-    toggle.firstElementChild.textContent = open ? 'close' : 'menu';
-  }
-  toggle.addEventListener('click', function () { setOpen(menu.classList.contains('hidden')); });
-  menu.addEventListener('click', function (e) { if (e.target.closest('a')) setOpen(false); });
+              </div>
+              <!-- CTAs & Action cluster -->
+              <div class="flex flex-wrap items-center gap-space-md pt-space-sm">
+                <a class="inline-flex items-center gap-space-sm px-space-xl py-space-md bg-primary text-on-primary font-label-md text-label-md uppercase tracking-wider font-semibold hover:bg-primary-container transition-colors shadow-md"
+                  href="https://calendly.com/bamoussoudjangban-predylics/30min" target="_blank" rel="noopener">
+                  <span>Discutons de votre projet</span>
+                  <span aria-hidden="true" class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                </a>
+                <a class="inline-flex items-center gap-space-sm px-space-lg py-space-md bg-surface-container-high text-on-surface hover:text-primary hover:bg-surface-container-highest font-label-md text-label-md uppercase tracking-wider transition-colors shadow-sm"
+                  href="https://calendly.com/bamoussoudjangban-predylics/30min" target="_blank" rel="noopener">
+                  <span aria-hidden="true" class="material-symbols-outlined text-[18px]">build</span>
+                  <span>Planifier un diagnostic d'architecture</span>
+                </a>
+              </div>
+              <!-- Supporting Links & Corporate Metadata -->
+              <div
+                class="pt-space-md flex flex-wrap items-center gap-space-lg text-outline font-label-sm text-label-sm uppercase tracking-wider">
+                <a class="inline-flex items-center gap-space-xs hover:text-on-surface transition-colors"
+                  href="mailto:contact@predylics.com?subject=Demande%20du%20livre%20blanc%20technique">
+                  <span aria-hidden="true" class="material-symbols-outlined text-[16px] text-primary">mail</span>
+                  <span>Recevoir notre livre blanc technique</span>
+                </a>
+                <span class="text-surface-variant">/</span>
+                <span>Accompagnement Paris, Cotonou & International</span>
+                <span class="text-surface-variant">/</span>
+                <span>NDA Strict & Propriété Intellectuelle Garantie</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+  <footer class="w-full bg-surface-container-lowest text-on-surface-variant">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 py-space-xl">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-gutter">
+        <div class="lg:col-span-4 flex flex-col justify-between">
+          <div class="space-y-space-md">
+            <div class="flex items-center gap-space-sm"><img alt="Predylics" class="h-8 w-auto" width="149" height="32"
+                src="assets/logo-predylics-light.png" /></div>
+            <p class="font-body-sm text-body-sm text-on-surface-variant max-w-sm">Cabinet de conseil d'élite en
+              Intelligence Artificielle et ingénierie de données souveraines. De la conception stratégique à
+              l'industrialisation en production.</p>
+          </div>
+          <div class="pt-space-md font-label-sm text-label-sm text-outline tracking-wider uppercase">PARIS · COTONOU //
+            ARCHITECTURE & APPLIED DATA</div>
+        </div>
+        <div class="lg:col-span-2 space-y-space-md">
+          <p class="font-label-md text-label-md uppercase tracking-wider text-on-surface font-semibold">Intelligence
+            Artificielle</p>
+          <ul class="space-y-space-xs font-body-sm text-body-sm">
+            <li><a class="hover:text-primary transition-colors" href="#expertises">IA Générative & LLM Ops</a></li>
+            <li><a class="hover:text-primary transition-colors" href="#expertises">Computer Vision & Deep Learning</a>
+            </li>
+            <li><a class="hover:text-primary transition-colors" href="#expertises">Modèles Prédictifs & Risque</a></li>
+            <li><a class="hover:text-primary transition-colors" href="#expertises">Gouvernance & IA Éthique</a></li>
+          </ul>
+        </div>
+        <div class="lg:col-span-2 space-y-space-md">
+          <p class="font-label-md text-label-md uppercase tracking-wider text-on-surface font-semibold">Data Engineering
+          </p>
+          <ul class="space-y-space-xs font-body-sm text-body-sm">
+            <li><a class="hover:text-primary transition-colors" href="#expertises">Modern Data Stack & Lakehouse</a>
+            </li>
+            <li><a class="hover:text-primary transition-colors" href="#expertises">Pipelines Streaming & Temps Réel</a>
+            </li>
+            <li><a class="hover:text-primary transition-colors" href="#expertises">Data Mesh & Contrats de Données</a>
+            </li>
+            <li><a class="hover:text-primary transition-colors" href="#expertises">Infrastructures Cloud & FinOps</a>
+            </li>
+          </ul>
+        </div>
+        <div class="lg:col-span-2 space-y-space-md">
+          <p class="font-label-md text-label-md uppercase tracking-wider text-on-surface font-semibold">Cabinet</p>
+          <ul class="space-y-space-xs font-body-sm text-body-sm">
+            <li><a class="hover:text-primary transition-colors" href="#approche">Méthodologie</a></li>
+            <li><a class="hover:text-primary transition-colors" href="#realisations">Cas Clients & ROI</a></li>
+            <li><a class="hover:text-primary transition-colors" href="#a-propos">L'Équipe Dirigeante</a></li>
+            <li><a class="hover:text-primary transition-colors"
+                href="mailto:contact@predylics.com?subject=Candidature">Carrières & Recrutement</a></li>
+          </ul>
+        </div>
+        <div class="lg:col-span-2 space-y-space-md">
+          <p class="font-label-md text-label-md uppercase tracking-wider text-on-surface font-semibold">Nos sièges</p>
+          <div class="space-y-space-xs font-body-sm text-body-sm">
+            <p class="text-on-surface">Paris</p>
+            <p>Predylics SAS</p>
+            <p>66 avenue des Champs-Élysées</p>
+            <p>75008 Paris, France</p>
+            <p class="text-on-surface pt-space-sm">Cotonou</p>
+            <p>Cotonou, Bénin</p>
+            <p class="text-primary hover:text-primary-fixed-dim transition-colors pt-space-xs"><a
+                href="mailto:contact@predylics.com">contact@predylics.com</a></p>
+            <p><a class="inline-flex items-center gap-space-xs hover:text-primary transition-colors"
+                href="https://www.linkedin.com/company/predylics/" target="_blank" rel="noopener">LinkedIn<span
+                  aria-hidden="true" class="material-symbols-outlined text-[14px]">north_east</span></a></p>
+          </div>
+        </div>
+      </div>
+      <div
+        class="mt-space-xl pt-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md font-label-sm text-label-sm text-outline tracking-wider uppercase">
+        <div>© <span id="year">2019</span> PREDYLICS CONSULTING. TOUS DROITS RÉSERVÉS.</div>
+        <div class="flex flex-wrap justify-center items-center gap-x-space-lg gap-y-space-xs"><a
+            class="hover:text-on-surface transition-colors" data-path="mentions-legales" href="#">Mentions Légales</a><a
+            class="hover:text-on-surface transition-colors" data-path="confidentialite" href="#">Politique de
+            Confidentialité</a><a class="hover:text-on-surface transition-colors" data-path="conformite-rgpd"
+            href="#">Conformité RGPD</a></div>
+      </div>
+    </div>
+  </footer>
+  <script>
+    (function () {
+      var toggle = document.getElementById('menu-toggle');
+      var menu = document.getElementById('mobile-menu');
+      function setOpen(open) {
+        menu.classList.toggle('hidden', !open);
+        toggle.setAttribute('aria-expanded', String(open));
+        toggle.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+        toggle.firstElementChild.textContent = open ? 'close' : 'menu';
+      }
+      toggle.addEventListener('click', function () { setOpen(menu.classList.contains('hidden')); });
+      menu.addEventListener('click', function (e) { if (e.target.closest('a')) setOpen(false); });
 
-  var links = document.querySelectorAll('.nav-link');
-  var active = ['text-primary', 'font-semibold'];
-  var observer = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (!entry.isIntersecting) return;
+      var links = document.querySelectorAll('.nav-link');
+      var active = ['text-primary', 'font-semibold'];
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          links.forEach(function (link) {
+            var on = link.getAttribute('href') === '#' + entry.target.id;
+            active.forEach(function (c) { link.classList.toggle(c, on); });
+            link.classList.toggle('text-on-surface-variant', !on);
+            if (on) link.setAttribute('aria-current', 'location'); else link.removeAttribute('aria-current');
+          });
+        });
+      }, { rootMargin: '-45% 0px -50% 0px' });
       links.forEach(function (link) {
-        var on = link.getAttribute('href') === '#' + entry.target.id;
-        active.forEach(function (c) { link.classList.toggle(c, on); });
-        link.classList.toggle('text-on-surface-variant', !on);
-        if (on) link.setAttribute('aria-current', 'location'); else link.removeAttribute('aria-current');
+        var section = document.querySelector(link.getAttribute('href'));
+        if (section) observer.observe(section);
       });
-    });
-  }, { rootMargin: '-45% 0px -50% 0px' });
-  links.forEach(function (link) {
-    var section = document.querySelector(link.getAttribute('href'));
-    if (section) observer.observe(section);
-  });
 
-  document.getElementById('year').textContent = new Date().getFullYear();
-})();
-</script>
-<script src="assets/interactions.js"></script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+    })();
+  </script>
+  <script src="assets/interactions.js"></script>
 </body>
+
 </html>
